@@ -5,9 +5,9 @@ on:
     branches:
       - main
     paths:
-      - 'ferretdb/**'
-      - '!ferretdb/README.md'
-      - '.github/workflows/build-ferretdb.yml'
+      - 'pgbouncer/**'
+      - '!pgbouncer/README.md'
+      - '.github/workflows/build-pgbouncer.yml'
   workflow_dispatch:
 jobs:
   build:
