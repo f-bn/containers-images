@@ -4,6 +4,7 @@ This repository contains my personal custom OCI containers images.
 
 #### Images
 
+- [adguard-home](./adguard-home/)
 - [ferretdb](./ferretdb/)
 - [navidrome](./navidrome/)
 - [pgbouncer](./pgbouncer/)
