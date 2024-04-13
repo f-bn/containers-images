@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - adguard-home/**
-      - .github/workflows/build-adguard-home.yml
+      - .github/workflows/build-adguard.yml
   workflow_dispatch:
 jobs:
   build:
