@@ -10,4 +10,6 @@ Built with Go 1.22.2.
 
 ## FerretDB configuration
 
-FerretDB is able to read configuration from environment variables or flags, this is still valid for this custom image. More informations [here](https://docs.ferretdb.io/configuration/flags/).
+FerretDB is able to read configuration from environment variables or flags, this is still valid for this custom image.
+
+More informations about FerretDB configuration [here](https://docs.ferretdb.io/configuration/flags/).
