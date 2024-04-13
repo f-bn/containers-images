@@ -4,6 +4,7 @@ This repository contains my personal custom OCI containers images.
 
 #### Images
 
+- [ferretdb](./ferretdb/)
 - [pgbouncer](./pgbouncer/)
 - [postgresql](./postgresql/)
 
