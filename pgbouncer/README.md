@@ -1,6 +1,6 @@
 ## General informations
 
-Custom PgBouncer image builded from sources.
+Custom PgBouncer image built from sources.
 
 Built with GCC 13.2.
 

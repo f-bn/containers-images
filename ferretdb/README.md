@@ -1,6 +1,6 @@
 ## General informations
 
-Custom FerretDB image builded from sources.
+Custom FerretDB image built from sources.
 
 Built with Go 1.22.2.
 

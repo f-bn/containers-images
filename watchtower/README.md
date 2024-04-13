@@ -1,6 +1,6 @@
 ## General informations
 
-Custom Watchtower image builded from sources.
+Custom Watchtower image built from sources.
 
 Built with Go 1.20.
 
