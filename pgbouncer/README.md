@@ -16,3 +16,5 @@ By default, this image is builded with a default empty PgBouncer configuration. 
 # By default, the image is looking for configuration in /etc/pgbouncer/pgbouncer.ini
 $ docker run [options] -v pgbouncer.ini:/etc/pgbouncer/pgbouncer.ini ghcr.io/f-bn/pgbouncer:1.22.0
 ```
+
+More informations about PgBouncer configuration [here](https://www.pgbouncer.org/config.html).
