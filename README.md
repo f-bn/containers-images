@@ -1,6 +1,12 @@
-## General informations
+### General informations
 
 This repository contains my personal custom OCI containers images.
+
+Images are publicly available through my GitHub namespace:
+
+```shell
+docker pull ghcr.io/f-bn/<image>:<tag>
+```
 
 ### References
 
