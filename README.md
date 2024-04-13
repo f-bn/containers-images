@@ -20,6 +20,7 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 
 ### References
 
+- AdGuard Home: https://adguard.com/en/adguard-home/overview.html
 - FerretDB: https://www.ferretdb.com/
 - Navidrome: https://www.navidrome.org/
 - PostgreSQL: https://www.postgresql.org/
