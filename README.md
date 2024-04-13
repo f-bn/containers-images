@@ -5,6 +5,7 @@ This repository contains my personal custom OCI containers images.
 #### Images
 
 - [adguard-home](./adguard-home/)
+- [coredns](./coredns/)
 - [ferretdb](./ferretdb/)
 - [navidrome](./navidrome/)
 - [pgbouncer](./pgbouncer/)
@@ -22,6 +23,7 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 ### References
 
 - AdGuard Home: https://adguard.com/en/adguard-home/overview.html
+- CoreDNS: https://coredns.io/
 - FerretDB: https://www.ferretdb.com/
 - Navidrome: https://www.navidrome.org/
 - PostgreSQL: https://www.postgresql.org/
