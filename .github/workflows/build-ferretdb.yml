@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - ferretdb/**
-      - .github/workflows/ferretdb.yml
+      - .github/workflows/build-ferretdb.yml
   workflow_dispatch:
 jobs:
   build:

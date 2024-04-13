@@ -6,7 +6,7 @@ on:
       - main
     paths:
       - postgresql/**
-      - .github/workflows/postgresql.yml
+      - .github/workflows/build-postgresql.yml
   workflow_dispatch:
 jobs:
   build:
