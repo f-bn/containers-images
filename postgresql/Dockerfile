@@ -32,7 +32,7 @@ CMD ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
 
 LABEL \
   org.opencontainers.image.title="postgresql" \
-  org.opencontainers.image.source="https://github.com/f-bn/containers-images" \
+  org.opencontainers.image.source="https://github.com/f-bn/containers-images/postgresql" \
   org.opencontainers.image.description="Custom PostgreSQL ${PG_MAJOR} image with additional extensions, configuration and tools for learning and testing purposes" \
   org.opencontainers.image.licenses="PostgreSQL" \
   org.opencontainers.image.authors="Florian Bobin <contact@fbobin.me>"
