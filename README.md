@@ -5,7 +5,7 @@ This repository contains my personal custom OCI containers images.
 #### Images
 
 - [ferretdb](./ferretdb/)
-- [navidrome](./navidrome/) (`amd64` only)
+- [navidrome](./navidrome/)
 - [pgbouncer](./pgbouncer/)
 - [postgresql](./postgresql/)
 
