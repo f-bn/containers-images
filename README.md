@@ -4,6 +4,7 @@ This repository contains my personal custom OCI containers images.
 
 #### Images
 
+- [pgbouncer](./pgbouncer/)
 - [postgresql](./postgresql/)
 
 #### How to pull the images ?
