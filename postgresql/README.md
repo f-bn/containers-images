@@ -47,3 +47,5 @@ You can now run PostgreSQL with this custom configuration chunk (e.g using Docke
 ```shell
 $ docker run [options] -v mypostgresql.conf:/etc/postgresql/postgresql.conf.d/mypostgresql.conf ghcr.io/f-bn/postgresql:16.2
 ```
+
+More informations about PostgreSQL configuration [here](https://www.postgresql.org/docs/current/runtime-config.html).
