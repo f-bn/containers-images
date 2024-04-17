@@ -10,6 +10,7 @@ This repository contains my personal custom OCI containers images.
 - [navidrome](./navidrome/)
 - [pgbouncer](./pgbouncer/)
 - [postgresql](./postgresql/)
+- [valkey](./valkey/)
 - [watchtower](./watchtower/)
 
 #### How to pull the images ?
@@ -28,5 +29,6 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 - Navidrome: https://www.navidrome.org/
 - PostgreSQL: https://www.postgresql.org/
 - pgbouncer: https://www.pgbouncer.org/
+- Valkey: https://valkey.io/
 - Watchtower: https://containrrr.dev/watchtower/
 - WolfiOS: https://github.com/wolfi-dev
