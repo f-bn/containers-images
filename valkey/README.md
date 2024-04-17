@@ -2,7 +2,7 @@
 
 Custom Valkey key/value store image with protection mode disabled by default (like in the official Redis and Valkey images).
 
-Built with GCC 12.3.
+Built with GCC 13.2.
 
 ## Valkey configuration
 
