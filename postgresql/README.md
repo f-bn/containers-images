@@ -27,25 +27,34 @@ This image also embeds some famous PostgreSQL tools:
   - [pgbackrest](https://github.com/pgbackrest/pgbackrest)
   - [pg_activity](https://github.com/dalibo/pg_activity)
 
-## PostgreSQL configuration overrides
+## PostgreSQL configuration
 
-At build time, a drop-in folder is created to allow to push some PostgreSQL configuration overrides. This helps to avoid to push a complete `postgresql.conf` file if you just want to test some configuration parameters:
+Since this image is based on the official image from the Docker Hub, therefore it inherits the available configuration parameters (such environment variables and initialization scripts).
+
+At build time, a drop-in folder located at `/etc/postgresql/config.d` is created to push some PostgreSQL configuration overrides. This allows to push partial PostgreSQL configuration chunks without having to rewrite a complete `postgresql.conf` file if you just want to play with some configuration parameters.
+
+First, create your configuration override:
 
 ```ini
-# mypostgresql.conf
+# custom.conf
 
-# I want moar caaccchheee
+# I want mooaar cache !
 shared_buffers = 2GB
 
-# Let's active WAL archiving
+# Let's activate WAL archiving
 archive_mode = on
 archive_command = '/path/to/my/custom archiving script'
 ```
 
-You can now run PostgreSQL with this custom configuration chunk (e.g using Docker):
+Then, you can now run PostgreSQL with this custom configuration override (e.g using Docker):
 
 ```shell
-$ docker run [options] -v mypostgresql.conf:/etc/postgresql/postgresql.conf.d/mypostgresql.conf ghcr.io/f-bn/postgresql:16.2
+$ docker run [options] -v $PWD/custom.conf:/etc/postgresql/config.d/custom.conf:ro ghcr.io/f-bn/postgresql:16.2
+$ docker exec -ti <name> bash
+$ su - postgres -c "psql -c 'SHOW shared_buffers'"
+ shared_buffers
+----------------
+ 2GB
 ```
 
 More informations about PostgreSQL configuration [here](https://www.postgresql.org/docs/current/runtime-config.html).
