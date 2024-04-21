@@ -2,7 +2,7 @@ ARG PG_RELEASE=16.2
 
 FROM docker.io/postgres:${PG_RELEASE}
 
-RUN mkdir -p /etc/postgresql/postgresql.conf.d ;
+RUN mkdir -p /etc/postgresql/config.d ;
 
 RUN set -ex ; \
   export DEBIAN_FRONTEND=noninteractive ; \
