@@ -19,12 +19,7 @@ RUN set -ex ; \
     pg-activity \
     procps lsof less ; \
   apt clean all ; \
-  rm -rf \
-    /var/lib/apt/lists/* \
-    /var/cache/debconf/* \
-    /tmp/* \
-    /var/tmp/* \
-    /var/log/* ;
+  rm -rf /var/lib/apt/lists/*
 
 COPY postgresql.default.conf /etc/postgresql/postgresql.conf
 
