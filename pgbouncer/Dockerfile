@@ -28,7 +28,7 @@ RUN set -ex ; \
 
 RUN set -ex ; \
   ./configure --prefix=/usr ; \
-  make -j2
+  make -j "$(nproc)"
 
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
