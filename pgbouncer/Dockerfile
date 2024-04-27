@@ -33,8 +33,6 @@ RUN set -ex ; \
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
 
-ARG VERSION=1.22.0
-
 COPY --from=build --chmod=755 /build/pgbouncer /usr/bin/pgbouncer
 COPY --chown=nonroot:nonroot --chmod=640 pgbouncer.default.ini /etc/pgbouncer/pgbouncer.ini
 
