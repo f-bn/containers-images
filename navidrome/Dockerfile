@@ -1,7 +1,7 @@
 # --- Build stage ---
 FROM docker.io/gcc:13.2 AS ffmpeg-build
 
-ARG FFMPEG_VERSION=6.1.1
+ARG FFMPEG_VERSION=7.0
 
 RUN set -ex ; \
   export DEBIAN_FRONTEND=noninteractive ; \
