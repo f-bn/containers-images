@@ -38,7 +38,7 @@ RUN set -ex ; \
     --enable-shared \
     --enable-gpl \
     --enable-libopus ; \
-  make -j2 DESTDIR=./dist install
+  make -j "$(nproc)" DESTDIR=./dist install
 
 # --- Build stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest AS build
