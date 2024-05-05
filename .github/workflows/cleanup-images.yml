@@ -16,7 +16,7 @@ jobs:
     steps:
       - uses: actions/delete-package-versions@v5
         with:
-          owner: github
+          owner: ${{ github.repository_owner }}
           package-name: ${{ matrix.package }}
           package-type: container
           token: ${{ secrets.GITHUB_TOKEN }}
