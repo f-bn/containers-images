@@ -12,7 +12,7 @@ jobs:
       packages: write
     strategy:
       matrix:
-        package: ['adguard-home','ferretdb','navidrome','pgbouncer','postgresql','valkey','watchtower']
+        package: ['adguard-home','distrobuilder','ferretdb','navidrome','pgbouncer','postgresql','valkey','watchtower']
     steps:
       - uses: actions/delete-package-versions@v5
         with:

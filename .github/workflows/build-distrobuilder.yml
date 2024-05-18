@@ -1,0 +1,82 @@
+---
+name: Build Distrobuilder image
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'distrobuilder/**'
+      - '!distrobuilder/README.md'
+      - '.github/workflows/build-distrobuilder.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '35 4 * * 6' # Every Saturday at 04:35am
+jobs:
+  build-stable:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    strategy:
+      matrix:
+        version: ['3.0']
+    steps:
+      - name: Check-out repository
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU (for multi-arch build)
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image to registry
+        uses: docker/build-push-action@v5
+        with:
+          platforms: linux/amd64,linux/arm64
+          context: ./distrobuilder
+          file: ./distrobuilder/Dockerfile
+          push: true
+          build-args: |
+            VERSION=${{ matrix.version }}
+          tags: |
+            ghcr.io/f-bn/distrobuilder:${{ matrix.version }}
+            ghcr.io/f-bn/distrobuilder:latest
+  build-edge:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Check-out repository
+        uses: actions/checkout@v4
+
+      - name: Set up QEMU (for multi-arch build)
+        uses: docker/setup-qemu-action@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push image to registry
+        uses: docker/build-push-action@v5
+        with:
+          platforms: linux/amd64,linux/arm64
+          context: ./distrobuilder
+          file: ./distrobuilder/Dockerfile.edge
+          push: true
+          tags: |
+            ghcr.io/f-bn/distrobuilder:edge
