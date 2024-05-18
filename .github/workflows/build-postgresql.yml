@@ -9,6 +9,8 @@ on:
       - '!postgresql/README.md'
       - '.github/workflows/build-postgresql.yml'
   workflow_dispatch:
+  schedule:
+    - cron: '35 4 * * 6' # Every Saturday at 04:35am
 jobs:
   build:
     runs-on: ubuntu-latest
