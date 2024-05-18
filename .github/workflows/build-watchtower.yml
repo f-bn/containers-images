@@ -45,3 +45,4 @@ jobs:
             PG_RELEASE=${{ matrix.version }}
           tags: |
             ghcr.io/f-bn/watchtower:${{ matrix.version }}
+            ghcr.io/f-bn/watchtower:latest

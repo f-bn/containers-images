@@ -45,3 +45,4 @@ jobs:
             VERSION=${{ matrix.version }}
           tags: |
             ghcr.io/f-bn/adguard-home:${{ matrix.version }}
+            ghcr.io/f-bn/adguard-home:latest

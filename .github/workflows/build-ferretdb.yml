@@ -48,3 +48,4 @@ jobs:
             VERSION=${{ matrix.version }}
           tags: |
             ghcr.io/f-bn/ferretdb:${{ matrix.version }}
+            ghcr.io/f-bn/ferretdb:latest

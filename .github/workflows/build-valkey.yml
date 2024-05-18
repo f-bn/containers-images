@@ -48,3 +48,4 @@ jobs:
             VERSION=${{ matrix.version }}
           tags: |
             ghcr.io/f-bn/valkey:${{ matrix.version }}
+            ghcr.io/f-bn/valkey:latest
