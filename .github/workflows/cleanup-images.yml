@@ -1,24 +1,24 @@
----
-name: Cleanup old container images versions
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: '00 4 * * 6' # Every Saturday at 04:00am
-jobs:
-  cleanup:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
-    strategy:
-      matrix:
-        package: ['adguard-home','distrobuilder','ferretdb','navidrome','pgbouncer','postgresql','valkey','watchtower']
-    steps:
-      - uses: actions/delete-package-versions@v5
-        with:
-          owner: ${{ github.repository_owner }}
-          package-name: ${{ matrix.package }}
-          package-type: container
-          token: ${{ secrets.GITHUB_TOKEN }}
-          min-versions-to-keep: 5
-          delete-only-untagged-versions: true
+#---
+#name: Cleanup old container images versions
+#on:
+#  workflow_dispatch:
+#  schedule:
+#    - cron: '00 4 * * 6' # Every Saturday at 04:00am
+#jobs:
+#  cleanup:
+#    runs-on: ubuntu-latest
+#    permissions:
+#      contents: read
+#      packages: write
+#    strategy:
+#      matrix:
+#        package: ['adguard-home','distrobuilder','ferretdb','navidrome','pgbouncer','postgresql','valkey','watchtower']
+#    steps:
+#      - uses: actions/delete-package-versions@v5
+#        with:
+#          owner: ${{ github.repository_owner }}
+#          package-name: ${{ matrix.package }}
+#          package-type: container
+#          token: ${{ secrets.GITHUB_TOKEN }}
+#          min-versions-to-keep: 5
+#          delete-only-untagged-versions: true
