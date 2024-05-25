@@ -3,7 +3,7 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION=0.107.48
+ARG VERSION=0.107.50
 
 RUN apk add --no-cache libcap-utils
 
