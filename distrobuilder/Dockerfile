@@ -36,6 +36,7 @@ RUN set -ex ; \
    rsync \
    squashfs-tools \
    tar \
+   udev \
    xz-utils \
    zstd ; \
   apt clean all ; \
