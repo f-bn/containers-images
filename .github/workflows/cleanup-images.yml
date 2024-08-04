@@ -18,7 +18,7 @@ jobs:
       with:
         account: ${{ github.repository_owner }}
         token: ${{ secrets.GITHUB_TOKEN }}
-        image-names: ${{ matrix.package }}
+        image-names: "${{ matrix.package }}"
         tag-selection: untagged
         cut-off: 4w
         dry-run: true
