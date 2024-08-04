@@ -3,7 +3,7 @@ FROM docker.io/golang:1.22.2 AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION=1.21.0
+ARG VERSION=1.23.0
 
 ENV GOOS=${TARGETOS}
 ENV GOARCH=${TARGETARCH}
@@ -22,8 +22,6 @@ RUN set -ex ; \
 
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
-
-ARG VERSION
 
 COPY --from=build --chmod=755 /build/bin/ferretdb /usr/bin/ferretdb
 
