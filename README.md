@@ -4,7 +4,6 @@ This repository contains my personal custom OCI containers images.
 
 #### Images
 
-- [actual-budget](./actual-budget/)
 - [adguard-home](./adguard-home/)
 - [coredns](./coredns/)
 - [distrobuilder](./distrobuilder/)
@@ -25,7 +24,6 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 
 ### References
 
-- Actual Budget: https://actualbudget.org/
 - AdGuard Home: https://adguard.com/en/adguard-home/overview.html
 - CoreDNS: https://coredns.io/
 - Distrobuilder: https://github.com/lxc/distrobuilder
