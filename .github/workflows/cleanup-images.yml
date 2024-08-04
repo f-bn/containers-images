@@ -16,7 +16,7 @@ jobs:
    steps:
     - uses: snok/container-retention-policy@v3.0.0
       with:
-        account: ${{ github.repository_owner }}
+        account: user
         token: ${{ secrets.GITHUB_TOKEN }}
         image-names: "${{ matrix.package }}"
         tag-selection: untagged
