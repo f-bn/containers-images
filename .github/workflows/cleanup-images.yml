@@ -19,6 +19,6 @@ jobs:
         account: user
         token: ${{ secrets.GITHUB_TOKEN }}
         image-names: "${{ matrix.package }}"
-        tag-selection: untagged
+        tag-selection: both
         cut-off: 4w
         rust-log: container_retention_policy=debug
