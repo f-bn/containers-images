@@ -21,5 +21,4 @@ jobs:
         image-names: "${{ matrix.package }}"
         tag-selection: untagged
         cut-off: 4w
-        dry-run: true
         rust-log: container_retention_policy=debug
