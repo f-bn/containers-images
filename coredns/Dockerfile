@@ -1,9 +1,9 @@
 # --- Build stage ---
-FROM docker.io/golang:1.20 AS build
+FROM docker.io/golang:1.22 AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION=1.11.1
+ARG VERSION=1.11.3
 
 ENV GOOS=${TARGETOS}
 ENV GOARCH=${TARGETARCH}
@@ -24,9 +24,9 @@ RUN set -ex ; \
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
 
-ARG VERSION
-
 COPY --from=build --chmod=755 /build/bin/coredns /usr/bin/coredns
+
+RUN mkdir -p /etc/coredns
 
 USER nonroot
 
@@ -35,7 +35,7 @@ EXPOSE 53/tcp 53/udp
 ENTRYPOINT [ "/usr/bin/coredns" ]
 
 LABEL \
-  org.opencontainers.image.title="CoreDNS" \
+  org.opencontainers.image.title="coredns" \
   org.opencontainers.image.source="https://github.com/f-bn/containers-images/coredns" \
   org.opencontainers.image.description="CoreDNS is a DNS server that chains plugins" \
   org.opencontainers.image.licenses="Apache-2.0" \
