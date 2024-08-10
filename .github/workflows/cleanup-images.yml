@@ -12,7 +12,7 @@ jobs:
      packages: write
    strategy:
      matrix:
-       package: ['adguard-home','distrobuilder','ferretdb','navidrome','pgbouncer','postgresql','valkey','watchtower']
+       package: ['adguard-home','distrobuilder','ferretdb','minio','navidrome','pgbouncer','postgresql','valkey','watchtower']
    steps:
     - uses: snok/container-retention-policy@v3.0.0
       with:
