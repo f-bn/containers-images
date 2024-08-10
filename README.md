@@ -8,6 +8,7 @@ This repository contains my personal custom OCI containers images.
 - [coredns](./coredns/)
 - [distrobuilder](./distrobuilder/)
 - [ferretdb](./ferretdb/)
+- [minio](./minio/)
 - [navidrome](./navidrome/)
 - [pgbouncer](./pgbouncer/)
 - [postgresql](./postgresql/)
@@ -28,6 +29,7 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 - CoreDNS: https://coredns.io/
 - Distrobuilder: https://github.com/lxc/distrobuilder
 - FerretDB: https://www.ferretdb.com/
+- MinIO: https://min.io/
 - Navidrome: https://www.navidrome.org/
 - PostgreSQL: https://www.postgresql.org/
 - pgbouncer: https://www.pgbouncer.org/
