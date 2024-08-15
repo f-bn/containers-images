@@ -3,7 +3,7 @@ FROM docker.io/gcc:13.2 AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION=1.22.0
+ARG VERSION=1.23.1
 
 RUN set -ex ; \
   export DEBIAN_FRONTEND=noninteractive ; \
