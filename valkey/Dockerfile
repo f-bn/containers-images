@@ -3,7 +3,7 @@ FROM docker.io/gcc:13.2 AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="7.2.5"
+ARG VERSION="7.2.6"
 
 WORKDIR /build
 
