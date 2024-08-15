@@ -1,5 +1,5 @@
 # --- Build stage ---
-FROM docker.io/gcc:13.2 AS build
+FROM docker.io/gcc:14.2 AS build
 
 ARG TARGETOS
 ARG TARGETARCH
