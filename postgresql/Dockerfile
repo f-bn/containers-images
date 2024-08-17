@@ -17,13 +17,15 @@ RUN set -ex ; \
     postgresql-${PG_MAJOR}-pg-stat-kcache \
     pgbackrest \
     pg-activity \
-    procps lsof less ; \
+    procps \
+    lsof \
+    less ; \
   apt clean all ; \
   rm -rf /var/lib/apt/lists/*
 
 COPY postgresql.default.conf /etc/postgresql/postgresql.conf
 
-CMD ["postgres", "-c", "config_file=/etc/postgresql/postgresql.conf"]
+CMD [ "postgres", "-c", "config_file=/etc/postgresql/postgresql.conf" ]
 
 LABEL \
   org.opencontainers.image.title="postgresql" \
