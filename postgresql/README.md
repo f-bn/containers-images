@@ -1,6 +1,8 @@
 ## General informations
 
-Custom PostgreSQL image based on the official image with additional embedded extensions, configuration and tools for learning and testing purposes.
+Custom PostgreSQL image built from sources with additional extensions, configuration and tools.
+
+Built with GCC 14.2.
 
 ### Supported PostgreSQL versions
 
@@ -15,21 +17,16 @@ This image embeds the following additional extensions:
   - [pg_cron](https://github.com/citusdata/pg_cron)
   - [pg_repack](https://github.com/reorg/pg_repack)
   - [pg_partman](https://github.com/pgpartman/pg_partman)
-  - [pg_qualstats](https://github.com/powa-team/pg_qualstats)
-  - [pgvector](https://github.com/pgvector/pgvector)
-  - [pg_stat_kcache](https://github.com/powa-team/pg_stat_kcache)
   - pg_stat_statements - **loaded by default**
   - pg_prewarm - **loaded by default**
 
 ### Additional tools
 
 This image also embeds some famous PostgreSQL tools:
-  - [pgbackrest](https://github.com/pgbackrest/pgbackrest)
-  - [pg_activity](https://github.com/dalibo/pg_activity)
 
 ## PostgreSQL configuration
 
-Since this image is based on the official image from the Docker Hub, therefore it inherits the available configuration parameters (such environment variables and initialization scripts).
+This image is mostly compatible with the [official image](https://hub.docker.com/_/postgres/), it inherits the available configuration parameters such as environment variables and initialization scripts.
 
 At build time, a drop-in folder located at `/etc/postgresql/config.d` is created to push some PostgreSQL configuration overrides. This allows to push partial PostgreSQL configuration chunks without having to rewrite a complete `postgresql.conf` file if you just want to play with some configuration parameters.
 
