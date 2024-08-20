@@ -1,13 +1,21 @@
 # --- Build stage ---
-FROM docker.io/gcc:14.2 AS build
+FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
 ARG VERSION="7.2.6"
 
+RUN set -ex ; \
+  apk add --no-cache \
+    automake \
+    autoconf \
+    build-base \
+    git \
+    openssl-dev
+
 WORKDIR /build
 
-RUN git clone --single-branch --branch "${VERSION}" https://github.com/valkey-io/valkey.git /build
+ADD https://github.com/valkey-io/valkey.git#${VERSION} /build
 
 COPY patches/0000-disable-protected-mode.patch /build/0000-disable-protected-mode.patch
 
