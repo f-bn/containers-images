@@ -24,8 +24,8 @@ RUN set -ex ; \
 
 WORKDIR /build
 
-ADD https://ftp.postgresql.org/pub/source/v${PG_VERSION}/postgresql-${PG_VERSION}.tar.gz /build/postgresql-${VERSION}.tar.gz
-ADD https://ftp.postgresql.org/pub/source/v${PG_VERSION}/postgresql-${PG_VERSION}.tar.gz.sha256 /build/postgresql-${VERSION}.tar.gz.sha256
+ADD https://ftp.postgresql.org/pub/source/v${PG_VERSION}/postgresql-${PG_VERSION}.tar.gz /build/postgresql-${PG_VERSION}.tar.gz
+ADD https://ftp.postgresql.org/pub/source/v${PG_VERSION}/postgresql-${PG_VERSION}.tar.gz.sha256 /build/postgresql-${PG_VERSION}.tar.gz.sha256
 
 RUN set -ex ; \
   cat postgresql-${PG_VERSION}.tar.gz.sha256 | sha256sum -c ; \
