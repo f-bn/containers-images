@@ -1,28 +1,26 @@
 # --- Build stage ---
-FROM docker.io/gcc:14.2 AS build
+FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
 ARG VERSION=1.23.1
 
 RUN set -ex ; \
-  export DEBIAN_FRONTEND=noninteractive ; \
-  apt update ; \
-  apt install -y --no-install-recommends \
-    ca-certificates \
-    wget \
-    libc6-dev \
+  apk add --no-cache \
+    automake \
+    autoconf \
+    build-base \
+    c-ares-dev \
     libevent-dev \
-    libssl-dev \
-    libc-ares-dev \
-    libpq-dev \
-    pkg-config
+    libpq \
+    openssl-dev
 
 WORKDIR /build
 
+ADD https://www.pgbouncer.org/downloads/files/${VERSION}/pgbouncer-${VERSION}.tar.gz /build/pgbouncer-${VERSION}.tar.gz
+ADD https://www.pgbouncer.org/downloads/files/${VERSION}/pgbouncer-${VERSION}.tar.gz.sha256 /build/pgbouncer-${VERSION}.tar.gz.sha256
+
 RUN set -ex ; \
-  wget -O pgbouncer-${VERSION}.tar.gz https://www.pgbouncer.org/downloads/files/${VERSION}/pgbouncer-${VERSION}.tar.gz ; \
-  wget -O pgbouncer-${VERSION}.tar.gz.sha256 https://www.pgbouncer.org/downloads/files/${VERSION}/pgbouncer-${VERSION}.tar.gz.sha256 ; \
   cat pgbouncer-${VERSION}.tar.gz.sha256 | sha256sum -c ; \
   tar -xzf pgbouncer-${VERSION}.tar.gz --strip-components=1
 

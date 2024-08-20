@@ -7,11 +7,10 @@ Built with GCC 14.2.
 ### Supported PgBouncer versions
 
 - PgBouncer 1.23.x
-- PgBouncer 1.22.x
 
 ## PgBouncer configuration
 
-By default, this image is builded with a default empty PgBouncer configuration. You can bring your own configuration to the container (e.g using Docker):
+By default, this image is built with a default empty PgBouncer configuration. You can bring your own configuration to the container (e.g using Docker):
 
 ```shell
 # By default, the image is looking for configuration in /etc/pgbouncer/pgbouncer.ini
