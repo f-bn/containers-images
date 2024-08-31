@@ -25,15 +25,16 @@ RUN set -ex ; \
     --disable-network \
     --disable-autodetect \
     --disable-everything \
-    --enable-encoder=libopus,aac \
+    --enable-encoder=libmp3lame,libopus,aac \
     --enable-decoder=flac,libopus \
     --enable-parser=flac \
-    --enable-muxer=flac,opus,adts \
+    --enable-muxer=flac,opus,adts,mp3 \
     --enable-demuxer=flac \
     --enable-filter=aresample \
     --enable-protocol=file,pipe \
     --enable-shared \
     --enable-gpl \
+    --enable-libmp3lame \
     --enable-libopus ; \
   make -j "$(nproc)" DESTDIR=./dist install
 
@@ -65,7 +66,7 @@ RUN set -ex ; \
   mkdir -p /etc/navidrome /var/lib/navidrome /media/music ; \
   chown nonroot:nonroot /var/lib/navidrome
 
-RUN apk add --no-cache opus
+RUN apk add --no-cache opus lame-libs
 
 ENV ND_MUSICFOLDER=/media/music
 ENV ND_DATAFOLDER=/var/lib/navidrome
