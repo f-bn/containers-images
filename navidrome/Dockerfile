@@ -1,24 +1,21 @@
 # --- Build stage ---
-FROM docker.io/gcc:13.2 AS ffmpeg-build
+FROM cgr.dev/chainguard/wolfi-base:latest AS ffmpeg-build
 
-ARG FFMPEG_VERSION=7.0
+ARG FFMPEG_VERSION=7.0.2
 
 RUN set -ex ; \
-  export DEBIAN_FRONTEND=noninteractive ; \
-  apt update ; \
-  apt install -y --no-install-recommends \
-    libmp3lame-dev \
-    libopus-dev \
-    yasm \
-    cmake \
+  apk add --no-cache \
+    autoconf \
     automake \
-    build-essential
+    build-base \
+    lame-dev \
+    libogg-dev \
+    opus-dev \
+    yasm-dev
 
 WORKDIR /build
 
-ADD https://ffmpeg.org/releases/ffmpeg-${FFMPEG_VERSION}.tar.xz /build/
-
-RUN tar -xf ffmpeg-${FFMPEG_VERSION}.tar.xz --strip-components=1
+ADD https://git.ffmpeg.org/ffmpeg.git#n${FFMPEG_VERSION} /build/
 
 RUN set -ex ; \
   ./configure \
