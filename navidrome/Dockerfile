@@ -28,7 +28,7 @@ RUN set -ex ; \
     --enable-encoder=libmp3lame,libopus,aac \
     --enable-decoder=flac,libopus \
     --enable-parser=flac \
-    --enable-muxer=flac,opus,adts,mp3 \
+    --enable-muxer=opus,adts,mp3 \
     --enable-demuxer=flac \
     --enable-filter=aresample \
     --enable-protocol=file,pipe \
