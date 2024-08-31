@@ -46,15 +46,17 @@ ARG VERSION=0.52.0
 
 WORKDIR /build
 
-ADD https://github.com/navidrome/navidrome/releases/download/v${VERSION}/navidrome_${VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz /build/
+ADD https://github.com/navidrome/navidrome/releases/download/v${VERSION}/navidrome_${VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz \
+  /build/navidrome_${VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz
+ADD https://github.com/navidrome/navidrome/releases/download/v${VERSION}/navidrome_checksums.txt \
+  /build/navidrome_checksums.txt
 
-RUN tar -xzf /build/navidrome_${VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz
+RUN set -ex ; \
+  grep "navidrome_${VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz" navidrome_checksums.txt | sha256sum -c ; \
+  tar -xzf /build/navidrome_${VERSION}_${TARGETOS}_${TARGETARCH}.tar.gz
 
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
-
-ARG TARGETOS
-ARG TARGETARCH
 
 COPY --from=ffmpeg-build /build/dist/ /
 COPY --from=build /build/navidrome /usr/bin/navidrome
