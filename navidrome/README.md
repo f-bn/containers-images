@@ -1,14 +1,16 @@
 ## General informations
 
-Custom Navidrome image with a minimal ffpmeg audio-only build.
+Custom Navidrome image with a minimal custom ffpmeg audio-only build.
 
 ### ffmpeg notes
 
-This image contains a custom *ffmpeg* **audio-only** build with a restricted set of audio plugins available (video plugins are not needed at all by Navidrome).
+This image contains a custom *ffmpeg* **audio-only** build with a restricted set of audio codecs available for audio transcoding (video plugins are not needed at all by Navidrome):
 
-There was two goals to build *ffmpeg* from sources for Navidrome:
-  - Keep Navidrome image as minimal as possible since *ffmpeg* can require a lot of dependencies when compiled with a large set of audio/video plugins (like in standard Linux distributions). 
-  - Support for [Opus audio codec](https://opus-codec.org/) for audio transcoding (since native WolfiOS *ffmpeg* package is not built with Opus support)
+  - Native ffmpeg AAC codec (aac)
+  - [LAME](https://lame.sourceforge.io/) MP3 codec (libmp3lame)
+  - [Opus](https://opus-codec.org/) codec (libopus)
+
+The main goal is to keep Navidrome image as minimal as possible since *ffmpeg* can require lot of dependencies when compiled with a large set of audio/video codecs (like in regular Linux distributions such as Debian/Ubuntu or Fedora).
 
 ## Navidrome configuration
 
