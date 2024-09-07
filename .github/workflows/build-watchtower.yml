@@ -1,5 +1,7 @@
 ---
 name: Build Watchtower image
+env:
+  build_epoch: 1
 on:
   push:
     branches:
@@ -44,5 +46,6 @@ jobs:
           build-args: |
             PG_RELEASE=${{ matrix.version }}
           tags: |
+            ghcr.io/f-bn/watchtower:${{ matrix.version }}-r${{ env.build_epoch }}
             ghcr.io/f-bn/watchtower:${{ matrix.version }}
             ghcr.io/f-bn/watchtower:latest
