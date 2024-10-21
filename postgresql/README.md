@@ -4,6 +4,7 @@ Custom PostgreSQL image based on the official image with additional embedded ext
 
 ### Supported PostgreSQL versions
 
+- PostgreSQL 17.x
 - PostgreSQL 16.x
 - PostgreSQL 15.x
 - PostgreSQL 14.x
