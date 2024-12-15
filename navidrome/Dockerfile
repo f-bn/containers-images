@@ -1,7 +1,7 @@
 # --- Build stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest AS ffmpeg-build
 
-ARG FFMPEG_VERSION=7.0.2
+ARG FFMPEG_VERSION=7.1
 
 RUN set -ex ; \
   apk add --no-cache \

@@ -1,7 +1,7 @@
 ---
 name: Build Navidrome image
 env:
-  build_epoch: 0
+  build_epoch: 1
 on:
   push:
     branches:
