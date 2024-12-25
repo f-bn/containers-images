@@ -60,7 +60,8 @@ RUN set -ex ; \
 FROM cgr.dev/chainguard/wolfi-base:latest
 
 COPY --from=ffmpeg-build /build/dist/ /
-COPY --from=build /build/navidrome /usr/bin/navidrome
+COPY --from=build --chown=0:0 --chmod=0755\
+  /build/navidrome /usr/bin/navidrome
 
 RUN set -ex ; \
   mkdir -p /etc/navidrome /var/lib/navidrome /media/music ; \
