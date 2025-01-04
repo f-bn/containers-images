@@ -7,6 +7,7 @@ This repository contains my personal custom OCI containers images.
 - [adguard-home](./adguard-home/)
 - [coredns](./coredns/)
 - [distrobuilder](./distrobuilder/)
+- [feishin](./feishin/)
 - [ferretdb](./ferretdb/)
 - [minio](./minio/)
 - [navidrome](./navidrome/)
@@ -28,6 +29,7 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 - AdGuard Home: https://adguard.com/en/adguard-home/overview.html
 - CoreDNS: https://coredns.io/
 - Distrobuilder: https://github.com/lxc/distrobuilder
+- Feishin: https://github.com/jeffvli/feishin
 - FerretDB: https://www.ferretdb.com/
 - MinIO: https://min.io/
 - Navidrome: https://www.navidrome.org/
