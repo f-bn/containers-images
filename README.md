@@ -5,6 +5,7 @@ This repository contains my personal custom OCI containers images.
 #### Images
 
 - [adguard-home](./adguard-home/)
+- [blocky](./blocky/)
 - [coredns](./coredns/)
 - [distrobuilder](./distrobuilder/)
 - [feishin](./feishin/)
@@ -27,6 +28,7 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 ### References
 
 - AdGuard Home: https://adguard.com/en/adguard-home/overview.html
+- Blocky: https://github.com/0xERR0R/blocky
 - CoreDNS: https://coredns.io/
 - Distrobuilder: https://github.com/lxc/distrobuilder
 - Feishin: https://github.com/jeffvli/feishin
