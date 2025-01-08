@@ -16,7 +16,8 @@ RUN set -ex ; \
 
 WORKDIR /build
 
-RUN git clone --single-branch --branch v${VERSION} https://github.com/coredns/coredns.git /build
+ADD --keep-git-dir https://github.com/coredns/coredns.git#v${VERSION} /build/
+
 RUN set -ex ; \
   go build -v -ldflags="-s -w -X github.com/coredns/coredns/coremain.GitCommit=$(git rev-parse HEAD)" -o /build/bin/coredns ; \
   setcap cap_net_bind_service=+ep /build/bin/coredns
