@@ -12,7 +12,7 @@ This image doesn't come with a default CoreDNS configuration. You can bring your
 $ docker run [options] \
     -v Corefile:/etc/coredns/Corefile:ro \
     -v /path/to/zonefiles:/etc/coredns/zones:ro \
-    ghcr.io/f-bn/coredns:1.11.3 -conf /etc/coredns/Corefile
+    ghcr.io/f-bn/coredns:1.12.0 -conf /etc/coredns/Corefile
 ```
 
 More informations about CoreDNS configuration [here](https://coredns.io/manual/configuration/).
