@@ -11,7 +11,7 @@ RUN git clone --single-branch --branch ${MINIO_VERSION} https://github.com/minio
 RUN make build
 
 # --- Build stage ---
-FROM docker.io/golang:1.22 AS build-mc
+FROM docker.io/golang:1.23 AS build-mc
 
 ARG TARGETOS
 ARG TARGETARCH
