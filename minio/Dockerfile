@@ -1,5 +1,5 @@
 # --- Build stage ---
-FROM docker.io/golang:1.22 AS build-minio
+FROM docker.io/golang:1.23 AS build-minio
 
 ARG TARGETOS
 ARG TARGETARCH
