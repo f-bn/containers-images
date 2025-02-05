@@ -15,6 +15,7 @@ This repository contains my personal custom OCI containers images.
 - [pgbouncer](./pgbouncer/)
 - [postgresql](./postgresql/)
 - [traefik](./traefik/)
+- [traefik-docker-proxy](./traefik-docker-proxy/)
 - [valkey](./valkey/)
 - [watchtower](./watchtower/)
 
