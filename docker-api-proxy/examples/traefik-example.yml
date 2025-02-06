@@ -19,9 +19,9 @@ services:
       - '--providers.docker.exposedbydefault=false'
     cap_drop: ['ALL']
 
-  traefik-docker-proxy:
-    container_name: traefik-docker-proxy
-    image: ghcr.io/f-bn/traefik-docker-proxy:0.1.0
+  docker-api-proxy:
+    container_name: docker-api-proxy
+    image: ghcr.io/f-bn/docker-api-proxy:0.1.0
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     network_mode: container:traefik # note: join Traefik netns to strictly limit access of the proxy to the Traefik container
@@ -36,4 +36,4 @@ services:
       - traefik.http.routers.demo.rule=Host(`demo.domain.local`)
     depends_on:
       - traefik
-      - traefik-docker-proxy
+      - docker-api-proxy

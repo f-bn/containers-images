@@ -9,23 +9,23 @@ WORKDIR /build
 
 RUN go install github.com/caddyserver/xcaddy/cmd/xcaddy@v0.4.4
 
-RUN xcaddy build "v${CADDY_VERSION}" --output traefik-docker-proxy
+RUN xcaddy build "v${CADDY_VERSION}" --output docker-api-proxy
 
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
 
 COPY --from=build --chown=0:0 --chmod=0755 \
-  /build/traefik-docker-proxy /usr/bin/traefik-docker-proxy
+  /build/docker-api-proxy /usr/bin/docker-api-proxy
 
 COPY Caddyfile /etc/Caddyfile
 
-ENTRYPOINT [ "/usr/bin/traefik-docker-proxy" ]
+ENTRYPOINT [ "/usr/bin/docker-api-proxy" ]
 
 CMD [ "run", "--config", "/etc/Caddyfile" ]
 
 LABEL \
-  org.opencontainers.image.title="traefik-docker-proxy" \
+  org.opencontainers.image.title="docker-api-proxy" \
   org.opencontainers.image.source="https://github.com/f-bn/containers-images/traefik" \
-  org.opencontainers.image.description="Custom Caddy image for limiting Traefik access to the Docker API through the socket" \
+  org.opencontainers.image.description="Custom Caddy image for limiting applications access to the Docker API through the socket" \
   org.opencontainers.image.licenses="Apache-2.0" \
   org.opencontainers.image.authors="Florian Bobin <contact@fbobin.me>"

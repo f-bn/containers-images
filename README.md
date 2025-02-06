@@ -8,6 +8,7 @@ This repository contains my personal custom OCI containers images.
 - [blocky](./blocky/)
 - [coredns](./coredns/)
 - [distrobuilder](./distrobuilder/)
+- [docker-api-proxy](./docker-api-proxy/)
 - [feishin](./feishin/)
 - [ferretdb](./ferretdb/)
 - [minio](./minio/)
@@ -15,7 +16,6 @@ This repository contains my personal custom OCI containers images.
 - [pgbouncer](./pgbouncer/)
 - [postgresql](./postgresql/)
 - [traefik](./traefik/)
-- [traefik-docker-proxy](./traefik-docker-proxy/)
 - [valkey](./valkey/)
 - [watchtower](./watchtower/)
 

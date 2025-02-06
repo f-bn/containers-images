@@ -1,14 +1,14 @@
 ---
-name: Build Traefik Docker Proxy image
+name: Build Docker API Proxy image
 on:
   push:
     branches:
       - main
     paths:
-      - 'traefik-docker-proxy/**'
-      - '!traefik-docker-proxy/README.md'
-      - '!traefik-docker-proxy/examples/**'
-      - '.github/workflows/build-traefik-docker-proxy.yml'
+      - 'docker-api-proxy/**'
+      - '!docker-api-proxy/README.md'
+      - '!docker-api-proxy/examples/**'
+      - '.github/workflows/build-docker-api-proxy.yml'
   workflow_dispatch:
   schedule:
     - cron: '35 4 * * 6' # Every Saturday at 04:35am
@@ -40,11 +40,11 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           platforms: linux/amd64
-          context: ./traefik-docker-proxy
-          file: ./traefik-docker-proxy/Dockerfile
+          context: ./docker-api-proxy
+          file: ./docker-api-proxy/Dockerfile
           push: true
           build-args: |
             CADDY_VERSION=${{ matrix.caddy_version }}
           tags: |
-            ghcr.io/f-bn/traefik-docker-proxy:${{ matrix.version }}
-            ghcr.io/f-bn/traefik-docker-proxy:latest
+            ghcr.io/f-bn/docker-api-proxy:${{ matrix.version }}
+            ghcr.io/f-bn/docker-api-proxy:latest
