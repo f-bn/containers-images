@@ -26,10 +26,10 @@ RUN set -ex ; \
     --disable-autodetect \
     --disable-everything \
     --enable-encoder=libmp3lame,libopus,aac \
-    --enable-decoder=flac,libopus \
-    --enable-parser=flac \
+    --enable-decoder=flac,libopus,mp3float \
+    --enable-parser=flac,mpegaudio \
     --enable-muxer=opus,adts,mp3 \
-    --enable-demuxer=flac \
+    --enable-demuxer=flac,mp3 \
     --enable-filter=aresample \
     --enable-protocol=file,pipe \
     --enable-shared \
@@ -43,7 +43,7 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION=0.54.5
+ARG VERSION=0.55.0
 
 WORKDIR /build
 
