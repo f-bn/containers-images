@@ -26,10 +26,10 @@ RUN set -ex ; \
     --disable-autodetect \
     --disable-everything \
     --enable-encoder=libmp3lame,libopus,aac \
-    --enable-decoder=flac,libopus \
-    --enable-parser=flac \
+    --enable-decoder=flac,libopus,mp3float \
+    --enable-parser=flac,mpegaudio \
     --enable-muxer=opus,adts,mp3 \
-    --enable-demuxer=flac \
+    --enable-demuxer=flac,mp3 \
     --enable-filter=aresample \
     --enable-protocol=file,pipe \
     --enable-shared \
