@@ -18,7 +18,7 @@ This image doesn't come with a default Navidrome configuration. You can bring yo
 
 ```shell
 $ docker run [options] -v navidrome.toml:/etc/navidrome/config.toml \
-    ghcr.io/f-bn/navidrome:0.51.0 --configfile /etc/navidrome/config.toml
+    ghcr.io/f-bn/navidrome:0.55.0 --configfile /etc/navidrome/config.toml
 ```
 
 More informations about Navidrome configuration [here](https://www.navidrome.org/docs/usage/configuration-options/).
