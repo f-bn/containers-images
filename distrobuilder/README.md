@@ -2,7 +2,7 @@
 
 Custom Distrobuilder images built from sources. Two image versions are available, from the latest stable version and from the latest main branch commit.
 
-Built with Go 1.22.3.
+Built with Go 1.24.2.
 
 ## Distrobuilder usage in container
 
