@@ -17,12 +17,10 @@ WORKDIR /build
 
 ADD https://github.com/valkey-io/valkey.git#${VERSION} /build
 
-COPY patches/0000-disable-protected-mode.patch /build/0000-disable-protected-mode.patch
-
 RUN set -ex ; \
   # Disable protected mode by default
   # https://github.com/valkey-io/valkey-container/blob/mainline/7.2/alpine/Dockerfile#L80
-  git apply 0000-disable-protected-mode.patch ; \
+  sed -ri 's!^( *createBoolConfig[(]"protected-mode",.*, *)1( *,.*[)],)$!\10\2!' src/config.c ; \
   # Build
   make BUILD_TLS=yes -j "$(nproc)" all ; \
   make INSTALL_BIN=/build/dist install ; \
