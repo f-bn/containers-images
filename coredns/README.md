@@ -2,7 +2,7 @@
 
 Custom CoreDNS image built from sources.
 
-Built with Go 1.22.
+Built with Go 1.24.
 
 ## CoreDNS configuration
 
