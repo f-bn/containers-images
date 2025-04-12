@@ -14,7 +14,7 @@ RUN set -ex ; \
   yarn build
 
 # --- Build stage ---
-FROM docker.io/golang:1.23.5 AS build-binary
+FROM docker.io/golang:1.24.2 AS build-binary
 
 ARG TARGETOS
 ARG TARGETARCH

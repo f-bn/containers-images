@@ -2,7 +2,7 @@
 
 Custom Traefik image built from sources.
 
-Built with Go 1.23 and NodeJS 22.
+Built with Go 1.24 and NodeJS 22.
 
 ## Traefik configuration
 
