@@ -19,8 +19,8 @@ jobs:
       packages: write
     strategy:
       matrix:
-        minio_version: ['RELEASE.2025-02-03T21-03-04Z']
-        mc_version: ['RELEASE.2025-02-04T04-57-50Z']
+        minio_version: ['RELEASE.2025-04-08T15-41-24Z']
+        mc_version: ['RELEASE.2025-04-08T15-39-49Z']
     steps:
       - name: Check-out repository
         uses: actions/checkout@v4
