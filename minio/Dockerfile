@@ -36,7 +36,7 @@ USER nonroot
 
 EXPOSE 9000/tcp
 
-VOLUME [ "/var/lib/minio" ]
+VOLUME [ "/data" ]
 
 ENTRYPOINT [ "/usr/bin/minio" ]
 
