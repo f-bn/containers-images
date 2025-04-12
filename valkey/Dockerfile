@@ -3,7 +3,7 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="7.2.6"
+ARG VERSION="8.1.0"
 
 RUN set -ex ; \
   apk add --no-cache \
