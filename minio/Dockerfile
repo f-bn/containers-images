@@ -29,8 +29,8 @@ COPY --from=build-minio --chmod=755 /build/minio /usr/bin/minio
 COPY --from=build-mc    --chmod=755 /build/mc    /usr/bin/mc
 
 RUN set -ex ; \
-  mkdir -p /var/lib/minio ; \
-  chown nonroot:nonroot /var/lib/minio
+  mkdir -p /data ; \
+  chown nonroot:nonroot /data
 
 USER nonroot
 
@@ -40,7 +40,7 @@ VOLUME [ "/var/lib/minio" ]
 
 ENTRYPOINT [ "/usr/bin/minio" ]
 
-CMD [ "server", "/var/lib/minio" ]
+CMD [ "server", "/data" ]
 
 LABEL \
   org.opencontainers.image.title="minio" \
