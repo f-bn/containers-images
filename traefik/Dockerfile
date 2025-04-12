@@ -3,7 +3,7 @@ FROM docker.io/node:22.13-bookworm-slim AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="3.3.3"
+ARG VERSION="3.3.5"
 
 ADD https://github.com/traefik/traefik.git#v${VERSION} /build
 
@@ -18,7 +18,7 @@ FROM docker.io/golang:1.24.2 AS build-binary
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="3.3.3"
+ARG VERSION="3.3.5"
 ARG CODENAME="saint-nectaire"
 
 ENV GOOS=${TARGETOS}
