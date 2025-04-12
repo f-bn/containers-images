@@ -2,7 +2,7 @@
 
 Custom MinIO image built from sources with `mc` client embedded.
 
-Built with Go 1.22.
+Built with Go 1.24.
 
 ## MinIO configuration
 
