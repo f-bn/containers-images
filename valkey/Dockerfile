@@ -30,8 +30,8 @@ RUN set -ex ; \
 FROM cgr.dev/chainguard/wolfi-base:latest
 
 RUN set -ex ; \
-  mkdir -p /etc/valkey /var/lib/valkey ; \
-  chown nonroot:nonroot /var/lib/valkey
+  mkdir -p /etc/valkey /data ; \
+  chown nonroot:nonroot /data
 
 COPY --from=build /build/dist/ /usr/bin/
 COPY --from=build /build/valkey.conf /etc/valkey/valkey.conf
@@ -43,9 +43,9 @@ USER nonroot
 
 EXPOSE 6379/tcp
 
-VOLUME [ "/var/lib/valkey" ]
+VOLUME [ "/data" ]
 
-WORKDIR /var/lib/valkey
+WORKDIR /data
 
 ENTRYPOINT [ "/usr/bin/valkey-server" ]
 
