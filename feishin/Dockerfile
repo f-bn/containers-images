@@ -7,14 +7,18 @@ WORKDIR /build
 
 ADD https://github.com/jeffvli/feishin.git#v${VERSION} /build
 
-RUN npm install --legacy-peer-deps --ignore-scripts
-RUN npm run build:web
+RUN npm install -g pnpm
+
+RUN set -ex ; \
+  pnpm install ; \
+  pnpm run build:web
 
 # --- Final stage ---
 FROM docker.io/nginx:1.28.0
+
 WORKDIR /app
 
-COPY --from=build --chown=nginx:nginx /build/release/app/dist/web /app/
+COPY --from=build --chown=nginx:nginx /build/out/web /app/
 COPY --chown=0:0 settings.js.template /etc/nginx/templates/settings.js.template
 COPY --chown=0:0 nginx.conf.template  /etc/nginx/templates/default.conf.template
 
