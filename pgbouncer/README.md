@@ -6,7 +6,7 @@ Built with GCC 14.2.
 
 ### Supported PgBouncer versions
 
-- PgBouncer 1.23.x
+- PgBouncer 1.24.x
 
 ## PgBouncer configuration
 

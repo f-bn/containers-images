@@ -19,7 +19,7 @@ jobs:
       packages: write
     strategy:
       matrix:
-        version: ['1.24.0']
+        version: ['1.24.1']
     steps:
       - name: Check-out repository
         uses: actions/checkout@v4
