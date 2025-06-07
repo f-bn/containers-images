@@ -1,7 +1,7 @@
 # --- Build stage ---
 FROM docker.io/node:18-bookworm-slim AS build
 
-ARG VERSION="0.12.1"
+ARG VERSION="0.14.0"
 
 WORKDIR /build
 
