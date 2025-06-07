@@ -11,8 +11,7 @@ RUN npm install --legacy-peer-deps --ignore-scripts
 RUN npm run build:web
 
 # --- Final stage ---
-FROM docker.io/nginx:1.27-bookworm
-
+FROM docker.io/nginx:1.28.0
 WORKDIR /app
 
 COPY --from=build --chown=nginx:nginx /build/release/app/dist/web /app/
