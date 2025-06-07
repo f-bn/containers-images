@@ -1,5 +1,5 @@
 # --- Build stage ---
-FROM docker.io/node:18-bookworm-slim AS build
+FROM docker.io/node:23-bookworm-slim AS build
 
 ARG VERSION="0.14.0"
 
