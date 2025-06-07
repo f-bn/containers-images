@@ -16,14 +16,10 @@ jobs:
           - blocky
           - coredns
           - distrobuilder
-          - docker-api-proxy
           - feishin
-          - ferretdb
-          - minio
           - navidrome
           - pgbouncer
           - postgresql
-          - traefik
           - valkey
           - watchtower
     steps:
