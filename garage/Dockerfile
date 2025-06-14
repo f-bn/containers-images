@@ -21,9 +21,9 @@ COPY --chown=0:65532 --chmod=640 \
   garage.default.toml /etc/garage.toml
 
 RUN set -ex ; \
-  mkdir -p /var/lib/garage/data /var/lib/garage/meta ; \
+  mkdir -p /var/lib/garage ; \
   chown -R nonroot:nonroot /var/lib/garage ; \
-  chmod -R 750 /var/lib/garage
+  chmod -R 755 /var/lib/garage
 
 ENV RUST_LOG="garage=info"
   
@@ -31,7 +31,7 @@ USER nonroot
 
 EXPOSE 3900/tcp 3901/tcp
 
-VOLUME [ "/var/lib/garage/data", "/var/lib/garage/meta" ]
+VOLUME [ "/var/lib/garage" ]
 
 ENTRYPOINT [ "/usr/bin/garage" ]
 
