@@ -11,7 +11,10 @@ This image come with a minimal default Garage [configuration](./garage.default.t
 You can also bring your own configuration file for more advanced setups (e.g using Docker):
 
 ```shell
-$ docker run [options] -e GARAGE_RPC_SECRET="$(openssl rand -hex 32)" -v garage.toml:/etc/garage.toml ghcr.io/f-bn/garage:1.2.0
+$ docker run [options] -e GARAGE_RPC_SECRET="$(openssl rand -hex 32)" \
+  -v path/to/garage.toml:/etc/garage.toml:ro \
+  -v path/to/dir:/var/lib/garage:rw \
+  ghcr.io/f-bn/garage:1.2.0
 ```
 
 More informations about Garage configuration [here](https://garagehq.deuxfleurs.fr/documentation/reference-manual/configuration/).
