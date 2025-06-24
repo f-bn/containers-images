@@ -1,7 +1,5 @@
 ---
 name: Build Feishin image
-env:
-  build_epoch: 1
 on:
   push:
     branches:
@@ -46,6 +44,5 @@ jobs:
           build-args: |
             VERSION=${{ matrix.version }}
           tags: |
-            ghcr.io/f-bn/navidrome:${{ matrix.version }}-r${{ env.build_epoch }}
             ghcr.io/f-bn/feishin:${{ matrix.version }}
             ghcr.io/f-bn/feishin:latest
