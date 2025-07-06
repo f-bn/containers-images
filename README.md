@@ -12,6 +12,7 @@ This repository contains my personal custom OCI containers images.
 - [navidrome](./navidrome/)
 - [pgbouncer](./pgbouncer/)
 - [postgresql](./postgresql/)
+- [ubuntu-toolbox](./ubuntu-toolbox/)
 - [valkey](./valkey/)
 - [watchtower](./watchtower/)
 
