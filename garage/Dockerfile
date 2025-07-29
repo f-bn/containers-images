@@ -1,5 +1,5 @@
 # --- Build stage ---
-FROM docker.io/rust:1.87.0 AS build
+FROM docker.io/rust:1.88.0 AS build
 
 ARG VERSION="2.0.0"
 

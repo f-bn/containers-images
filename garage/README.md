@@ -2,7 +2,7 @@
 
 Custom Garage image built from sources.
 
-Built with Rust 1.87.0
+Built with Rust 1.88.0
 
 ## Garage configuration
 
