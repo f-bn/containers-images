@@ -1,7 +1,7 @@
 # --- Build stage ---
 FROM docker.io/rust:1.87.0 AS build
 
-ARG VERSION="1.2.0"
+ARG VERSION="2.0.0"
 
 WORKDIR /build
 

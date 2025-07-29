@@ -14,7 +14,7 @@ You can also bring your own configuration file for more advanced setups (e.g usi
 $ docker run [options] -e GARAGE_RPC_SECRET="$(openssl rand -hex 32)" \
   -v path/to/garage.toml:/etc/garage.toml:ro \
   -v path/to/dir:/var/lib/garage:rw \
-  ghcr.io/f-bn/garage:1.2.0
+  ghcr.io/f-bn/garage:2.0.0
 ```
 
 More informations about Garage configuration [here](https://garagehq.deuxfleurs.fr/documentation/reference-manual/configuration/).
