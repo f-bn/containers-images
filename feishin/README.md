@@ -2,7 +2,7 @@
 
 Custom Feishin image built from sources and allowing some specific nginx configurations.
 
-Built with NodeJS 18 and nginx 1.27.
+Built with NodeJS 23 and nginx 1.28.
 
 ## Feishin configuration
 
