@@ -4,15 +4,12 @@ This repository contains my personal custom OCI containers images.
 
 #### Images
 
-- [blocky](./blocky/)
 - [coredns](./coredns/)
 - [distrobuilder](./distrobuilder/)
 - [feishin](./feishin/)
-- [garage](./garage/)
 - [navidrome](./navidrome/)
 - [pgbouncer](./pgbouncer/)
 - [postgresql](./postgresql/)
-- [ubuntu-toolbox](./ubuntu-toolbox/)
 - [valkey](./valkey/)
 - [watchtower](./watchtower/)
 
@@ -26,11 +23,9 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 
 ### References
 
-- Blocky: https://github.com/0xERR0R/blocky
 - CoreDNS: https://coredns.io/
 - Distrobuilder: https://github.com/lxc/distrobuilder
 - Feishin: https://github.com/jeffvli/feishin
-- Garage: https://garagehq.deuxfleurs.fr/
 - Navidrome: https://www.navidrome.org/
 - PostgreSQL: https://www.postgresql.org/
 - pgbouncer: https://www.pgbouncer.org/
