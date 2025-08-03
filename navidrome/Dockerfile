@@ -64,16 +64,20 @@ COPY --from=build --chown=0:0 --chmod=0755\
   /build/navidrome /usr/bin/navidrome
 
 RUN set -ex ; \
-  mkdir -p /etc/navidrome /var/lib/navidrome /media/music ; \
-  chown nonroot:nonroot /var/lib/navidrome
+  addgroup -S -g 999 navidrome ; \
+  adduser -S -D -H -s /bin/false -u 999 -G navidrome navidrome
+
+RUN set -ex ; \
+  mkdir -p /etc/navidrome /var/lib/navidrome /mnt/music ; \
+  chown navidrome:navidrome /var/lib/navidrome
 
 RUN apk add --no-cache opus lame-libs
 
-ENV ND_MUSICFOLDER=/media/music
+ENV ND_MUSICFOLDER=/mnt/music
 ENV ND_DATAFOLDER=/var/lib/navidrome
 ENV ND_CACHEFOLDER=${ND_DATAFOLDER}/cache
 
-USER nonroot
+USER navidrome
 
 EXPOSE 4533/tcp
 
