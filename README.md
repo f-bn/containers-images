@@ -5,6 +5,7 @@ This repository contains my personal custom OCI containers images.
 #### Images
 
 - [coredns](./coredns/)
+- [coreos-toolbox](./coreos-toolbox/)
 - [distrobuilder](./distrobuilder/)
 - [feishin](./feishin/)
 - [navidrome](./navidrome/)
