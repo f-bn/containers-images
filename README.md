@@ -7,6 +7,7 @@ This repository contains my personal custom OCI containers images.
 - [coredns](./coredns/)
 - [coreos-toolbox](./coreos-toolbox/)
 - [distrobuilder](./distrobuilder/)
+- [docker-api-proxy](./docker-api-proxy/)
 - [feishin](./feishin/)
 - [navidrome](./navidrome/)
 - [pgbouncer](./pgbouncer/)
@@ -25,6 +26,7 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 
 ### References
 
+- Caddy: https://caddyserver.com/
 - CoreDNS: https://coredns.io/
 - Distrobuilder: https://github.com/lxc/distrobuilder
 - Feishin: https://github.com/jeffvli/feishin
