@@ -76,6 +76,7 @@ RUN apk add --no-cache opus lame-libs
 ENV ND_MUSICFOLDER=/mnt/music
 ENV ND_DATAFOLDER=/var/lib/navidrome
 ENV ND_CACHEFOLDER=${ND_DATAFOLDER}/cache
+ENV ND_CONFIGFILE=/etc/navidrome/navidrome.toml
 
 USER navidrome
 
