@@ -10,6 +10,7 @@ iproute
 iputils
 jq
 less
+lm_sensors
 lsof
 nmap
 nmap-ncat
