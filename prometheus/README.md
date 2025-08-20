@@ -11,7 +11,7 @@ Built with Go 1.24 and NodeJS 24.
 
 ## Prometheus configuration
 
-This image come with the [default Prometheus configuration]((https://github.com/prometheus/prometheus/blob/main/documentation/examples/prometheus.yml)) present in the official Prometheus GitHub repository. 
+This image come with the [default Prometheus configuration](https://github.com/prometheus/prometheus/blob/main/documentation/examples/prometheus.yml) present in the official Prometheus GitHub repository. 
 
 You can also bring your own configuration to the container using flags or by mounting the custom configuration file into the container (e.g using Docker):
 
