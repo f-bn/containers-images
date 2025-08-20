@@ -14,7 +14,6 @@ This repository contains my personal custom OCI containers images.
 - [postgresql](./postgresql/)
 - [traefik](./traefik/)
 - [valkey](./valkey/)
-- [watchtower](./watchtower/)
 
 #### How to pull the images ?
 
