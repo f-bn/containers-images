@@ -50,6 +50,8 @@ USER prometheus
 
 EXPOSE 9090/tcp
 
+VOLUME [ "/var/lib/prometheus" ]
+
 WORKDIR /etc/prometheus
 
 ENTRYPOINT [ "/usr/bin/prometheus" ]
