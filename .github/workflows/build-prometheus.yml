@@ -1,5 +1,5 @@
 ---
-name: Build Traefik image
+name: Build Prometheus image
 on:
   push:
     branches:
