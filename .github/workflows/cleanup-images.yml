@@ -13,7 +13,6 @@ jobs:
     strategy:
       matrix:
         package:
-          - blocky
           - coredns
           - distrobuilder
           - feishin
@@ -21,7 +20,6 @@ jobs:
           - pgbouncer
           - postgresql
           - valkey
-          - watchtower
     steps:
       - uses: snok/container-retention-policy@v3.0.0
         with:
