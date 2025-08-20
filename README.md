@@ -34,5 +34,4 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 - pgbouncer: https://www.pgbouncer.org/
 - Traefik: https://traefik.io/
 - Valkey: https://valkey.io/
-- Watchtower: https://containrrr.dev/watchtower/
 - WolfiOS: https://github.com/wolfi-dev
