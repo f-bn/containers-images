@@ -12,6 +12,7 @@ This repository contains my personal custom OCI containers images.
 - [navidrome](./navidrome/)
 - [pgbouncer](./pgbouncer/)
 - [postgresql](./postgresql/)
+- [prometheus](./prometheus/)
 - [traefik](./traefik/)
 - [valkey](./valkey/)
 
@@ -32,6 +33,7 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 - Navidrome: https://www.navidrome.org/
 - PostgreSQL: https://www.postgresql.org/
 - pgbouncer: https://www.pgbouncer.org/
+- Prometheus: https://prometheus.io/
 - Traefik: https://traefik.io/
 - Valkey: https://valkey.io/
 - WolfiOS: https://github.com/wolfi-dev
