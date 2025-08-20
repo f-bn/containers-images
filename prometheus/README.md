@@ -6,7 +6,7 @@ Built with Go 1.24 and NodeJS 24.
 
 ### Image notes
 
-This image contains a custom Prometheus build that is different than official [prom/prometheus](https://hub.docker.com/r/prom/prometheus) image:
+This image contains a custom Prometheus build that is different than the official [prom/prometheus](https://hub.docker.com/r/prom/prometheus) image:
 
   - **Reduced set of service discovery plugins** (only DNS, Kubernetes and Docker)
   - **Trimmed debugging symbols** to reduce binary size
