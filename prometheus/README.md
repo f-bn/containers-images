@@ -1,13 +1,18 @@
 ## General informations
 
-Custom Prometheus image built from sources. 
-
-This image build process is different than official image version:
-
-  - **Reduced set of service discovery plugins** (DNS, Kubernetes and Docker, HTTP and file are natively included)
-  - **Trimmed debugging symbols** to reduce binary size
+Custom Prometheus image built from sources.
 
 Built with Go 1.24 and NodeJS 24.
+
+### Image notes
+
+This image contains a custom Prometheus build that is different than official [prom/prometheus](https://hub.docker.com/r/prom/prometheus) image:
+
+  - **Reduced set of service discovery plugins** (only DNS, Kubernetes and Docker*)
+  - **Trimmed debugging symbols** to reduce binary size
+
+> [!NOTE]
+> Native `HTTP` and `File` service discovery are still included by default
 
 ## Prometheus configuration
 
