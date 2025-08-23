@@ -8,7 +8,6 @@ This repository contains my personal custom OCI containers images.
 - [coredns](./coredns/)
 - [coreos-toolbox](./coreos-toolbox/)
 - [distrobuilder](./distrobuilder/)
-- [docker-api-proxy](./docker-api-proxy/)
 - [feishin](./feishin/)
 - [navidrome](./navidrome/)
 - [pgbouncer](./pgbouncer/)
