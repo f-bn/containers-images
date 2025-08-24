@@ -5,7 +5,6 @@ This repository contains my personal custom OCI containers images.
 #### Images
 
 - [alertmanager](./alertmanager/)
-- [cadvisor](./cadvisor/)
 - [coredns](./coredns/)
 - [coreos-toolbox](./coreos-toolbox/)
 - [distrobuilder](./distrobuilder/)
@@ -29,7 +28,7 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 ### References
 
 - Alertmanager: https://github.com/prometheus/alertmanager
-- cAdvisor: https://github.com/google/cadvisor
+- Caddy: https://caddyserver.com/
 - CoreDNS: https://coredns.io/
 - Distrobuilder: https://github.com/lxc/distrobuilder
 - Feishin: https://github.com/jeffvli/feishin
