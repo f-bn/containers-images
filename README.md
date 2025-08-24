@@ -10,6 +10,7 @@ This repository contains my personal custom OCI containers images.
 - [distrobuilder](./distrobuilder/)
 - [feishin](./feishin/)
 - [navidrome](./navidrome/)
+- [node-exporter](./node-exporter/)
 - [pgbouncer](./pgbouncer/)
 - [postgresql](./postgresql/)
 - [prometheus](./prometheus/)
@@ -32,6 +33,7 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 - Distrobuilder: https://github.com/lxc/distrobuilder
 - Feishin: https://github.com/jeffvli/feishin
 - Navidrome: https://www.navidrome.org/
+- Node Exporter: https://github.com/prometheus/node_exporter
 - PostgreSQL: https://www.postgresql.org/
 - pgbouncer: https://www.pgbouncer.org/
 - Prometheus: https://prometheus.io/
