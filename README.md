@@ -9,6 +9,7 @@ This repository contains my personal custom OCI containers images.
 - [coreos-toolbox](./coreos-toolbox/)
 - [distrobuilder](./distrobuilder/)
 - [feishin](./feishin/)
+- [grafana](./grafana/)
 - [navidrome](./navidrome/)
 - [node-exporter](./node-exporter/)
 - [pgbouncer](./pgbouncer/)
@@ -33,6 +34,7 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 - CoreDNS: https://coredns.io/
 - Distrobuilder: https://github.com/lxc/distrobuilder
 - Feishin: https://github.com/jeffvli/feishin
+- Grafana: https://grafana.com/
 - Navidrome: https://www.navidrome.org/
 - Node Exporter: https://github.com/prometheus/node_exporter
 - Podman Exporter: https://github.com/containers/prometheus-podman-exporter
