@@ -17,11 +17,17 @@ server {
     try_files $uri $uri/ /index.html =404;
   }
 
-  location ${FEISHIN_PUBLIC_PATH}settings.js {
+  location = ${FEISHIN_PUBLIC_PATH}settings.js {
     alias /etc/nginx/conf.d/settings.js;
   }
 
-  location ${FEISHIN_PUBLIC_PATH}/settings.js {
+  location = ${FEISHIN_PUBLIC_PATH}/settings.js {
     alias /etc/nginx/conf.d/settings.js;
+  }
+
+  location = ${FEISHIN_PUBLIC_PATH}ping {
+    access_log off;
+    return 200 'OK';
+    add_header Content-Type text/plain;
   }
 }
