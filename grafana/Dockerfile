@@ -48,6 +48,8 @@ RUN set -ex ; \
   chown grafana:grafana /var/lib/grafana ; \
   chmod 750 /etc/grafana /var/lib/grafana
 
+RUN apk add --no-cache curl
+
 USER grafana
 
 EXPOSE 3000/tcp

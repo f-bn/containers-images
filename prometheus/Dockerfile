@@ -46,6 +46,8 @@ RUN set -ex ; \
   chown prometheus:prometheus /var/lib/prometheus ; \
   chmod 755 /var/lib/prometheus
 
+RUN apk add --no-cache curl
+
 USER prometheus
 
 EXPOSE 9090/tcp

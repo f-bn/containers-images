@@ -1,7 +1,7 @@
 ---
 name: Build Grafana image
 env:
-  build_epoch: 0
+  build_epoch: 1
 on:
   push:
     branches:
@@ -46,5 +46,6 @@ jobs:
           build-args: |
             VERSION=${{ matrix.version }}
           tags: |
+            ghcr.io/f-bn/grafana:${{ matrix.version }}-r${{ env.build_epoch }}
             ghcr.io/f-bn/grafana:${{ matrix.version }}
             ghcr.io/f-bn/grafana:latest

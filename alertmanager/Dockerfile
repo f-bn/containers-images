@@ -43,6 +43,8 @@ RUN set -ex ; \
   chown prometheus:prometheus /var/lib/alertmanager ; \
   chmod 755 /var/lib/alertmanager
 
+RUN apk add --no-cache curl
+
 USER prometheus
 
 EXPOSE 9093/tcp
