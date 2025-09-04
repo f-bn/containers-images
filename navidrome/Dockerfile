@@ -71,7 +71,7 @@ RUN set -ex ; \
   mkdir -p /etc/navidrome /var/lib/navidrome /mnt/music ; \
   chown navidrome:navidrome /var/lib/navidrome
 
-RUN apk add --no-cache opus lame-libs curl
+RUN apk add --no-cache opus lame-libs
 
 ENV ND_MUSICFOLDER=/mnt/music
 ENV ND_DATAFOLDER=/var/lib/navidrome

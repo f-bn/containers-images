@@ -34,8 +34,6 @@ RUN set -ex ; \
   addgroup -S -g 999 prometheus ; \
   adduser -S -D -s /bin/false -u 999 -G prometheus prometheus
 
-RUN apk add --no-cache curl
-
 ENV CONTAINER_HOST="unix:///run/podman/podman.sock"
 
 USER prometheus

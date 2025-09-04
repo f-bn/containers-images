@@ -22,8 +22,6 @@ RUN set -ex ; \
   addgroup -S -g 999 prometheus ; \
   adduser -S -D -H -s /bin/false -u 999 -G prometheus prometheus
 
-RUN apk add --no-cache curl
-
 USER prometheus
 
 EXPOSE 9100/tcp

@@ -1,7 +1,7 @@
 ---
 name: Build Traefik image
 env:
-  build_epoch: 1
+  build_epoch: 2
 on:
   push:
     branches:

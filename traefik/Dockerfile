@@ -57,8 +57,6 @@ RUN set -ex ; \
   chown traefik:traefik /var/lib/traefik ; \
   chmod 700 /var/lib/traefik
 
-RUN apk add --no-cache curl
-
 USER traefik
 
 EXPOSE 80/tcp 443/tcp
