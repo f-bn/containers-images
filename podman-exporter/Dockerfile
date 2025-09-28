@@ -1,9 +1,9 @@
 # --- Build stage ---
-FROM docker.io/golang:1.24.6 AS build-binary
+FROM docker.io/golang:1.25.1 AS build-binary
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="1.18.0"
+ARG VERSION="1.18.1"
 
 RUN set -ex ; \
   export DEBIAN_FRONTEND=noninteractive ; \
@@ -26,7 +26,7 @@ FROM cgr.dev/chainguard/wolfi-base:latest
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="1.18.0"
+ARG VERSION="1.18.1"
 
 COPY --from=build-binary --chown=0:0 --chmod=0755 \
   /build/bin/remote/prometheus-podman-exporter /usr/bin/podman-exporter
