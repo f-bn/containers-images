@@ -4,16 +4,17 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build
 ARG TARGETOS
 ARG TARGETARCH
 ARG VERSION=12.1.0
-ARG SHA256SUM="69923cf95824008a6a7529f242295ecc2bc6b1dc4e5142c889971e88407d8712 "
 
 WORKDIR /build
 
 ADD https://dl.grafana.com/oss/release/grafana-${VERSION}.${TARGETOS}-${TARGETARCH}.tar.gz \
-  /build/grafana-${VERSION}.${TARGETOS}-${TARGETARCH}.tar.gz
+  /build/grafana.tar.gz
+ADD https://dl.grafana.com/oss/release/grafana-${VERSION}.${TARGETOS}-${TARGETARCH}.tar.gz.sha256 \
+  /build/grafana.tar.gz.sha256
 
 RUN set -ex ; \
-  echo "${SHA256SUM} grafana-${VERSION}.${TARGETOS}-${TARGETARCH}.tar.gz" | sha256sum -c ; \
-  tar -xvzf /build/grafana-${VERSION}.${TARGETOS}-${TARGETARCH}.tar.gz --strip-components=1
+  echo "$(cat grafana.tar.gz.sha256) grafana.tar.gz" | sha256sum -c ; \
+  tar -xvzf /build/grafana.tar.gz --strip-components=1
 
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
