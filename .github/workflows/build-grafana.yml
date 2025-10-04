@@ -1,7 +1,7 @@
 ---
 name: Build Grafana image
 env:
-  build_epoch: 2
+  build_epoch: 0
 on:
   push:
     branches:
@@ -21,7 +21,8 @@ jobs:
       packages: write
     strategy:
       matrix:
-        version: ['12.1.0']
+        version: ['12.2.0']
+        revision: ['17949786146']
     steps:
       - name: Check-out repository
         uses: actions/checkout@v4
@@ -45,6 +46,7 @@ jobs:
           push: true
           build-args: |
             VERSION=${{ matrix.version }}
+            REVISION=${{ matrix.revision }}
           tags: |
             ghcr.io/f-bn/grafana:${{ matrix.version }}-r${{ env.build_epoch }}
             ghcr.io/f-bn/grafana:${{ matrix.version }}

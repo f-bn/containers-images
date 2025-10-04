@@ -3,13 +3,14 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION=12.1.0
+ARG VERSION=12.2.0
+ARG REVISION=17949786146
 
 WORKDIR /build
 
-ADD https://dl.grafana.com/oss/release/grafana-${VERSION}.${TARGETOS}-${TARGETARCH}.tar.gz \
+ADD https://dl.grafana.com/grafana/release/${VERSION}/grafana_${VERSION}_${REVISION}_${TARGETOS}_${TARGETARCH}.tar.gz \
   /build/grafana.tar.gz
-ADD https://dl.grafana.com/oss/release/grafana-${VERSION}.${TARGETOS}-${TARGETARCH}.tar.gz.sha256 \
+ADD https://dl.grafana.com/grafana/release/${VERSION}/grafana_${VERSION}_${REVISION}_${TARGETOS}_${TARGETARCH}.tar.gz.sha256 \
   /build/grafana.tar.gz.sha256
 
 RUN set -ex ; \
@@ -19,7 +20,7 @@ RUN set -ex ; \
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
 
-ARG VERSION=12.1.0
+ARG VERSION=12.2.0
 
 COPY --from=build --chown=0:0 --chmod=0755 \
   /build/bin /usr/share/grafana/bin
@@ -28,11 +29,7 @@ COPY --from=build --chown=0:0 --chmod=0755 \
 COPY --from=build --chown=0:0 --chmod=0755 \
   /build/docs /usr/share/grafana/docs
 COPY --from=build --chown=0:0 --chmod=0755 \
-  /build/npm-artifacts /usr/share/grafana/npm-artifacts
-COPY --from=build --chown=0:0 --chmod=0755 \
   /build/plugins-bundled /usr/share/grafana/plugins-bundled
-COPY --from=build --chown=0:0 --chmod=0755 \
-  /build/storybook /usr/share/grafana/storybook
 COPY --from=build --chown=0:0 --chmod=0755 \
   /build/public /usr/share/grafana/public
 
@@ -66,5 +63,6 @@ LABEL \
   org.opencontainers.image.title="grafana" \
   org.opencontainers.image.source="https://github.com/f-bn/containers-images/grafana" \
   org.opencontainers.image.description="The open and composable observability and data visualization platform" \
+  org.opencontainers.image.version="${VERSION}" \
   org.opencontainers.image.licenses="AGPL-3.0-or-later" \
   org.opencontainers.image.authors="Florian Bobin <contact@fbobin.me>"
