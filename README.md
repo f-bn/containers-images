@@ -16,6 +16,7 @@ This repository contains my personal custom OCI containers images.
 - [podman-exporter](./podman-exporter/)
 - [postgresql](./postgresql/)
 - [prometheus](./prometheus/)
+- [telegraf](./telegraf/)
 - [traefik](./traefik/)
 - [valkey](./valkey/)
 
@@ -41,6 +42,7 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 - PostgreSQL: https://www.postgresql.org/
 - pgbouncer: https://www.pgbouncer.org/
 - Prometheus: https://prometheus.io/
+- Telegraf: https://github.com/influxdata/telegraf
 - Traefik: https://traefik.io/
 - Valkey: https://valkey.io/
 - WolfiOS: https://github.com/wolfi-dev
