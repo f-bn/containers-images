@@ -18,6 +18,7 @@ This repository contains my personal custom OCI containers images.
 - [prometheus](./prometheus/)
 - [telegraf](./telegraf/)
 - [traefik](./traefik/)
+- [ubuntu](./ubuntu/)
 - [valkey](./valkey/)
 
 #### How to pull the images ?
@@ -31,7 +32,6 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 ### References
 
 - Alertmanager: https://github.com/prometheus/alertmanager
-- Caddy: https://caddyserver.com/
 - CoreDNS: https://coredns.io/
 - Distrobuilder: https://github.com/lxc/distrobuilder
 - Feishin: https://github.com/jeffvli/feishin
