@@ -16,6 +16,7 @@ This repository contains my personal custom OCI containers images.
 - [podman-exporter](./podman-exporter/)
 - [postgresql](./postgresql/)
 - [prometheus](./prometheus/)
+- [registry](./registry/)
 - [telegraf](./telegraf/)
 - [traefik](./traefik/)
 - [ubuntu](./ubuntu/)
@@ -33,6 +34,7 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 
 - Alertmanager: https://github.com/prometheus/alertmanager
 - CoreDNS: https://coredns.io/
+- Distribution (Registry): https://github.com/distribution/distribution
 - Distrobuilder: https://github.com/lxc/distrobuilder
 - Feishin: https://github.com/jeffvli/feishin
 - Grafana: https://grafana.com/
