@@ -18,5 +18,5 @@ $ docker run [options] \
   --tmpfs=/run/lock \
   --tmpfs=/tmp \
   --tmpfs=/var/lib/journal \
-  [image]
+  ghcr.io/f-bn/ubuntu:24.04-init
 ```
