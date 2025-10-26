@@ -6,17 +6,20 @@ on:
       - main
     paths:
       - 'ubuntu/**'
-      - '!ubuntu/README.md'
+      - '!ubuntu/**/README.md'
       - '.github/workflows/build-ubuntu.yml'
   workflow_dispatch:
   schedule:
     - cron: '35 4 * * 6' # Every Saturday at 04:35am
 jobs:
-  build-2404-init:
+  build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
+    strategy:
+      matrix:
+        version: ['25.10-init', '24.04-init']
     steps:
       - name: Check-out repository
         uses: actions/checkout@v4
@@ -35,8 +38,8 @@ jobs:
         uses: docker/build-push-action@v5
         with:
           platforms: linux/amd64
-          context: ./ubuntu/24.04-init
-          file: ./ubuntu/24.04-init/Dockerfile
+          context: ./ubuntu/${{ matrix.version }}
+          file: ./ubuntu/${{ matrix.version }}/Dockerfile
           push: true
           tags: |
-            ghcr.io/f-bn/ubuntu:24.04-init
+            ghcr.io/f-bn/ubuntu:${{ matrix.version }}
