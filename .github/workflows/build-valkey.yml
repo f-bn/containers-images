@@ -19,13 +19,10 @@ jobs:
       packages: write
     strategy:
       matrix:
-        version: ['8.1.0']
+        version: ['9.0.0', '8.1.4']
     steps:
       - name: Check-out repository
         uses: actions/checkout@v4
-
-      - name: Set up QEMU (for multi-arch build)
-        uses: docker/setup-qemu-action@v3
 
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -40,7 +37,7 @@ jobs:
       - name: Build and push image to registry
         uses: docker/build-push-action@v5
         with:
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/amd64
           context: ./valkey
           file: ./valkey/Dockerfile
           push: true
@@ -48,4 +45,3 @@ jobs:
             VERSION=${{ matrix.version }}
           tags: |
             ghcr.io/f-bn/valkey:${{ matrix.version }}
-            ghcr.io/f-bn/valkey:latest

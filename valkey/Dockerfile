@@ -3,7 +3,7 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="8.1.0"
+ARG VERSION="9.0.0"
 
 RUN set -ex ; \
   apk add --no-cache \
@@ -29,9 +29,11 @@ RUN set -ex ; \
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
 
+ARG VERSION="9.0.0"
+
 RUN set -ex ; \
-  mkdir -p /etc/valkey /data ; \
-  chown nonroot:nonroot /data
+  mkdir -p /etc/valkey /var/lib/valkey ; \
+  chown nonroot:nonroot /var/lib/valkey
 
 COPY --from=build /build/dist/ /usr/bin/
 COPY --from=build /build/valkey.conf /etc/valkey/valkey.conf
@@ -43,15 +45,16 @@ USER nonroot
 
 EXPOSE 6379/tcp
 
-VOLUME [ "/data" ]
+VOLUME [ "/var/lib/valkey" ]
 
-WORKDIR /data
+WORKDIR /var/lib/valkey
 
 ENTRYPOINT [ "/usr/bin/valkey-server" ]
 
 LABEL \
   org.opencontainers.image.title="valkey" \
+  org.opencontainers.image.version="${VERSION}" \
   org.opencontainers.image.source="https://github.com/f-bn/containers-images/valkey" \
   org.opencontainers.image.description="An open source, in-memory data store" \
   org.opencontainers.image.licenses="BSD-3-Clause" \
-  org.opencontainers.image.authors="Florian Bobin <contact@fbobin.me>"
+  org.opencontainers.image.authors="Florian Bobin <contact@fbobin.fr>"
