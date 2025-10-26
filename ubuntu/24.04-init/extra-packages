@@ -1,12 +1,17 @@
+acl
 bash-completion
+bind9-host
+bind9-dnsutils
 bzip2
+ca-certificates
+command-not-found
 curl
 dbus
 diffutils
 file
 fuse3
-htop
 iproute2
+iputils-ping
 less
 lsof
 netbase
@@ -14,6 +19,7 @@ netcat-openbsd
 procps
 psmisc
 squashfuse
+socat
 sudo
 systemd
 systemd-sysv
