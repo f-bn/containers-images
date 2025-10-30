@@ -32,8 +32,15 @@ FROM cgr.dev/chainguard/wolfi-base:latest
 ARG VERSION="9.0.0"
 
 RUN set -ex ; \
+  addgroup -S -g 999 valkey ; \
+  adduser -S -D -H -s /bin/false -u 999 -G valkey valkey
+
+RUN set -ex ; \
   mkdir -p /etc/valkey /var/lib/valkey ; \
-  chown nonroot:nonroot /var/lib/valkey
+  chown root:valkey /etc/valkey ; \
+  chmod 750 /etc/valkey ; \
+  chown valkey:valkey /var/lib/valkey ; \
+  chmod 700 /var/lib/valkey
 
 COPY --from=build /build/dist/ /usr/bin/
 COPY --from=build /build/valkey.conf /etc/valkey/valkey.conf
@@ -41,7 +48,7 @@ COPY --from=build /build/sentinel.conf /etc/valkey/sentinel.conf
 
 RUN apk add --no-cache posix-libc-utils 
 
-USER nonroot
+USER valkey
 
 EXPOSE 6379/tcp
 
