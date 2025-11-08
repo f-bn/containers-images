@@ -2,7 +2,7 @@
 
 Custom Alertmanager image built from sources.
 
-Built with Go 1.24 and NodeJS 24.
+Built with Go 1.25 and NodeJS 24.
 
 ## Alertmanager configuration
 

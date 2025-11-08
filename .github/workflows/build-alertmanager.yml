@@ -1,7 +1,7 @@
 ---
 name: Build Alertmanager image
 env:
-  build_epoch: 2
+  build_epoch: 0
 on:
   push:
     branches:
@@ -21,7 +21,7 @@ jobs:
       packages: write
     strategy:
       matrix:
-        version: ['0.28.1']
+        version: ['0.29.0']
     steps:
       - name: Check-out repository
         uses: actions/checkout@v4

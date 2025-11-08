@@ -1,9 +1,9 @@
 # --- Build stage ---
-FROM docker.io/node:24.6.0 AS build-webui
+FROM docker.io/node:24.11.0 AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="0.28.1"
+ARG VERSION="0.29.0"
 
 ADD --keep-git-dir \
   https://github.com/prometheus/alertmanager.git#v${VERSION} /build  
@@ -13,7 +13,7 @@ WORKDIR /build
 RUN make assets-compress
 
 # --- Build stage ---
-FROM docker.io/golang:1.24.6 AS build-binary
+FROM docker.io/golang:1.25.4 AS build-binary
 
 COPY --from=build-webui /build /build
 COPY promu.yml /build/.promu.yml
