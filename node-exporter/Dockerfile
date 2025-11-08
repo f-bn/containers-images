@@ -1,7 +1,7 @@
 # --- Build stage ---
-FROM docker.io/golang:1.24.6 AS build
+FROM docker.io/golang:1.25.4 AS build
 
-ARG VERSION="1.9.1"
+ARG VERSION="1.10.2"
 
 WORKDIR /build
 
