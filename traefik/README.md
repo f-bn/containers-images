@@ -4,7 +4,7 @@ Custom Traefik image built from sources.
 
 **This image is running by default with a non-root user**, this means that it can't use Docker socket bind-mount natively.
 
-Built with Go 1.24 and NodeJS 22.
+Built with Go 1.25 and NodeJS 22.
 
 ## Traefik configuration
 
