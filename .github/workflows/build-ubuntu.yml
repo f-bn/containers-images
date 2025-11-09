@@ -15,6 +15,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      security-events: write
     strategy:
       matrix:
         version: ['25.10-init', '24.04-init']

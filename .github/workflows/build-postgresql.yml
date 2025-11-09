@@ -14,6 +14,7 @@ jobs:
     permissions:
       contents: read
       packages: write
+      security-events: write
     strategy:
       matrix:
         version: ['15.14','16.10','17.6','18.0']
