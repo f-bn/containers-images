@@ -86,7 +86,7 @@ runs:
         image-ref: ghcr.io/f-bn/${{ inputs.name }}:${{ inputs.version }}-r${{ inputs.revision }}
         format: sarif
         output: results.sarif
-        severity: LOW,MEDIUM,HIGH,CRITICAL
+        severity: HIGH,CRITICAL
         exit-code: 0
 
     - name: Upload Trivy results to GitHub Security
