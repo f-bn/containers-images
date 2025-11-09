@@ -1,21 +1,22 @@
 <div align="center">
   <img src="https://raw.githubusercontent.com/opencontainers/artwork/master/oci/icon/color/oci-icon-color.png" alt="OCI Logo" width="150"/>
 
+  **Personal OCI container images**
   ---
 </div>
 
-## Overview
+## 📋 Overview
 
 [![License](https://img.shields.io/github/license/f-bn/containers-images)](./LICENSE)
 [![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=github-actions&logoColor=white)](https://github.com/f-bn/containers-images/actions)
 
 This repository contains custom-built OCI container images for various popular open-source projects I use for personal projects and home production.
 
-🔨 **Built from source** - Built from source whenever possible  
-⚡ **Optimized builds** - Built with custom build options to remove uneeded features whenever possible to reduce attack surface  
-🛡️ **Secure base** - Uses [WolfiOS](https://github.com/wolfi-dev) as minimal base image
+- 🔨 **Built from source** - Built from source whenever possible  
+- ⚡ **Optimized builds** - Built with custom build options to remove uneeded features whenever possible to reduce attack surface  
+- 🛡️ **Secure base** - Uses [Wolfi](https://github.com/wolfi-dev) as minimal base image
 
-## Available Images
+## 📦 Available Images
 
 | Image | Description | Links |
 |-------|-------------|-------|
@@ -37,7 +38,7 @@ This repository contains custom-built OCI container images for various popular o
 | **[ubuntu](./ubuntu/)** | Custom Ubuntu system container image | [Website](https://ubuntu.com/) |
 | **[valkey](./valkey/)** | An open source, in-memory data store | [Website](https://valkey.io/) |
 
-## Quick Start
+## 🚀 Quick Start
 
 All images are publicly available through GitHub Container Registry:
 
@@ -49,9 +50,9 @@ docker pull ghcr.io/f-bn/<image>:<tag>
 docker pull ghcr.io/f-bn/prometheus:3.7.3
 ```
 
-## Building Locally
+## 🛠️ Building Locally
 
-Each image directory contains its own `Dockerfile` and build instructions. To build an image locally:
+Each image directory contains its own `Dockerfile` and usage instructions. To build an image locally:
 
 ```bash
 cd <image-directory>
