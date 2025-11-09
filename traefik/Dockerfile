@@ -64,10 +64,3 @@ EXPOSE 80/tcp 443/tcp
 WORKDIR /etc/traefik
 
 ENTRYPOINT [ "/usr/bin/traefik" ]
-
-LABEL \
-  org.opencontainers.image.title="traefik" \
-  org.opencontainers.image.source="https://github.com/f-bn/containers-images/traefik" \
-  org.opencontainers.image.description="The Cloud Native Application Proxy" \
-  org.opencontainers.image.licenses="MIT" \
-  org.opencontainers.image.authors="Florian Bobin <contact@fbobin.me>"

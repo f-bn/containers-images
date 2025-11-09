@@ -33,11 +33,3 @@ ENV FEISHIN_LISTEN_PORT=9180
 ENV FEISHIN_PUBLIC_PATH="/"
 
 EXPOSE 9180/tcp
-
-LABEL \
-  org.opencontainers.image.title="feishin" \
-  org.opencontainers.image.source="https://github.com/f-bn/containers-images/feishin" \
-  org.opencontainers.image.version="${VERSION}" \
-  org.opencontainers.image.description="A modern self-hosted music player" \
-  org.opencontainers.image.licenses="GPL-3.0-or-later" \
-  org.opencontainers.image.authors="Florian Bobin <contact@fbobin.me>"

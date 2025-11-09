@@ -27,10 +27,3 @@ USER prometheus
 EXPOSE 9100/tcp
 
 ENTRYPOINT [ "/usr/bin/node-exporter" ]
-
-LABEL \
-  org.opencontainers.image.title="node-exporter" \
-  org.opencontainers.image.source="https://github.com/f-bn/containers-images/node-exporter" \
-  org.opencontainers.image.description="Exporter for machine metrics" \
-  org.opencontainers.image.licenses="Apache-2.0" \
-  org.opencontainers.image.authors="Florian Bobin <contact@fbobin.me>"

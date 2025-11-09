@@ -23,10 +23,3 @@ ENV container="docker"
 STOPSIGNAL SIGRTMIN+3
 
 ENTRYPOINT [ "/usr/lib/systemd/systemd" ]
-
-LABEL \
-  org.opencontainers.image.title="ubuntu" \
-  org.opencontainers.image.version="25.10" \
-  org.opencontainers.image.source="https://github.com/f-bn/containers-images/ubuntu/25.10-init" \
-  org.opencontainers.image.description="Custom Ubuntu 25.10 system container image" \
-  org.opencontainers.image.authors="Florian Bobin <contact@fbobin.me>"

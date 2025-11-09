@@ -5,13 +5,7 @@ ARG TARGETOS
 ARG TARGETARCH
 ARG VERSION="9.0.0"
 
-RUN set -ex ; \
-  apk add --no-cache \
-    automake \
-    autoconf \
-    build-base \
-    git \
-    openssl-dev
+RUN apk add --no-cache automake autoconf build-base openssl-dev
 
 WORKDIR /build
 
@@ -57,11 +51,3 @@ VOLUME [ "/var/lib/valkey" ]
 WORKDIR /var/lib/valkey
 
 ENTRYPOINT [ "/usr/bin/valkey-server" ]
-
-LABEL \
-  org.opencontainers.image.title="valkey" \
-  org.opencontainers.image.version="${VERSION}" \
-  org.opencontainers.image.source="https://github.com/f-bn/containers-images/valkey" \
-  org.opencontainers.image.description="An open source, in-memory data store" \
-  org.opencontainers.image.licenses="BSD-3-Clause" \
-  org.opencontainers.image.authors="Florian Bobin <contact@fbobin.fr>"

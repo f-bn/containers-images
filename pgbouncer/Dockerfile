@@ -51,10 +51,3 @@ STOPSIGNAL SIGINT
 ENTRYPOINT [ "/usr/bin/pgbouncer" ]
 
 CMD [ "/etc/pgbouncer/pgbouncer.ini" ]
-
-LABEL \
-  org.opencontainers.image.title="pgbouncer" \
-  org.opencontainers.image.source="https://github.com/f-bn/containers-images/pgbouncer" \
-  org.opencontainers.image.description="Lightweight connection pooler for PostgreSQL" \
-  org.opencontainers.image.licenses="ISC" \
-  org.opencontainers.image.authors="Florian Bobin <contact@fbobin.me>"

@@ -1,0 +1,95 @@
+---
+name: Build and push container image
+description: Build and push a container image to personal GitHub registry namespace
+inputs:
+  name:
+    description: Image name
+    required: true
+  version:
+    description: Image version
+    required: true
+  revision:
+    description: Image version revision
+    required: false
+    default: '0'
+  description:
+    description: Image description
+    required: true
+  license:
+    description: Image license (SPDX identifier)
+    required: true
+    default: MIT
+  build-context:
+    description: Image build context path override
+    required: false
+    default: ''
+  build-extra-args:
+    description: Image additional build arguments (multi-line string)
+    required: false
+    default: ''
+  build-extra-labels:
+    description: Image additional labels (multi-line string)
+    required: false
+    default: ''
+  token:
+    description: GitHub Registry authentication token
+    required: true
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v3.8.0
+      
+    - name: Login to registry
+      uses: docker/login-action@v3.3.0
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ inputs.token }}
+    
+    - name: Set image build context path
+      id: context
+      shell: bash
+      run: |
+        if [ -z "${{ inputs.build-context }}" ]; then
+          echo "build-path=./${{ inputs.name }}" >> $GITHUB_OUTPUT
+        else
+          echo "build-path=${{ inputs.build-context }}" >> $GITHUB_OUTPUT
+        fi
+    
+    - name: Build and push image
+      id: build
+      uses: docker/build-push-action@v6.10.0
+      with:
+        platforms: linux/amd64
+        context: ${{ steps.context.outputs.build-path }}
+        file: ${{ steps.context.outputs.build-path }}/Dockerfile
+        push: true
+        build-args: |
+          VERSION=${{ inputs.version }}
+          ${{ inputs.build-extra-args }}
+        tags: |
+          ghcr.io/f-bn/${{ inputs.name }}:${{ inputs.version }}-r${{ inputs.revision }}
+          ghcr.io/f-bn/${{ inputs.name }}:${{ inputs.version }}
+        labels: |
+          org.opencontainers.image.title=${{ inputs.name }}
+          org.opencontainers.image.version=${{ inputs.version }}
+          org.opencontainers.image.description=${{ inputs.description }}
+          org.opencontainers.image.source=https://github.com/f-bn/containers-images/tree/main/${{ inputs.name }}
+          org.opencontainers.image.licenses=${{ inputs.license }}
+          ${{ inputs.build-extra-labels }}
+
+    - name: Run Trivy vulnerability scanner
+      uses: aquasecurity/trivy-action@0.28.0
+      with:
+        image-ref: ghcr.io/f-bn/${{ inputs.name }}:${{ inputs.version }}-r${{ inputs.revision }}
+        format: sarif
+        output: results.sarif
+        severity: LOW,MEDIUM,HIGH,CRITICAL
+        exit-code: 0
+
+    - name: Upload Trivy results to GitHub Security
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: results.sarif

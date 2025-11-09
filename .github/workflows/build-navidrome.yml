@@ -1,7 +1,5 @@
 ---
 name: Build Navidrome image
-env:
-  build_epoch: 3
 on:
   push:
     branches:
@@ -11,41 +9,22 @@ on:
       - '!navidrome/README.md'
       - '.github/workflows/build-navidrome.yml'
   workflow_dispatch:
-  schedule:
-    - cron: '35 4 * * 6' # Every Saturday at 04:35am
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-    strategy:
-      matrix:
-        version: ['0.58.0']
     steps:
-      - name: Check-out repository
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Login to registry
-        uses: docker/login-action@v3
+      - name: Build and push image
+        uses: ./.github/actions/build-image
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and push image to registry
-        uses: docker/build-push-action@v5
-        with:
-          platforms: linux/amd64
-          context: ./navidrome
-          file: ./navidrome/Dockerfile
-          push: true
-          build-args: |
-            VERSION=${{ matrix.version }}
-          tags: |
-            ghcr.io/f-bn/navidrome:${{ matrix.version }}-r${{ env.build_epoch }}
-            ghcr.io/f-bn/navidrome:${{ matrix.version }}
-            ghcr.io/f-bn/navidrome:latest
+          name: navidrome
+          version: 0.58.0
+          revision: 3
+          description: Modern Music Server and Streamer compatible with Subsonic/Airsonic
+          license: GPL-3.0-or-later
+          token: ${{ secrets.GITHUB_TOKEN }}

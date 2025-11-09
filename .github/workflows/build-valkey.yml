@@ -1,7 +1,5 @@
 ---
 name: Build Valkey image
-env:
-  build_epoch: 1
 on:
   push:
     branches:
@@ -11,8 +9,6 @@ on:
       - '!valkey/README.md'
       - '.github/workflows/build-valkey.yml'
   workflow_dispatch:
-  schedule:
-    - cron: '35 4 * * 6' # Every Saturday at 04:35am
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,28 +19,14 @@ jobs:
       matrix:
         version: ['9.0.0', '8.1.4']
     steps:
-      - name: Check-out repository
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Login to registry
-        uses: docker/login-action@v3
+      - name: Build and push image
+        uses: ./.github/actions/build-image
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and push image to registry
-        uses: docker/build-push-action@v5
-        with:
-          platforms: linux/amd64
-          context: ./valkey
-          file: ./valkey/Dockerfile
-          push: true
-          build-args: |
-            VERSION=${{ matrix.version }}
-          tags: |
-            ghcr.io/f-bn/valkey:${{ matrix.version }}-r${{ env.build_epoch }}
-            ghcr.io/f-bn/valkey:${{ matrix.version }}
+          name: valkey
+          version: ${{ matrix.version }}
+          description: An open source, in-memory data store
+          license: BSD-3-Clause
+          token: ${{ secrets.GITHUB_TOKEN }}

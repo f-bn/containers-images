@@ -1,7 +1,5 @@
 ---
 name: Build Feishin image
-env:
-  build_epoch: 0
 on:
   push:
     branches:
@@ -11,41 +9,21 @@ on:
       - '!feishin/README.md'
       - '.github/workflows/build-feishin.yml'
   workflow_dispatch:
-  schedule:
-    - cron: '35 4 * * 6' # Every Saturday at 04:35am
 jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-    strategy:
-      matrix:
-        version: ['0.21.2']
     steps:
-      - name: Check-out repository
-        uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
 
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v3
-
-      - name: Login to registry
-        uses: docker/login-action@v3
+      - name: Build and push image
+        uses: ./.github/actions/build-image
         with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and push image to registry
-        uses: docker/build-push-action@v5
-        with:
-          platforms: linux/amd64
-          context: ./feishin
-          file: ./feishin/Dockerfile
-          push: true
-          build-args: |
-            VERSION=${{ matrix.version }}
-          tags: |
-            ghcr.io/f-bn/feishin:${{ matrix.version }}-r${{ env.build_epoch }}
-            ghcr.io/f-bn/feishin:${{ matrix.version }}
-            ghcr.io/f-bn/feishin:latest
+          name: feishin
+          version: 0.21.2
+          description: A modern self-hosted music player
+          license: GPL-3.0-or-later
+          token: ${{ secrets.GITHUB_TOKEN }}

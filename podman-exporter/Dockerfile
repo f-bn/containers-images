@@ -42,11 +42,3 @@ USER prometheus
 EXPOSE 9882/tcp
 
 ENTRYPOINT [ "/usr/bin/podman-exporter" ]
-
-LABEL \
-  org.opencontainers.image.title="podman-exporter" \
-  org.opencontainers.image.source="https://github.com/f-bn/containers-images/podman-exporter" \
-  org.opencontainers.image.version="${VERSION}" \
-  org.opencontainers.image.description="Prometheus exporter for Podman environments exposing containers, pods, images, volumes and networks information" \
-  org.opencontainers.image.licenses="Apache-2.0" \
-  org.opencontainers.image.authors="Florian Bobin <contact@fbobin.me>"

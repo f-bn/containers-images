@@ -58,11 +58,3 @@ ENTRYPOINT [ "/usr/share/grafana/bin/grafana" ]
 
 CMD [ "server", \
       "--config=/etc/grafana/grafana.ini" ]
-
-LABEL \
-  org.opencontainers.image.title="grafana" \
-  org.opencontainers.image.source="https://github.com/f-bn/containers-images/grafana" \
-  org.opencontainers.image.description="The open and composable observability and data visualization platform" \
-  org.opencontainers.image.version="${VERSION}" \
-  org.opencontainers.image.licenses="AGPL-3.0-or-later" \
-  org.opencontainers.image.authors="Florian Bobin <contact@fbobin.me>"

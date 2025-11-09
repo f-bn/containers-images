@@ -1,0 +1,2 @@
+--container-options -v /var/run/docker.sock:/var/run/docker.sock
+--container-options --group-add 1000

@@ -1,52 +1,63 @@
-### General informations
+<div align="center">
+  <img src="https://raw.githubusercontent.com/opencontainers/artwork/master/oci/icon/color/oci-icon-color.png" alt="OCI Logo" width="150"/>
 
-This repository contains my personal custom OCI containers images.
+  ---
+</div>
 
-#### Images
+## Overview
 
-- [alertmanager](./alertmanager/)
-- [coredns](./coredns/)
-- [coreos-toolbox](./coreos-toolbox/)
-- [distrobuilder](./distrobuilder/)
-- [feishin](./feishin/)
-- [fusion](./fusion/)
-- [grafana](./grafana/)
-- [navidrome](./navidrome/)
-- [node-exporter](./node-exporter/)
-- [pgbouncer](./pgbouncer/)
-- [podman-exporter](./podman-exporter/)
-- [postgresql](./postgresql/)
-- [prometheus](./prometheus/)
-- [registry](./registry/)
-- [telegraf](./telegraf/)
-- [traefik](./traefik/)
-- [ubuntu](./ubuntu/)
-- [valkey](./valkey/)
+[![License](https://img.shields.io/github/license/f-bn/containers-images)](./LICENSE)
+[![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=github-actions&logoColor=white)](https://github.com/f-bn/containers-images/actions)
 
-#### How to pull the images ?
+This repository contains custom-built OCI container images for various popular open-source projects I use for personal projects and home production.
 
-My images are publicly available through my GitHub Packages namespace:
+🔨 **Built from source** - Built from source whenever possible  
+⚡ **Optimized builds** - Built with custom build options to remove uneeded features whenever possible to reduce attack surface  
+🛡️ **Secure base** - Uses [WolfiOS](https://github.com/wolfi-dev) as minimal base image
 
-```shell
+## Available Images
+
+| Image | Description | Links |
+|-------|-------------|-------|
+| **[alertmanager](./alertmanager/)** | Prometheus Alertmanager | [GitHub](https://github.com/prometheus/alertmanager) |
+| **[coredns](./coredns/)** | CoreDNS is a DNS server that chains plugins | [Website](https://coredns.io/) |
+| **[coreos-toolbox](./coreos-toolbox/)** | Custom Fedora image including utilities and tools for debugging on Fedora CoreOS | - |
+| **[feishin](./feishin/)** | A modern self-hosted music player | [GitHub](https://github.com/jeffvli/feishin) |
+| **[fusion](./fusion/)** | A lightweight, self-hosted friendly RSS reader | [GitHub](https://github.com/0x2E/fusion) |
+| **[grafana](./grafana/)** | The open and composable observability and data visualization platform | [Website](https://grafana.com/) |
+| **[navidrome](./navidrome/)** | Modern Music Server and Streamer compatible with Subsonic/Airsonic | [Website](https://www.navidrome.org/) |
+| **[node-exporter](./node-exporter/)** | Exporter for machine metrics | [GitHub](https://github.com/prometheus/node_exporter) |
+| **[pgbouncer](./pgbouncer/)** | Lightweight connection pooler for PostgreSQL | [Website](https://www.pgbouncer.org/) |
+| **[podman-exporter](./podman-exporter/)** | Prometheus exporter for Podman environments exposing containers, pods, images, volumes and networks information | [GitHub](https://github.com/containers/prometheus-podman-exporter) |
+| **[postgresql](./postgresql/)** | Custom PostgreSQL image with additional extensions, configuration and tools for learning and testing purposes | [Website](https://www.postgresql.org/) |
+| **[prometheus](./prometheus/)** | The Prometheus monitoring system and time series database | [Website](https://prometheus.io/) |
+| **[registry](./registry/)** | Distribution implementation for storing and distributing of container images and artifacts | [GitHub](https://github.com/distribution/distribution) |
+| **[telegraf](./telegraf/)** | Agent for collecting, processing, aggregating, and writing metrics, logs, and other arbitrary data | [GitHub](https://github.com/influxdata/telegraf) |
+| **[traefik](./traefik/)** | The Cloud Native Application Proxy | [Website](https://traefik.io/) |
+| **[ubuntu](./ubuntu/)** | Custom Ubuntu system container image | [Website](https://ubuntu.com/) |
+| **[valkey](./valkey/)** | An open source, in-memory data store | [Website](https://valkey.io/) |
+
+## Quick Start
+
+All images are publicly available through GitHub Container Registry:
+
+```bash
+# Pull an image
 docker pull ghcr.io/f-bn/<image>:<tag>
+
+# Example: Pull specific version
+docker pull ghcr.io/f-bn/prometheus:3.7.3
 ```
 
-### References
+## Building Locally
 
-- Alertmanager: https://github.com/prometheus/alertmanager
-- CoreDNS: https://coredns.io/
-- Distribution (Registry): https://github.com/distribution/distribution
-- Distrobuilder: https://github.com/lxc/distrobuilder
-- Feishin: https://github.com/jeffvli/feishin
-- Fusion (RSS Reader): https://github.com/0x2E/fusion
-- Grafana: https://grafana.com/
-- Navidrome: https://www.navidrome.org/
-- Node Exporter: https://github.com/prometheus/node_exporter
-- Podman Exporter: https://github.com/containers/prometheus-podman-exporter
-- PostgreSQL: https://www.postgresql.org/
-- pgbouncer: https://www.pgbouncer.org/
-- Prometheus: https://prometheus.io/
-- Telegraf: https://github.com/influxdata/telegraf
-- Traefik: https://traefik.io/
-- Valkey: https://valkey.io/
-- WolfiOS: https://github.com/wolfi-dev
+Each image directory contains its own `Dockerfile` and build instructions. To build an image locally:
+
+```bash
+cd <image-directory>
+docker build -t <image-name>:<tag> -f Dockerfile .
+```
+
+## License
+
+See [LICENSE](./LICENSE) file for details.

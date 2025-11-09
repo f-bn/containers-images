@@ -58,10 +58,3 @@ ENTRYPOINT [ "/usr/bin/prometheus" ]
 
 CMD [ "--config.file=/etc/prometheus/prometheus.yml", \
       "--storage.tsdb.path=/var/lib/prometheus" ]
-
-LABEL \
-  org.opencontainers.image.title="prometheus" \
-  org.opencontainers.image.source="https://github.com/f-bn/containers-images/prometheus" \
-  org.opencontainers.image.description="The Prometheus monitoring system and time series database" \
-  org.opencontainers.image.licenses="Apache-2.0" \
-  org.opencontainers.image.authors="Florian Bobin <contact@fbobin.me>"

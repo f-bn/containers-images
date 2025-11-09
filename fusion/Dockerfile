@@ -60,9 +60,3 @@ EXPOSE 8080/tcp
 VOLUME [ "/var/lib/fusion" ]
 
 ENTRYPOINT [ "/usr/bin/fusion" ]
-
-LABEL \
-  org.opencontainers.image.title="fusion" \
-  org.opencontainers.image.source="https://github.com/f-bn/containers-images/fusion" \
-  org.opencontainers.image.description="A lightweight, self-hosted friendly RSS reader" \
-  org.opencontainers.image.licenses="MIT"

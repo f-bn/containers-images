@@ -55,11 +55,3 @@ WORKDIR /etc/registry
 ENTRYPOINT [ "/usr/bin/registry" ]
 
 CMD [ "serve", "/etc/registry/config.yml" ]
-
-LABEL \
-  org.opencontainers.image.title="registry" \
-  org.opencontainers.image.version="${VERSION}" \
-  org.opencontainers.image.source="https://github.com/f-bn/containers-images/registry" \
-  org.opencontainers.image.description="Distribution implementation for storing and distributing of container images and artifacts" \
-  org.opencontainers.image.licenses="Apache-2.0" \
-  org.opencontainers.image.authors="Florian Bobin <contact@fbobin.fr>"

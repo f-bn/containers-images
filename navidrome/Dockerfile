@@ -85,10 +85,3 @@ EXPOSE 4533/tcp
 VOLUME [ "/var/lib/navidrome" ]
 
 ENTRYPOINT [ "/usr/bin/navidrome" ]
-
-LABEL \
-  org.opencontainers.image.title="navidrome" \
-  org.opencontainers.image.source="https://github.com/f-bn/containers-images/navidrome" \
-  org.opencontainers.image.description="Modern Music Server and Streamer compatible with Subsonic/Airsonic" \
-  org.opencontainers.image.licenses="GPL-3.0-or-later" \
-  org.opencontainers.image.authors="Florian Bobin <contact@fbobin.me>"

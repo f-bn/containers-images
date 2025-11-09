@@ -55,10 +55,3 @@ ENTRYPOINT [ "/usr/bin/alertmanager" ]
 
 CMD [ "--config.file=/etc/alertmanager/alertmanager.yml", \
       "--storage.path=/var/lib/alertmanager" ]
-
-LABEL \
-  org.opencontainers.image.title="alertmanager" \
-  org.opencontainers.image.source="https://github.com/f-bn/containers-images/alertmanager" \
-  org.opencontainers.image.description="Prometheus Alertmanager" \
-  org.opencontainers.image.licenses="Apache-2.0" \
-  org.opencontainers.image.authors="Florian Bobin <contact@fbobin.me>"

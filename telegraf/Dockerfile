@@ -47,10 +47,3 @@ USER telegraf
 WORKDIR /etc/telegraf
 
 ENTRYPOINT [ "/usr/bin/telegraf" ]
-
-LABEL \
-  org.opencontainers.image.title="telegraf" \
-  org.opencontainers.image.source="https://github.com/f-bn/containers-images/telegraf" \
-  org.opencontainers.image.description="Agent for collecting, processing, aggregating, and writing metrics, logs, and other arbitrary data" \
-  org.opencontainers.image.licenses="MIT" \
-  org.opencontainers.image.authors="Florian Bobin <contact@fbobin.me>"
