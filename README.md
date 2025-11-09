@@ -57,7 +57,7 @@ Each image directory contains its own `Dockerfile` and usage instructions. To bu
 
 ```bash
 cd <image-directory>
-docker build -t <image-name>:<tag> -f Dockerfile .
+docker build -t <image-name>:<tag> [--build-arg VERSION=x.x.x] -f Dockerfile .
 ```
 
 ## License
