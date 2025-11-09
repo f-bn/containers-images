@@ -1,7 +1,7 @@
 # --- Build stage ---
-FROM docker.io/node:23-bookworm-slim AS build
+FROM docker.io/node:24.11.0 AS build
 
-ARG VERSION="0.20.0"
+ARG VERSION="0.21.2"
 
 WORKDIR /build
 
@@ -14,7 +14,7 @@ RUN set -ex ; \
   pnpm run build:web
 
 # --- Final stage ---
-FROM docker.io/nginx:1.28.0
+FROM docker.io/nginx:1.29.3
 
 ARG VERSION="0.20.0"
 
