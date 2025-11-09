@@ -24,9 +24,9 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: grafana
-          version: 12.2.0
+          version: 12.2.1
           build-extra-args: |
-            REVISION=17949786146
+            REVISION=18655849634
           description: The open and composable observability and data visualization platform
           license: AGPL-3.0-or-later
           token: ${{ secrets.GITHUB_TOKEN }}
