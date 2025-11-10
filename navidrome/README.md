@@ -17,7 +17,7 @@ The main goal is to keep Navidrome image as minimal as possible since *ffmpeg* c
 This image doesn't come with a default Navidrome configuration. You can bring your own configuration to the container (e.g using Docker):
 
 ```shell
-$ docker run [options] -v /path/to/navidrome.toml:/etc/navidrome/navidrome.toml ghcr.io/f-bn/navidrome:0.58.0
+$ docker run [options] -v /path/to/navidrome.toml:/etc/navidrome/navidrome.toml ghcr.io/f-bn/navidrome:0.58.5
 ```
 
 More informations about Navidrome configuration [here](https://www.navidrome.org/docs/usage/configuration-options/).
