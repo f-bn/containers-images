@@ -11,11 +11,6 @@ RUN set -ex ; \
   rm -rf /var/lib/apt/lists/* ; \
   rm /extra-packages
   
-# Enable bash completion in exec shell
-RUN tee -a /etc/bash.bashrc > /dev/null <<'EOF'
-[ -f /usr/share/bash-completion/bash_completion ] && . /usr/share/bash-completion/bash_completion
-EOF
-
 RUN truncate -s0 /etc/machine-id
 
 ENV container="docker"

@@ -13,6 +13,8 @@ fuse3
 iproute2
 iputils-ping
 less
+libnss-systemd
+libpam-systemd
 lsof
 netbase
 netcat-openbsd
