@@ -2,10 +2,9 @@
 
 Custom PgBouncer image built from sources.
 
-Built with GCC 14.2.
-
 ### Supported PgBouncer versions
 
+- PgBouncer 1.25.x
 - PgBouncer 1.24.x
 
 ## PgBouncer configuration

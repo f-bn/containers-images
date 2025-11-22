@@ -3,7 +3,7 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION=1.24.1
+ARG VERSION=1.25.0
 
 RUN set -ex ; \
   apk add --no-cache \
@@ -26,7 +26,7 @@ RUN set -ex ; \
 
 RUN set -ex ; \
   ./configure --prefix=/usr ; \
-  make -j "$(nproc)"
+  make -j "$(nproc)" pgbouncer
 
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
