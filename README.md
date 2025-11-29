@@ -31,7 +31,7 @@ This repository contains custom-built OCI container images for various popular o
 | **[node-exporter](./node-exporter/)** | Exporter for machine metrics | [GitHub](https://github.com/prometheus/node_exporter) |
 | **[pgbouncer](./pgbouncer/)** | Lightweight connection pooler for PostgreSQL | [Website](https://www.pgbouncer.org/) |
 | **[podman-exporter](./podman-exporter/)** | Prometheus exporter for Podman environments exposing containers, pods, images, volumes and networks information | [GitHub](https://github.com/containers/prometheus-podman-exporter) |
-| **[postgresql](./postgresql/)** | Custom PostgreSQL image with additional extensions, configuration and tools for learning and testing purposes | [Website](https://www.postgresql.org/) |
+| **[postgresql](./postgresql/)** | Custom PostgreSQL image built from source with additional extensions and tools | [Website](https://www.postgresql.org/) |
 | **[prometheus](./prometheus/)** | The Prometheus monitoring system and time series database | [Website](https://prometheus.io/) |
 | **[registry](./registry/)** | Distribution implementation for storing and distributing of container images and artifacts | [GitHub](https://github.com/distribution/distribution) |
 | **[telegraf](./telegraf/)** | Agent for collecting, processing, aggregating, and writing metrics, logs, and other arbitrary data | [GitHub](https://github.com/influxdata/telegraf) |
