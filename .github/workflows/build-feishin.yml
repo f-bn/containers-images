@@ -24,8 +24,7 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: feishin
-          version: 0.21.2
-          revision: 2
+          version: 0.22.0
           description: A modern self-hosted music player
           license: GPL-3.0-or-later
           token: ${{ secrets.GITHUB_TOKEN }}
