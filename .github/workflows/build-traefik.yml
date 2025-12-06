@@ -24,6 +24,6 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: traefik
-          version: 3.6.1
+          version: 3.6.4
           description: The Cloud Native Application Proxy
           token: ${{ secrets.GITHUB_TOKEN }}
