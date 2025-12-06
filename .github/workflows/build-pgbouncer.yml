@@ -24,7 +24,7 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: pgbouncer
-          version: 1.25.0
+          version: 1.25.1
           description: Lightweight connection pooler for PostgreSQL
           license: ISC
           token: ${{ secrets.GITHUB_TOKEN }}
