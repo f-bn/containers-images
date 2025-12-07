@@ -1,0 +1,30 @@
+---
+name: Build Falco image
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'falco/**'
+      - '!falco/README.md'
+      - '.github/workflows/build-falco.yml'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Build and push image
+        uses: ./.github/actions/build-image
+        with:
+          name: falco
+          version: 0.42.1
+          description: Cloud Native Runtime Security
+          license: Apache-2.0
+          token: ${{ secrets.GITHUB_TOKEN }}
