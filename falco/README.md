@@ -6,7 +6,7 @@ Custom Falco image built from official binary releases.
 
 This image comes with the [default Falco configuration](https://github.com/falcosecurity/falco/blob/master/falco.yaml) and default empty rule set. 
 
-You can bring your own configuration to the container using flags or by mounting custom configuration files and rules into the container:
+You can bring your own configuration to the container by mounting custom configuration files and/or rules into the container:
 
 ```shell
 # Configuration flags
