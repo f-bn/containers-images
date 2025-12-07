@@ -12,9 +12,8 @@ ADD https://download.falco.org/packages/bin/x86_64/falco-${VERSION}-x86_64.tar.g
 
 WORKDIR /build
 
-RUN set -ex ; \
-  gpg --batch --keyserver hkps://keys.openpgp.org --recv-keys 2005399002D5E8FF59F28CE64021833E14CB7A8D ; \
-  gpg --batch --verify falco.tar.gz.asc falco.tar.gz
+RUN gpg --keyserver-options auto-key-retrieve \
+  --verify falco.tar.gz.asc falco.tar.gz
 
 RUN tar -xzf falco.tar.gz --strip-components=1
 
