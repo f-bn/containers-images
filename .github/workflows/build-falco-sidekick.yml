@@ -1,0 +1,30 @@
+---
+name: Build Falco Sidekick image
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'falco-sidekick/**'
+      - '!falco-sidekick/README.md'
+      - '.github/workflows/build-falco-sidekick.yml'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Build and push image
+        uses: ./.github/actions/build-image
+        with:
+          name: falco-sidekick
+          version: 2.32.0
+          description: Connect Falco to your ecosystem
+          license: Apache-2.0
+          token: ${{ secrets.GITHUB_TOKEN }}

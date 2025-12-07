@@ -25,6 +25,7 @@ This repository contains custom-built OCI container images for various popular o
 | **[coredns](./coredns/)** | CoreDNS is a DNS server that chains plugins | [Website](https://coredns.io/) |
 | **[coreos-toolbox](./coreos-toolbox/)** | Custom Fedora image including utilities and tools for debugging on Fedora CoreOS | - |
 | **[falco](./falco/)** | Cloud Native Runtime Security | [Website](https://falco.org/) |
+| **[falco-sidekick](./falco-sidekick/)** | Connect Falco to your ecosystem | [GitHub](https://github.com/falcosecurity/falcosidekick) |
 | **[feishin](./feishin/)** | A modern self-hosted music player | [GitHub](https://github.com/jeffvli/feishin) |
 | **[fusion](./fusion/)** | A lightweight, self-hosted friendly RSS reader | [GitHub](https://github.com/0x2E/fusion) |
 | **[grafana](./grafana/)** | The open and composable observability and data visualization platform | [Website](https://grafana.com/) |
