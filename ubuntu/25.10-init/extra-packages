@@ -12,12 +12,14 @@ file
 fuse3
 iproute2
 iputils-ping
+language-pack-en
 less
 libnss-systemd
 libpam-systemd
 lsof
 netbase
 netcat-openbsd
+nftables
 procps
 psmisc
 squashfuse
