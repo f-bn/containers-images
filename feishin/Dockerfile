@@ -1,7 +1,7 @@
 # --- Build stage ---
-FROM docker.io/node:24.11.0 AS build
+FROM docker.io/node:24.12.0 AS build
 
-ARG VERSION="0.21.2"
+ARG VERSION="1.0.1-beta.1"
 
 WORKDIR /build
 
@@ -14,7 +14,7 @@ RUN set -ex ; \
   pnpm run build:web
 
 # --- Final stage ---
-FROM docker.io/nginx:1.29.3
+FROM docker.io/nginx:1.29.4-alpine3.23
 
 WORKDIR /app
 

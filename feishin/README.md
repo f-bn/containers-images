@@ -4,6 +4,10 @@ Custom Feishin image built from sources and allowing some specific nginx configu
 
 Built with NodeJS 24 and nginx 1.29.
 
+### Image notes
+
+This image is designed to run `nginx` as non-root and therefore required specific configuration to run, see: https://hub.docker.com/_/nginx#running-nginx-as-a-non-root-user
+
 ## Feishin configuration
 
 Feishin can be configured using the following environment variables:
