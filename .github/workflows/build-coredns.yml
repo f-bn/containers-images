@@ -24,6 +24,6 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: coredns
-          version: 1.13.1
+          version: 1.13.2
           description: CoreDNS is a DNS server that chains plugins
           token: ${{ secrets.GITHUB_TOKEN }}
