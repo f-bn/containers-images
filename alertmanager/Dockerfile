@@ -1,21 +1,13 @@
 # --- Build stage ---
-FROM docker.io/node:24.11.0 AS build-webui
+FROM docker.io/golang:1.25.5 AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="0.29.0"
+ARG VERSION="0.30.0"
 
 ADD --keep-git-dir \
-  https://github.com/prometheus/alertmanager.git#v${VERSION} /build  
+  https://github.com/prometheus/alertmanager.git#v${VERSION} /build
 
-WORKDIR /build
-
-RUN make assets-compress
-
-# --- Build stage ---
-FROM docker.io/golang:1.25.4 AS build-binary
-
-COPY --from=build-webui /build /build
 COPY promu.yml /build/.promu.yml
 
 WORKDIR /build
@@ -25,11 +17,11 @@ RUN make common-build
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
 
-COPY --from=build-binary --chown=0:0 --chmod=0755 \
+COPY --from=build --chown=0:0 --chmod=0755 \
   /build/alertmanager /usr/bin/alertmanager
-COPY --from=build-binary --chown=0:0 --chmod=0755 \
+COPY --from=build --chown=0:0 --chmod=0755 \
   /build/amtool /usr/bin/amtool
-COPY --from=build-binary --chown=0:0 --chmod=0644 \
+COPY --from=build --chown=0:0 --chmod=0644 \
   /build/examples/ha/alertmanager.yml /etc/alertmanager/alertmanager.yml
 
 RUN set -ex ; \

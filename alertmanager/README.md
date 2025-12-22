@@ -2,7 +2,7 @@
 
 Custom Alertmanager image built from sources.
 
-Built with Go 1.25 and NodeJS 24.
+Built with Go 1.25.
 
 ## Alertmanager configuration
 
@@ -12,8 +12,8 @@ You can also bring your own configuration to the container using flags or by mou
 
 ```shell
 # Configuration flags
-$ docker run [options] ghcr.io/f-bn/alertmanager:0.28.1 [flags]
+$ docker run [options] ghcr.io/f-bn/alertmanager:0.30.0 [flags]
 
 # Mounting static configuration
-$ docker run [options] -v alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro ghcr.io/f-bn/alertmanager:0.28.1
+$ docker run [options] -v alertmanager.yml:/etc/alertmanager/alertmanager.yml:ro ghcr.io/f-bn/alertmanager:0.30.0
 ```
