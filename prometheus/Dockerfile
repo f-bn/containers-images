@@ -3,7 +3,7 @@ FROM docker.io/node:24.11.1 AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="3.8.0"
+ARG VERSION="3.8.1"
 
 ADD --keep-git-dir \
   https://github.com/prometheus/prometheus.git#v${VERSION} /build  
