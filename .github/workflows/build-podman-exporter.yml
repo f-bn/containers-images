@@ -24,7 +24,7 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: podman-exporter
-          version: 1.19.0
+          version: 1.20.0
           description: Prometheus exporter for Podman environments exposing containers, pods, images, volumes and networks information
           license: Apache-2.0
           token: ${{ secrets.GITHUB_TOKEN }}
