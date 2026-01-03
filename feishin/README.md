@@ -25,3 +25,7 @@ Feishin can be configured using the following environment variables:
   - `FEISHIN_SERVER_URL`: backend server URL (e.g `https://music.example.com`)
   - `FEISHIN_SERVER_LOCK`: if set to `true` AND type, name and URL configurations are set, Feishin can only be configured to connect to a single backend server
 
+* **Feishin application configurations**
+
+  - `FEISHIN_ANALYTICS_DISABLED`: if set to `true`, analytics are disabled
+
