@@ -16,9 +16,6 @@ jobs:
       contents: read
       packages: write
       security-events: write
-    strategy:
-      matrix:
-        version: ['9.0.0', '8.1.5']
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.2.2
@@ -27,7 +24,7 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: valkey
-          version: ${{ matrix.version }}
+          version: 9.0.1
           description: An open source, in-memory data store
           license: BSD-3-Clause
           token: ${{ secrets.GITHUB_TOKEN }}
