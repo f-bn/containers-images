@@ -1,9 +1,9 @@
 # --- Build stage ---
-FROM docker.io/node:24.11.1-bookworm-slim AS build-webui
+FROM docker.io/node:24.12.0-bookworm-slim AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="3.6.4"
+ARG VERSION="3.6.6"
 
 ADD https://github.com/traefik/traefik.git#v${VERSION} /build
 
