@@ -20,6 +20,8 @@ lsof
 netbase
 netcat-openbsd
 nftables
+openssh-client
+openssh-server
 procps
 psmisc
 squashfuse
