@@ -1,6 +1,9 @@
 FROM docker.io/ubuntu:25.10
 
-COPY extra-packages /
+COPY --chown=0:0 \
+  extra-packages /extra-packages
+COPY --chown=0:0 \
+  ssh-keygen.service /etc/systemd/system/ssh-keygen.service
 
 RUN set -ex ; \
   export DEBIAN_FRONTEND=noninteractive ; \
@@ -9,7 +12,9 @@ RUN set -ex ; \
   apt remove --allow-remove-essential -y coreutils-from-uutils ; \
   apt clean all ; \
   rm -rf /var/lib/apt/lists/* ; \
-  rm /extra-packages
+  rm /extra-packages /etc/ssh/ssh_host_*
+
+RUN systemctl enable ssh-keygen.service
   
 RUN truncate -s0 /etc/machine-id
 
