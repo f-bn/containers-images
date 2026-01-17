@@ -16,7 +16,7 @@ RUN set -ex ; \
 
 RUN systemctl enable ssh-keygen.service
   
-RUN truncate -s0 /etc/machine-id
+RUN truncate -s0 /etc/machine-id /var/lib/dbus/machine-id
 
 ENV container="docker"
 
