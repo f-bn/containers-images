@@ -31,5 +31,5 @@ systemd
 systemd-sysv
 udev
 unzip
-vim
+vim-tiny
 xz-utils
