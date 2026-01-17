@@ -24,7 +24,7 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: prometheus
-          version: 3.9.0
+          version: 3.9.1
           description: The Prometheus monitoring system and time series database
           license: Apache-2.0
           token: ${{ secrets.GITHUB_TOKEN }}
