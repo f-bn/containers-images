@@ -1,0 +1,14 @@
+FROM docker.io/ubuntu:24.04
+
+COPY --chown=0:0 \
+  extra-packages /extra-packages
+
+RUN set -ex ; \
+  export DEBIAN_FRONTEND=noninteractive ; \
+  apt update ; \
+  apt install -y --no-install-recommends $(paste extra-packages) ; \
+  apt clean all ; \
+  rm -rf /var/lib/apt/lists/* ; \
+  rm /extra-packages
+
+RUN truncate -s0 /etc/machine-id /var/lib/dbus/machine-id

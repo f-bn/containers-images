@@ -12,7 +12,7 @@ on:
   schedule:
     - cron: '35 4 * * 6' # Every Saturday at 04:35am
 jobs:
-  build:
+  build-init:
     runs-on: ubuntu-latest
     permissions:
       contents: read
@@ -38,5 +38,34 @@ jobs:
           name: ubuntu
           version: ${{ matrix.version }}
           description: Custom Ubuntu ${{ steps.version.outputs.release }} system container image
+          build-context: ./ubuntu/${{ matrix.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+  build-toolbox:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+    strategy:
+      matrix:
+        version: ['25.10-toolbox', '24.04-toolbox']
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Extract Ubuntu release version
+        id: version
+        shell: bash
+        run: echo "release=${VERSION%-toolbox}" >> $GITHUB_OUTPUT
+        env:
+          VERSION: ${{ matrix.version }}
+
+      - name: Build and push image
+        uses: ./.github/actions/build-image
+        with:
+          name: ubuntu
+          version: ${{ matrix.version }}
+          description: Custom Ubuntu ${{ steps.version.outputs.release }} toolbox container image
           build-context: ./ubuntu/${{ matrix.version }}
           token: ${{ secrets.GITHUB_TOKEN }}

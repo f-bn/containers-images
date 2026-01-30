@@ -38,7 +38,7 @@ This repository contains custom-built OCI container images for various popular o
 | **[registry](./registry/)** | Distribution implementation for storing and distributing of container images and artifacts | [GitHub](https://github.com/distribution/distribution) |
 | **[telegraf](./telegraf/)** | Agent for collecting, processing, aggregating, and writing metrics, logs, and other arbitrary data | [GitHub](https://github.com/influxdata/telegraf) |
 | **[traefik](./traefik/)** | The Cloud Native Application Proxy | [Website](https://traefik.io/) |
-| **[ubuntu](./ubuntu/)** | Custom Ubuntu system container image | [Website](https://ubuntu.com/) |
+| **[ubuntu](./ubuntu/)** | Custom Ubuntu containers image | [Website](https://ubuntu.com/) |
 | **[valkey](./valkey/)** | An open source, in-memory data store | [Website](https://valkey.io/) |
 
 ## 🚀 Quick Start
