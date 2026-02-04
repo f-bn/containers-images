@@ -24,7 +24,7 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: navidrome
-          version: 0.59.0
+          version: 0.60.0
           description: Modern Music Server and Streamer compatible with Subsonic/Airsonic
           license: GPL-3.0-or-later
           token: ${{ secrets.GITHUB_TOKEN }}
