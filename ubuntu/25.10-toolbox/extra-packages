@@ -39,7 +39,6 @@ sudo
 tcpdump
 traceroute
 tree
-udev
 unzip
 vim-tiny
 xz-utils
