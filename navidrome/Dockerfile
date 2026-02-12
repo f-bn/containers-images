@@ -44,7 +44,7 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION=0.58.5
+ARG VERSION=0.60.3
 
 WORKDIR /build
 
