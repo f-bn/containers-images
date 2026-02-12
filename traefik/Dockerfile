@@ -1,9 +1,9 @@
 # --- Build stage ---
-FROM docker.io/node:24.12.0-bookworm-slim AS build-webui
+FROM docker.io/node:24.13.1-bookworm-slim AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="3.6.6"
+ARG VERSION="3.6.8"
 
 ADD https://github.com/traefik/traefik.git#v${VERSION} /build
 
@@ -16,11 +16,11 @@ RUN set -ex ; \
   yarn build
 
 # --- Build stage ---
-FROM docker.io/golang:1.25.5 AS build-binary
+FROM docker.io/golang:1.25.7 AS build-binary
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="3.6.4"
+ARG VERSION="3.6.8"
 ARG CODENAME="ramequin"
 
 ENV GOOS=${TARGETOS}
