@@ -35,6 +35,7 @@ sudo
 tcpdump
 traceroute
 tree
+tzdata
 systemd
 systemd-sysv
 udev
