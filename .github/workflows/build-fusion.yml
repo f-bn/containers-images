@@ -24,6 +24,6 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: fusion
-          version: 0.9.8
+          version: 1.0.0
           description: A lightweight, self-hosted friendly RSS reader
           token: ${{ secrets.GITHUB_TOKEN }}

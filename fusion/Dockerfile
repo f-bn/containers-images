@@ -1,11 +1,9 @@
 # --- Build stage ---
-FROM docker.io/node:24.11.0 AS build-webui
+FROM docker.io/node:24.13.1 AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="0.9.8"
-
-ENV VITE_FUSION_VERSION="${VERSION}"
+ARG VERSION="1.0.0"
 
 ADD --keep-git-dir \
   https://github.com/0x2E/fusion.git#v${VERSION} /build  
@@ -14,12 +12,14 @@ WORKDIR /build/frontend
 
 RUN npm install -g pnpm
 
+ENV VITE_FUSION_VERSION="${VERSION}"
+
 RUN set -ex ; \
-  pnpm install ; \
+  pnpm install --frozen-lockfile ; \
   pnpm run build
 
 # --- Build stage ---
-FROM docker.io/golang:1.25.4 AS build-binary
+FROM docker.io/golang:1.25.7 AS build-binary
 
 ARG TARGETOS
 ARG TARGETARCH
@@ -30,11 +30,13 @@ ENV CGO_ENABLED=0
 
 COPY --from=build-webui /build /build
 
-WORKDIR /build 
+WORKDIR /build/backend
+
+RUN cp -R /build/frontend/dist/. /build/backend/internal/web/dist/
 
 RUN set -ex ; \
   mkdir -p /build/dist ; \
-  go build -ldflags "-s -w -extldflags '-static'" -o "./dist/fusion" ./cmd/server/*
+  go build -trimpath -ldflags "-s -w -extldflags '-static'" -o "/build/dist/fusion" ./cmd/fusion
 
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
@@ -53,7 +55,7 @@ RUN set -ex ; \
 
 USER fusion
 
-ENV DB="/var/lib/fusion/fusion.db"
+ENV FUSION_DB_PATH="/var/lib/fusion/fusion.db"
 
 EXPOSE 8080/tcp
 
