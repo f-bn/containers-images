@@ -19,7 +19,7 @@ RUN set -ex ; \
   pnpm run build
 
 # --- Build stage ---
-FROM docker.io/golang:1.25.7 AS build-binary
+FROM docker.io/golang:1.26.0 AS build-binary
 
 ARG TARGETOS
 ARG TARGETARCH
