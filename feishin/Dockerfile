@@ -1,7 +1,7 @@
 # --- Build stage ---
 FROM docker.io/node:24.14.0 AS build
 
-ARG VERSION="1.7.0"
+ARG VERSION="1.8.0"
 
 WORKDIR /build
 
