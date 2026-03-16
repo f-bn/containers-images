@@ -1,7 +1,7 @@
 # --- Build stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest AS build-server
 
-ARG VERSION="18.1"
+ARG VERSION="18.3"
 
 ADD https://ftp.postgresql.org/pub/source/v${VERSION}/postgresql-${VERSION}.tar.gz /build/postgresql-${VERSION}.tar.gz
 ADD https://ftp.postgresql.org/pub/source/v${VERSION}/postgresql-${VERSION}.tar.gz.sha256 /build/postgresql-${VERSION}.tar.gz.sha256
@@ -55,8 +55,8 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build-extensions
 
 ARG PG_CRON_VERSION="1.6.7"
 ARG PG_REPACK_VERSION="1.5.3"
-ARG PG_PARTMAN_VERSION="5.3.1"
-ARG PG_VECTOR_VERSION="0.8.1"
+ARG PG_PARTMAN_VERSION="5.4.3"
+ARG PG_VECTOR_VERSION="0.8.2"
 
 ADD https://github.com/citusdata/pg_cron.git#v${PG_CRON_VERSION} /build/pg_cron
 ADD https://github.com/reorg/pg_repack.git#ver_${PG_REPACK_VERSION} /build/pg_repack
@@ -100,7 +100,7 @@ RUN set -ex ; \
 # --- Build stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest AS build-pgbackrest
 
-ARG PGBACKREST_VERSION="2.57.0"
+ARG PGBACKREST_VERSION="2.58.0"
 
 ADD https://github.com/pgbackrest/pgbackrest.git#release/${PGBACKREST_VERSION} /build
 
@@ -133,7 +133,7 @@ RUN set -ex ; \
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
 
-ARG VERSION="18.1"
+ARG VERSION="18.3"
 
 # Compatibility environment variables
 ENV PG_MAJOR="${VERSION%%.*}" 
