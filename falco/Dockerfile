@@ -3,7 +3,7 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="0.42.1"
+ARG VERSION="0.43.0"
 
 RUN apk --no-cache add gpg gpg-agent gnupg-dirmngr
 
