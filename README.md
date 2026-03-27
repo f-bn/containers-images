@@ -36,7 +36,6 @@ This repository contains custom-built OCI container images for various popular o
 | **[postgresql](./postgresql/)** | Custom PostgreSQL image built from source with additional extensions and tools | [Website](https://www.postgresql.org/) |
 | **[prometheus](./prometheus/)** | The Prometheus monitoring system and time series database | [Website](https://prometheus.io/) |
 | **[registry](./registry/)** | Distribution implementation for storing and distributing of container images and artifacts | [GitHub](https://github.com/distribution/distribution) |
-| **[telegraf](./telegraf/)** | Agent for collecting, processing, aggregating, and writing metrics, logs, and other arbitrary data | [GitHub](https://github.com/influxdata/telegraf) |
 | **[traefik](./traefik/)** | The Cloud Native Application Proxy | [Website](https://traefik.io/) |
 | **[ubuntu](./ubuntu/)** | Custom Ubuntu containers images | [Website](https://ubuntu.com/) |
 | **[valkey](./valkey/)** | An open source, in-memory data store | [Website](https://valkey.io/) |
