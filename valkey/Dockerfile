@@ -3,7 +3,7 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="9.0.1"
+ARG VERSION="9.0.3"
 
 RUN apk add --no-cache automake autoconf build-base openssl-dev
 
@@ -23,7 +23,7 @@ RUN set -ex ; \
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
 
-ARG VERSION="9.0.0"
+ARG VERSION="9.0.3"
 
 RUN set -ex ; \
   addgroup -S -g 999 valkey ; \
