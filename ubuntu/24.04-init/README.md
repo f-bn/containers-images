@@ -10,6 +10,7 @@ In order to launch a Docker container with systemd as main process, a set of spe
 
 ```shell
 $ docker run [options] \
+  --tty \
   --env=container="docker" \ # optional as set in the image
   --stop-signal=SIGRTMIN+3 \ # optional as set in the image
   --cgroupns=host \
@@ -17,6 +18,5 @@ $ docker run [options] \
   --tmpfs=/run \
   --tmpfs=/run/lock \
   --tmpfs=/tmp \
-  --tmpfs=/var/lib/journal \
   ghcr.io/f-bn/ubuntu:24.04-init
 ```
