@@ -24,7 +24,7 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: falco-sidekick
-          version: 2.32.0
+          version: 2.33.0
           description: Connect Falco to your ecosystem
           license: Apache-2.0
           token: ${{ secrets.GITHUB_TOKEN }}

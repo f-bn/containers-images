@@ -2,7 +2,7 @@
 
 Custom Falco Sidekick image built from source.
 
-Built with Go 1.25.
+Built with Go 1.26.
 
 ## Falco Sidekick configuration
 
