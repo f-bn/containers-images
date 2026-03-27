@@ -3,8 +3,8 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION=12.2.0
-ARG REVISION=17949786146
+ARG VERSION=12.4.2
+ARG REVISION=23531306697
 
 WORKDIR /build
 
@@ -20,7 +20,7 @@ RUN set -ex ; \
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
 
-ARG VERSION=12.2.0
+ARG VERSION=12.4.2
 
 COPY --from=build --chown=0:0 --chmod=0755 \
   /build/bin /usr/share/grafana/bin

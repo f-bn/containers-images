@@ -9,5 +9,5 @@ This image come with a minimal Grafana configuration located in `/etc/grafana/gr
 You can also bring your own configuration by mounting the custom configuration file into the container (e.g using Docker):
 
 ```shell
-$ docker run [options] -v grafana.ini:/etc/grafana/grafana.ini:ro ghcr.io/f-bn/grafana:12.1.0
+$ docker run [options] -v grafana.ini:/etc/grafana/grafana.ini:ro ghcr.io/f-bn/grafana:12.4.2
 ```
