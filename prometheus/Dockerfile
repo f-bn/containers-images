@@ -13,7 +13,7 @@ WORKDIR /build
 RUN make assets
 
 # --- Build stage ---
-FROM docker.io/golang:1.25.8 AS build-binary
+FROM docker.io/golang:1.26.1 AS build-binary
 
 COPY --from=build-webui /build /build
 COPY plugins.yml /build/plugins.yml
