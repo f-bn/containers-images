@@ -20,7 +20,7 @@ jobs:
       security-events: write
     strategy:
       matrix:
-        version: ['26.04-init','25.10-init', '24.04-init']
+        version: ['26.04-init','24.04-init']
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.2.2
