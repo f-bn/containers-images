@@ -2,7 +2,7 @@
 
 Custom Prometheus Node Exporter image built from sources.
 
-Built with Go 1.24.
+Built with Go 1.26.
 
 ## Node Exporter configuration
 

@@ -24,7 +24,7 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: node-exporter
-          version: 1.10.2
+          version: 1.11.1
           description: Exporter for machine metrics
           license: Apache-2.0
           token: ${{ secrets.GITHUB_TOKEN }}
