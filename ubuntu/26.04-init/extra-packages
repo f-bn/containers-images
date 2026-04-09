@@ -24,7 +24,6 @@ nano
 netbase
 netcat-openbsd
 nftables
-nmap
 openssh-client
 openssh-server
 procps
@@ -33,7 +32,6 @@ rsync
 squashfuse
 socat
 sudo
-tcpdump
 traceroute
 tree
 tzdata
