@@ -25,6 +25,7 @@ libnss-mdns
 libnss-myhostname
 libvte-2.91-common
 lsof
+nano
 ncurses-base
 netbase
 netcat-openbsd
@@ -41,7 +42,6 @@ traceroute
 tree
 tzdata
 unzip
-vim-tiny
 xz-utils
 zip
 zsh

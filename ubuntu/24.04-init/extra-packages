@@ -20,6 +20,7 @@ less
 libnss-systemd
 libpam-systemd
 lsof
+nano
 netbase
 netcat-openbsd
 nftables
@@ -40,5 +41,4 @@ systemd
 systemd-sysv
 udev
 unzip
-vim-tiny
 xz-utils
