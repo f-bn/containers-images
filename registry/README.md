@@ -11,5 +11,5 @@ This image comes with a basic [configuration](./config.default.yml) for starting
 You can bring your own configuration to the container by mounting the custom configuration file into the container (e.g. using Docker):
 
 ```shell
-$ docker run [options] -v config.yaml:/etc/registry/config.yaml ghcr.io/f-bn/registry:3.0.0 [flags]
+$ docker run [options] -v config.yaml:/etc/registry/config.yaml ghcr.io/f-bn/registry:3.1.0 [flags]
 ```

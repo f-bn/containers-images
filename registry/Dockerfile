@@ -1,9 +1,9 @@
 # --- Build stage ---
-FROM docker.io/golang:1.25.2 AS build-binary
+FROM docker.io/golang:1.25.9 AS build-binary
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="3.0.0"
+ARG VERSION="3.1.0"
 
 ENV GOOS=${TARGETOS}
 ENV GOARCH=${TARGETARCH}
@@ -26,7 +26,7 @@ RUN set -ex ; \
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
 
-ARG VERSION="3.0.0"
+ARG VERSION="3.1.0"
 
 COPY --from=build-binary --chown=0:0 --chmod=0755 \
   /build/bin/registry /usr/bin/registry

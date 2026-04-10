@@ -24,7 +24,7 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: registry
-          version: 3.0.0
+          version: 3.1.0
           description: Distribution implementation for storing and distributing of container images and artifacts
           license: Apache-2.0
           token: ${{ secrets.GITHUB_TOKEN }}
