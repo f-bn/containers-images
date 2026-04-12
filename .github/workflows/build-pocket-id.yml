@@ -1,0 +1,29 @@
+---
+name: Build Pocket ID image
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'pocket-id/**'
+      - '!pocket-id/README.md'
+      - '.github/workflows/build-pocket-id.yml'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Build and push image
+        uses: ./.github/actions/build-image
+        with:
+          name: pocket-id
+          version: 2.5.0
+          description: A simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services
+          token: ${{ secrets.GITHUB_TOKEN }}
