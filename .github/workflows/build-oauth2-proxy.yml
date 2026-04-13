@@ -1,0 +1,29 @@
+---
+name: Build OAuth2 Proxy image
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'oauth2-proxy/**'
+      - '!oauth2-proxy/README.md'
+      - '.github/workflows/build-oauth2-proxy.yml'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Build and push image
+        uses: ./.github/actions/build-image
+        with:
+          name: oauth2-proxy
+          version: 7.15.1
+          description: A reverse proxy that provides authentication with Google, Azure, OpenID Connect and many more identity providers
+          token: ${{ secrets.GITHUB_TOKEN }}

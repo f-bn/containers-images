@@ -31,6 +31,7 @@ This repository contains custom-built OCI container images for various popular o
 | **[grafana](./grafana/)** | The open and composable observability and data visualization platform | [Website](https://grafana.com/) |
 | **[navidrome](./navidrome/)** | Modern Music Server and Streamer compatible with Subsonic/Airsonic | [Website](https://www.navidrome.org/) |
 | **[node-exporter](./node-exporter/)** | Exporter for machine metrics | [GitHub](https://github.com/prometheus/node_exporter) |
+| **[oauth2-proxy](./oauth2-proxy/)** | A reverse proxy that provides authentication with Google, Azure, OpenID Connect and many more identity providers | [GitHub](https://github.com/oauth2-proxy/oauth2-proxy) |
 | **[pgbouncer](./pgbouncer/)** | Lightweight connection pooler for PostgreSQL | [Website](https://www.pgbouncer.org/) |
 | **[pocket-id](./pocket-id/)** | A simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services | [GitHub](https://github.com/pocket-id/pocket-id) |
 | **[podman-exporter](./podman-exporter/)** | Prometheus exporter for Podman environments exposing containers, pods, images, volumes and networks information | [GitHub](https://github.com/containers/prometheus-podman-exporter) |
