@@ -1,0 +1,29 @@
+---
+name: Build Plik image
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'plik/**'
+      - '!plik/README.md'
+      - '.github/workflows/build-plik.yml'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Build and push image
+        uses: ./.github/actions/build-image
+        with:
+          name: plik
+          version: 1.4.2
+          description: Plik is a temporary file upload system (Wetransfer like) in Go
+          token: ${{ secrets.GITHUB_TOKEN }}
