@@ -24,6 +24,6 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: oauth2-proxy
-          version: 7.15.1
+          version: 7.15.2
           description: A reverse proxy that provides authentication with Google, Azure, OpenID Connect and many more identity providers
           token: ${{ secrets.GITHUB_TOKEN }}
