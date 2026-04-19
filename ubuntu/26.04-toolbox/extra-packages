@@ -36,7 +36,7 @@ procps
 psmisc
 rsync
 socat
-sudo
+sudo-rs
 tcpdump
 traceroute
 tree

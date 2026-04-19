@@ -31,7 +31,7 @@ psmisc
 rsync
 squashfuse
 socat
-sudo
+sudo-rs
 traceroute
 tree
 tzdata
