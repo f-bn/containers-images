@@ -1,5 +1,5 @@
 # --- Build stage ---
-FROM docker.io/node:24.14.1-bookworm-slim AS build-webui
+FROM docker.io/node:24.15.0 AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
@@ -16,7 +16,7 @@ RUN set -ex ; \
   yarn build
 
 # --- Build stage ---
-FROM docker.io/golang:1.25.8 AS build-binary
+FROM docker.io/golang:1.25.9 AS build-binary
 
 ARG TARGETOS
 ARG TARGETARCH
