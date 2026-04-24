@@ -14,7 +14,7 @@ ADD https://dl.grafana.com/grafana/release/${VERSION}/grafana_${VERSION}_${REVIS
   /build/grafana.tar.gz.sha256
 
 RUN set -ex ; \
-  echo "$(cat grafana.tar.gz.sha256) grafana.tar.gz" | sha256sum -c ; \
+  echo "$(awk '{print $1;}' grafana.tar.gz.sha256) grafana.tar.gz" | sha256sum -c ; \
   tar -xvzf /build/grafana.tar.gz --strip-components=1
 
 # --- Final stage ---
