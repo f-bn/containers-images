@@ -2,7 +2,7 @@
 
 Custom Alertmanager image built from sources.
 
-Built with Go 1.25.
+Built with Go 1.26.
 
 ## Alertmanager configuration
 

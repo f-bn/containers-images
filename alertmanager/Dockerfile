@@ -1,9 +1,9 @@
 # --- Build stage ---
-FROM docker.io/golang:1.25.8 AS build
+FROM docker.io/golang:1.26.2 AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="0.31.1"
+ARG VERSION="0.32.0"
 
 ADD --keep-git-dir \
   https://github.com/prometheus/alertmanager.git#v${VERSION} /build
