@@ -1,5 +1,5 @@
 # --- Build stage ---
-FROM docker.io/node:24.14.1-bookworm-slim AS build-webui
+FROM docker.io/node:24.15.0 AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH

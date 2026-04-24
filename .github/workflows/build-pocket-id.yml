@@ -24,6 +24,6 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: pocket-id
-          version: 2.5.0
+          version: 2.6.2
           description: A simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services
           token: ${{ secrets.GITHUB_TOKEN }}
