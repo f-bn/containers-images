@@ -1,5 +1,5 @@
 # --- Build stage ---
-FROM docker.io/node:24.14.1 AS build-webui
+FROM docker.io/node:24.15.0 AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
@@ -13,7 +13,7 @@ WORKDIR /build
 RUN make assets
 
 # --- Build stage ---
-FROM docker.io/golang:1.26.1 AS build-binary
+FROM docker.io/golang:1.26.2 AS build-binary
 
 COPY --from=build-webui /build /build
 COPY plugins.yml /build/plugins.yml
