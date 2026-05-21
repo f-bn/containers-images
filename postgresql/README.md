@@ -15,10 +15,11 @@ This image embeds the following additional extensions:
   - [pg_repack](https://github.com/reorg/pg_repack)
   - [pg_partman](https://github.com/pgpartman/pg_partman)
   - [pgvector](https://github.com/pgvector/pgvector)
+  - [pg_stat_monitor](https://github.com/percona/pg_stat_monitor)
   - [pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) - **loaded by default**
   - [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) - **loaded by default but not enabled**
 
-The default versions used for those extensions can be found in the [Dockerfile](./Dockerfile#L55-58).
+The default versions used for those extensions can be found in the [Dockerfile](./Dockerfile#L73).
 
 ### Included tools
 

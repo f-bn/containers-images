@@ -118,6 +118,18 @@ RUN set -ex ; \
   make DESTDIR="${PWD}/dist" install
 
 # --- Build stage ---
+FROM base-dev AS build-pgstatmonitor
+
+ARG PG_STAT_MONITOR_VERSION="2.3.2"
+
+ADD https://github.com/percona/pg_stat_monitor.git#${PG_STAT_MONITOR_VERSION} /build
+
+WORKDIR /build
+RUN set -ex ; \
+  make USE_PGXS=1 -j"$(nproc)" ; \
+  make USE_PGXS=1 DESTDIR="${PWD}/dist" install
+
+# --- Build stage ---
 FROM base-dev AS build-pgbackrest
 
 ARG PGBACKREST_VERSION="2.58.0"
@@ -155,6 +167,7 @@ COPY --from=build-pgcron    /build/dist/ /
 COPY --from=build-pgrepack  /build/dist/ /
 COPY --from=build-pgpartman /build/dist/ /
 COPY --from=build-pgvector  /build/dist/ /
+COPY --from=build-pgstatmonitor /build/dist/ /
 
 # pgBackRest
 COPY --from=build-pgbackrest /build/dist/src/pgbackrest /usr/bin/pgbackrest
