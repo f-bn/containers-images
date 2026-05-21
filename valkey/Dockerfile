@@ -3,19 +3,20 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="9.0.3"
+ARG VERSION="9.1.0"
 
-RUN apk add --no-cache automake autoconf build-base openssl-dev
+RUN apk add --no-cache automake autoconf build-base git openssl-dev
 
 WORKDIR /build
 
-ADD https://github.com/valkey-io/valkey.git#${VERSION} /build
+ADD --keep-git-dir \
+  https://github.com/valkey-io/valkey.git#${VERSION} /build
+
+# Disable protected mode by default
+# https://github.com/valkey-io/valkey-container/blob/mainline/9.1/debian/Dockerfile#L37
+RUN sed -ri 's!^( *createBoolConfig[(]"protected-mode",.*, *)1( *,.*[)],)$!\10\2!' src/config.c
 
 RUN set -ex ; \
-  # Disable protected mode by default
-  # https://github.com/valkey-io/valkey-container/blob/mainline/7.2/alpine/Dockerfile#L80
-  sed -ri 's!^( *createBoolConfig[(]"protected-mode",.*, *)1( *,.*[)],)$!\10\2!' src/config.c ; \
-  # Build
   make BUILD_TLS=yes -j "$(nproc)" all ; \
   make INSTALL_BIN=/build/dist install ; \
   strip /build/dist/valkey-*
@@ -23,7 +24,7 @@ RUN set -ex ; \
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
 
-ARG VERSION="9.0.3"
+ARG VERSION="9.1.0"
 
 RUN set -ex ; \
   addgroup -S -g 999 valkey ; \
