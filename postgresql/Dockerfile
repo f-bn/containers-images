@@ -1,7 +1,7 @@
 # --- Build stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest AS build-server
 
-ARG VERSION="18.3"
+ARG VERSION="18.4"
 
 ADD https://ftp.postgresql.org/pub/source/v${VERSION}/postgresql-${VERSION}.tar.gz /build/postgresql-${VERSION}.tar.gz
 ADD https://ftp.postgresql.org/pub/source/v${VERSION}/postgresql-${VERSION}.tar.gz.sha256 /build/postgresql-${VERSION}.tar.gz.sha256
@@ -51,21 +51,13 @@ RUN set -ex ; \
   make DESTDIR="$PWD/dist" -C contrib install
 
 # --- Build stage ---
-FROM cgr.dev/chainguard/wolfi-base:latest AS build-extensions
-
-ARG PG_CRON_VERSION="1.6.7"
-ARG PG_REPACK_VERSION="1.5.3"
-ARG PG_PARTMAN_VERSION="5.4.3"
-ARG PG_VECTOR_VERSION="0.8.2"
-
-ADD https://github.com/citusdata/pg_cron.git#v${PG_CRON_VERSION} /build/pg_cron
-ADD https://github.com/reorg/pg_repack.git#ver_${PG_REPACK_VERSION} /build/pg_repack
-ADD https://github.com/pgpartman/pg_partman.git#v${PG_PARTMAN_VERSION} /build/pg_partman
-ADD https://github.com/pgvector/pgvector.git#v${PG_VECTOR_VERSION} /build/pgvector
+FROM cgr.dev/chainguard/wolfi-base:latest AS base-dev
 
 COPY --from=build-server /build/dist/usr/bin/               /usr/bin/
 COPY --from=build-server /build/dist/usr/lib/postgresql     /usr/lib/postgresql
 COPY --from=build-server /build/dist/usr/include/postgresql /usr/include/postgresql
+
+ENV PKG_CONFIG_PATH="/usr/lib/postgresql/pkgconfig"
 
 RUN --mount=type=cache,target=/etc/apk/cache \
   apk add \
@@ -77,55 +69,71 @@ RUN --mount=type=cache,target=/etc/apk/cache \
     zlib-dev \
     zstd-dev
 
-WORKDIR /build/pg_cron
-RUN set -ex ; \
-  make -j"$(nproc)" ; \
-  make DESTDIR="${PWD}/dist" install
+# --- Build stage ---
+FROM base-dev AS build-pgcron
 
-WORKDIR /build/pg_repack
-RUN set -ex ; \
-  make -j"$(nproc)" ; \
-  make DESTDIR="${PWD}/dist" install
+ARG PG_CRON_VERSION="1.6.7"
 
-WORKDIR /build/pg_partman
-RUN set -ex ; \
-  make -j"$(nproc)" ; \
-  make DESTDIR="${PWD}/dist" install
+ADD https://github.com/citusdata/pg_cron.git#v${PG_CRON_VERSION} /build
 
-WORKDIR /build/pgvector
+WORKDIR /build
 RUN set -ex ; \
   make -j"$(nproc)" ; \
   make DESTDIR="${PWD}/dist" install
 
 # --- Build stage ---
-FROM cgr.dev/chainguard/wolfi-base:latest AS build-pgbackrest
+FROM base-dev AS build-pgrepack
+
+ARG PG_REPACK_VERSION="1.5.3"
+
+ADD https://github.com/reorg/pg_repack.git#ver_${PG_REPACK_VERSION} /build
+
+WORKDIR /build
+RUN set -ex ; \
+  make -j"$(nproc)" ; \
+  make DESTDIR="${PWD}/dist" install
+
+# --- Build stage ---
+FROM base-dev AS build-pgpartman
+
+ARG PG_PARTMAN_VERSION="5.4.3"
+
+ADD https://github.com/pgpartman/pg_partman.git#v${PG_PARTMAN_VERSION} /build
+
+WORKDIR /build
+RUN set -ex ; \
+  make -j"$(nproc)" ; \
+  make DESTDIR="${PWD}/dist" install
+
+# --- Build stage ---
+FROM base-dev AS build-pgvector
+
+ARG PG_VECTOR_VERSION="0.8.2"
+
+ADD https://github.com/pgvector/pgvector.git#v${PG_VECTOR_VERSION} /build
+
+WORKDIR /build
+RUN set -ex ; \
+  make -j"$(nproc)" ; \
+  make DESTDIR="${PWD}/dist" install
+
+# --- Build stage ---
+FROM base-dev AS build-pgbackrest
 
 ARG PGBACKREST_VERSION="2.58.0"
 
 ADD https://github.com/pgbackrest/pgbackrest.git#release/${PGBACKREST_VERSION} /build
 
-COPY --from=build-server /build/dist/usr/bin/               /usr/bin/
-COPY --from=build-server /build/dist/usr/lib/postgresql     /usr/lib/postgresql
-COPY --from=build-server /build/dist/usr/include/postgresql /usr/include/postgresql
-
-ENV PKG_CONFIG_PATH="/usr/lib/postgresql/pkgconfig" 
-
-WORKDIR /build
-
 RUN --mount=type=cache,target=/etc/apk/cache \
   apk add \
-    build-base \
     bzip2-dev \
     libssh2-dev \
     libxml2-dev \
-    lz4-dev \
     meson \
     ninja-build \
-    openssl-dev \
-    yaml-dev \
-    zlib-dev \
-    zstd-dev
+    yaml-dev
 
+WORKDIR /build
 RUN set -ex ; \
   meson setup "${PWD}/dist" "${PWD}" ; \
   ninja -C "${PWD}/dist"
@@ -133,7 +141,7 @@ RUN set -ex ; \
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
 
-ARG VERSION="18.3"
+ARG VERSION="18.4"
 
 # Compatibility environment variables
 ENV PG_MAJOR="${VERSION%%.*}" 
@@ -143,10 +151,10 @@ ENV PGDATA="/var/lib/postgresql/${PG_MAJOR}/data"
 COPY --from=build-server /build/dist/ /
 
 # Extensions
-COPY --from=build-extensions /build/pg_cron/dist/ /
-COPY --from=build-extensions /build/pg_repack/dist/ /
-COPY --from=build-extensions /build/pg_partman/dist/ /
-COPY --from=build-extensions /build/pgvector/dist/ /
+COPY --from=build-pgcron    /build/dist/ /
+COPY --from=build-pgrepack  /build/dist/ /
+COPY --from=build-pgpartman /build/dist/ /
+COPY --from=build-pgvector  /build/dist/ /
 
 # pgBackRest
 COPY --from=build-pgbackrest /build/dist/src/pgbackrest /usr/bin/pgbackrest
