@@ -3,7 +3,7 @@ FROM docker.io/node:24.15.0 AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="0.32.0"
+ARG VERSION="0.32.1"
 
 ADD --keep-git-dir \
   https://github.com/prometheus/alertmanager.git#v${VERSION} /build
@@ -13,7 +13,7 @@ WORKDIR /build
 RUN make ui-elm
 
 # --- Build stage ---
-FROM docker.io/golang:1.26.2 AS build
+FROM docker.io/golang:1.26.3 AS build
 
 COPY --from=build-webui /build /build
 
