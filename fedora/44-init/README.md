@@ -10,11 +10,12 @@ In order to launch a Docker container with systemd as main process, a set of spe
 
 ```shell
 $ docker run [options] \
+  --detach \
   --tty \
-  --env=container="docker" \ # optional as set in the image
+  --env=container="docker"\  # optional as set in the image
   --stop-signal=SIGRTMIN+3 \ # optional as set in the image
-  --cgroupns=host \
-  --volume=/sys/fs/cgroup:/sys/fs/cgroup:rw \
+  --cgroupns=private \
+  --security-opt=writable-cgroups=true \
   --tmpfs=/run \
   --tmpfs=/run/lock \
   --tmpfs=/tmp \
