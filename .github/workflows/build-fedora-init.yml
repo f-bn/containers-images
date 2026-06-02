@@ -1,0 +1,42 @@
+---
+name: Build Fedora system images
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'fedora/*-init/**'
+      - '!fedora/**/README.md'
+      - '.github/workflows/build-fedora-init.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '35 4 * * 6' # Every Saturday at 04:35am
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+    strategy:
+      matrix:
+        version: ['44-toolbox']
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Extract Fedora release version
+        id: version
+        shell: bash
+        run: echo "release=${VERSION%-toolbox}" >> $GITHUB_OUTPUT
+        env:
+          VERSION: ${{ matrix.version }}
+
+      - name: Build and push image
+        uses: ./.github/actions/build-image
+        with:
+          name: fedora
+          version: ${{ matrix.version }}
+          description: Custom Fedora ${{ steps.version.outputs.release }} system container image
+          build-context: ./fedora/${{ matrix.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
