@@ -19,14 +19,14 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.2.2
-      
+
       - name: Build and push image
         uses: ./.github/actions/build-image
         with:
           name: grafana
-          version: 13.0.1
+          version: 13.0.2
           build-extra-args: |
-            REVISION=24542347077
+            REVISION=26816849631
           description: The open and composable observability and data visualization platform
           license: AGPL-3.0-or-later
           token: ${{ secrets.GITHUB_TOKEN }}
