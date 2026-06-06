@@ -1,9 +1,9 @@
 # --- Build stage ---
-FROM docker.io/node:24.15.0 AS build-webui
+FROM docker.io/node:24.16.0 AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="3.7.0"
+ARG VERSION="3.7.4"
 
 ADD https://github.com/traefik/traefik.git#v${VERSION} /build
 
@@ -16,11 +16,11 @@ RUN set -ex ; \
   yarn build
 
 # --- Build stage ---
-FROM docker.io/golang:1.25.10 AS build-binary
+FROM docker.io/golang:1.25.11 AS build-binary
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="3.7.0"
+ARG VERSION="3.7.4"
 ARG CODENAME="langres"
 
 ENV GOOS=${TARGETOS}
