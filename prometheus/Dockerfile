@@ -1,19 +1,19 @@
 # --- Build stage ---
-FROM docker.io/node:24.15.0 AS build-webui
+FROM docker.io/node:24.16.0 AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="3.11.3"
+ARG VERSION="3.12.0"
 
 ADD --keep-git-dir \
-  https://github.com/prometheus/prometheus.git#v${VERSION} /build  
+  https://github.com/prometheus/prometheus.git#v${VERSION} /build
 
 WORKDIR /build
 
 RUN make assets
 
 # --- Build stage ---
-FROM docker.io/golang:1.26.3 AS build-binary
+FROM docker.io/golang:1.26.4 AS build-binary
 
 COPY --from=build-webui /build /build
 COPY plugins.yml /build/plugins.yml
@@ -21,7 +21,7 @@ COPY promu.yml /build/.promu.yml
 
 WORKDIR /build
 
-RUN set -ex ; \ 
+RUN set -ex ; \
   go generate -tags plugins ./plugins ; \
   SKIP_UI_BUILD=true make build
 
