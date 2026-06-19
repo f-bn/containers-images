@@ -1,5 +1,5 @@
 # --- Build stage ---
-FROM docker.io/golang:1.26.2 AS build
+FROM docker.io/golang:1.26.4 AS build
 
 ARG TARGETOS
 ARG TARGETARCH
@@ -18,7 +18,7 @@ RUN set -ex ; \
   mkdir -p /build/dist ; \
   go build -ldflags="-s -w \
       -X github.com/oauth2-proxy/oauth2-proxy/v7/pkg/version.VERSION=${VERSION}" \
-    -installsuffix cgo -o "./dist/oauth2-proxy" 
+    -installsuffix cgo -o "./dist/oauth2-proxy"
 
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
