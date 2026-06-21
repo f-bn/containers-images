@@ -50,9 +50,11 @@ This image contains a custom PostgreSQL build that differs from the official Doc
   - ❌ **SQL/XML** support
   - ❌ **XSL** transformations
   - ❌ **Non-native PL extensions** (PL/Tcl, PL/Python, PL/Perl)
-  - ❌ **io_uring** support for async I/O methods\* (from PostgreSQL ≥18)
+  - ❌ **io_uring** support for async I/O methods (from PostgreSQL ≥18, see note below)
 
-\* `io_uring` related syscalls are disabled in the default `seccomp` policy of container runtimes such as [Docker](https://github.com/moby/profiles/commit/0e2acd4ddea76ecd4090b04ebe6c53bacad74c50) or [Podman](https://github.com/containers/podman/issues/16796) for security reasons. Therefore, this feature is unavailable in containerized PostgreSQL deployments even if the kernel supports it (and disabling container `seccomp` confinement is not a valid solution 😉).
+> [!WARNING]
+> `io_uring` related syscalls are disabled in the default `seccomp` policy of container runtimes such as [Docker](https://github.com/moby/profiles/commit/0e2acd4ddea76ecd4090b04ebe6c53bacad74c50) or [Podman](https://github.com/containers/podman/issues/16796) for security reasons.
+> Therefore, this feature is unavailable in containerized PostgreSQL deployments even if the kernel supports it (and disabling container `seccomp` confinement is not a valid solution 😉).
 
 ## 🛠️ PostgreSQL configuration
 
