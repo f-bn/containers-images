@@ -34,6 +34,7 @@ jobs:
         with:
           name: postgresql
           version: ${{ matrix.version }}
+          revision: 1
           description: Custom PostgreSQL ${{ steps.version.outputs.release }} image built from sources with additional extensions and tools
           license: PostgreSQL
           token: ${{ secrets.GITHUB_TOKEN }}

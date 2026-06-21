@@ -11,15 +11,20 @@ A custom PostgreSQL image built from sources with additional extensions and tool
 ### Included extensions
 
 This image embeds the following additional extensions:
-  - [pg_cron](https://github.com/citusdata/pg_cron)
-  - [pg_repack](https://github.com/reorg/pg_repack)
-  - [pg_partman](https://github.com/pgpartman/pg_partman)
-  - [pgvector](https://github.com/pgvector/pgvector)
-  - [pg_stat_monitor](https://github.com/percona/pg_stat_monitor)
-  - [pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) - **loaded by default**
-  - [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) - **loaded by default but not enabled**
 
-The default versions used for those extensions can be found in the [Dockerfile](./Dockerfile#L73).
+| Name | Version | Loaded by default |
+|------|---------|-------------------|
+| [pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) | (bundled with PostgreSQL) | ✅ |
+| [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) | (bundled with PostgreSQL) | ✅ |
+| [pg_cron](https://github.com/citusdata/pg_cron) | 1.6.7 | ❌ |
+| [pg_repack](https://github.com/reorg/pg_repack) | 1.5.3 | ❌ |
+| [pg_partman](https://github.com/pgpartman/pg_partman) | 5.4.3 | ❌ |
+| [pgvector](https://github.com/pgvector/pgvector) | 0.8.2 | ❌ |
+| [pg_stat_monitor](https://github.com/percona/pg_stat_monitor) | 2.3.2 | ❌ |
+| [pg_duckdb](https://github.com/duckdb/pg_duckdb) | 1.1.1 | ❌ |
+
+> [!NOTE]
+> The versions listed above are the defaults baked into the image. They are defined as build arguments in the [Dockerfile](./Dockerfile) and can be overridden at build time.
 
 ### Included tools
 
