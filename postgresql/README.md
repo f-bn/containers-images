@@ -60,6 +60,8 @@ This image contains a custom PostgreSQL build that differs from the official Doc
 
 This image uses the same entrypoint script as the official Docker Hub image, so it inherits the available configuration parameters (such as environment variables and initialization scripts).
 
+### Configuration overrides
+
 At build time, a drop-in folder is created at `/etc/postgresql/config.d` for PostgreSQL configuration overrides. This allows you to add partial configuration chunks without rewriting the entire `postgresql.conf` file if you want to adjust specific parameters.
 
 First, create your configuration override:
@@ -85,5 +87,36 @@ $ su - postgres -c "psql -c 'SHOW shared_buffers'"
 ----------------
  2GB
 ```
+
+### Loading extensions
+
+Some of the included extensions require libraries to be loaded at server start. This can be done by editing the `shared_preload_libraries` entry in a configuration override as described [above](#configuration-overrides):
+
+```ini
+shared_preload_libraries = 'pg_stat_statements,pg_prewarm,pg_cron,pg_duckdb,pgvector'
+```
+
+> [!TIP]
+> Extensions already loaded by default (`pg_stat_statements`, `pg_prewarm`) can be omitted from `shared_preload_libraries` if they are not needed.
+
+Extensions can also be configured directly via this override configuration file if needed:
+
+```ini
+cron.database_name = 'postgres'
+cron.use_background_workers = on
+pg_stat_statements.track = all
+```
+
+Regardless of whether an extension is preloaded, you need to run `CREATE EXTENSION` where you intend to use it:
+
+```sql
+CREATE EXTENSION pg_stat_statements;
+CREATE EXTENSION pg_cron;
+CREATE EXTENSION pg_duckdb;
+CREATE EXTENSION pgvector;
+```
+
+> [!NOTE]
+> Some extensions are enabled globally and affect the entire PostgreSQL cluster (e.g. `pg_cron` or `pg_duckdb`), while others must be enabled in each database where you intend to use them (e.g. `pg_stat_statements`). Check each extension's documentation for more information.
 
 More information about PostgreSQL configuration [here](https://www.postgresql.org/docs/current/runtime-config.html).
