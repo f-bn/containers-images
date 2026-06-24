@@ -61,6 +61,7 @@ ENV PKG_CONFIG_PATH="/usr/lib/postgresql/pkgconfig"
 
 RUN --mount=type=cache,target=/etc/apk/cache \
   apk add \
+    bash \
     build-base \
     clang-21 \
     cmake \
@@ -132,6 +133,21 @@ RUN set -ex ; \
   make USE_PGXS=1 DESTDIR="${PWD}/dist" install
 
 # --- Build stage ---
+FROM base-dev AS build-timescaledb
+
+ARG TIMESCALEDB_VERSION="2.28.1"
+
+ADD https://github.com/timescale/timescaledb.git#${TIMESCALEDB_VERSION} /build
+
+WORKDIR /build
+RUN BUILD_DIR="/build/tsbuild" ./bootstrap
+
+WORKDIR /build/tsbuild
+RUN set -ex ; \
+  make -j"$(nproc)" ; \
+  make DESTDIR="/build/dist" install
+
+# --- Build stage ---
 FROM base-dev AS build-pgbackrest
 
 ARG PGBACKREST_VERSION="2.58.0"
@@ -169,6 +185,7 @@ COPY --from=build-pgrepack  /build/dist/ /
 COPY --from=build-pgpartman /build/dist/ /
 COPY --from=build-pgvector  /build/dist/ /
 COPY --from=build-pgstatmonitor /build/dist/ /
+COPY --from=build-timescaledb /build/dist/ /
 
 # pgBackRest
 COPY --from=build-pgbackrest /build/dist/src/pgbackrest /usr/bin/pgbackrest
