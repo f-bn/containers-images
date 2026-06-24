@@ -187,7 +187,7 @@ COPY --from=build-pgvector  /build/dist/ /
 COPY --from=build-pgstatmonitor /build/dist/ /
 COPY --from=build-timescaledb /build/dist/ /
 
-# pgBackRest
+# Additional tools
 COPY --from=build-pgbackrest /build/dist/src/pgbackrest /usr/bin/pgbackrest
 
 RUN set -ex ; \
@@ -195,11 +195,11 @@ RUN set -ex ; \
   adduser -S -D -s /bin/sh -h /var/lib/postgresql -u 999 -G postgres postgres
 
 RUN set -ex ; \
-  mkdir -p /etc/postgresql/config.d /var/lib/postgresql/backups ${PGDATA} ; \
-  chown -R postgres:postgres /var/lib/postgresql ; \
-  chmod -R 700 /var/lib/postgresql
+  install -d -o postgres -g postgres -m 0755 /etc/postgresql/config.d ; \
+  install -d -o postgres -g postgres -m 0700 ${PGDATA} /var/lib/postgresql/backups
 
-COPY postgresql.default.conf /etc/postgresql/postgresql.conf
+COPY --chown=postgres:postgres \
+  postgresql.default.conf /etc/postgresql/postgresql.conf
 
 RUN --mount=type=cache,target=/etc/apk/cache \
   apk add \
