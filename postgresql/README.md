@@ -48,7 +48,6 @@ This image includes the following PostgreSQL extensions and additional tools:
 | [pg_partman](https://github.com/pgpartman/pg_partman) | 5.4.3 | Partition management extension for PostgreSQL |
 | [pgvector](https://github.com/pgvector/pgvector) | 0.8.2 | Open-source vector similarity search for Postgres |
 | [pg_stat_monitor](https://github.com/percona/pg_stat_monitor) | 2.3.2 | Query Performance Monitoring Tool for PostgreSQL |
-| [pg_duckdb](https://github.com/duckdb/pg_duckdb) | 1.1.1 | DuckDB-powered Postgres for high performance apps & analytics |
 
 #### Additional tools
 
@@ -98,7 +97,7 @@ More information about PostgreSQL configuration [here](https://www.postgresql.or
 Some of the included extensions require libraries to be loaded at server start. This can be done by editing the `shared_preload_libraries` entry in a configuration override as described [above](#configuration-overrides):
 
 ```ini
-shared_preload_libraries = 'pg_stat_statements,pg_prewarm,pg_cron,pg_duckdb,pgvector'
+shared_preload_libraries = 'pg_stat_statements,pg_prewarm,pg_cron,pgvector'
 ```
 
 > [!TIP]
@@ -117,9 +116,8 @@ Regardless of whether an extension is preloaded, you need to run `CREATE EXTENSI
 ```sql
 CREATE EXTENSION pg_stat_statements;
 CREATE EXTENSION pg_cron;
-CREATE EXTENSION pg_duckdb;
 CREATE EXTENSION pgvector;
 ```
 
 > [!NOTE]
-> Some extensions are enabled globally and affect the entire PostgreSQL cluster (e.g. `pg_cron` or `pg_duckdb`), while others must be enabled in each database where you intend to use them (e.g. `pg_stat_statements`). Check each extension's documentation for more information.
+> Some extensions are enabled globally and affect the entire PostgreSQL cluster (e.g. `pg_cron`), while others must be enabled in each database where you intend to use them (e.g. `pg_stat_statements`). Check each extension's documentation for more information.

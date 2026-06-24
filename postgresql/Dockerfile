@@ -64,13 +64,10 @@ RUN --mount=type=cache,target=/etc/apk/cache \
     build-base \
     clang-21 \
     cmake \
-    curl-dev \
-    git \
     icu-dev \
     lz4-dev \
     ninja \
     openssl-dev \
-    python-3.14 \
     zlib-dev \
     zstd-dev
 
@@ -135,19 +132,6 @@ RUN set -ex ; \
   make USE_PGXS=1 DESTDIR="${PWD}/dist" install
 
 # --- Build stage ---
-FROM base-dev AS build-pgduckdb
-
-ARG PG_DUCKDB_VERSION="1.1.1"
-
-ADD --keep-git-dir \
-  https://github.com/duckdb/pg_duckdb.git#v${PG_DUCKDB_VERSION} /build
-
-WORKDIR /build
-RUN set -ex ; \
-  make -j"$(nproc)" ; \
-  make DESTDIR="${PWD}/dist" install
-
-# --- Build stage ---
 FROM base-dev AS build-pgbackrest
 
 ARG PGBACKREST_VERSION="2.58.0"
@@ -185,7 +169,6 @@ COPY --from=build-pgrepack  /build/dist/ /
 COPY --from=build-pgpartman /build/dist/ /
 COPY --from=build-pgvector  /build/dist/ /
 COPY --from=build-pgstatmonitor /build/dist/ /
-COPY --from=build-pgduckdb /build/dist/ /
 
 # pgBackRest
 COPY --from=build-pgbackrest /build/dist/src/pgbackrest /usr/bin/pgbackrest
