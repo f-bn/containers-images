@@ -189,7 +189,6 @@ RUN --mount=type=cache,target=/etc/apk/cache \
     glibc-locale-en \
     gosu \
     icu \
-    libcurl4 \
     libedit \
     liblz4-1 \
     libbz2-1 \
