@@ -8,29 +8,6 @@ A custom PostgreSQL image built from sources with additional extensions and tool
 - PostgreSQL 17.x
 - PostgreSQL 16.x
 
-### Included extensions
-
-This image embeds the following additional extensions:
-
-| Name | Version | Loaded by default |
-|------|---------|-------------------|
-| [pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) | (bundled with PostgreSQL) | ✅ |
-| [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) | (bundled with PostgreSQL) | ✅ |
-| [pg_cron](https://github.com/citusdata/pg_cron) | 1.6.7 | ❌ |
-| [pg_repack](https://github.com/reorg/pg_repack) | 1.5.3 | ❌ |
-| [pg_partman](https://github.com/pgpartman/pg_partman) | 5.4.3 | ❌ |
-| [pgvector](https://github.com/pgvector/pgvector) | 0.8.2 | ❌ |
-| [pg_stat_monitor](https://github.com/percona/pg_stat_monitor) | 2.3.2 | ❌ |
-| [pg_duckdb](https://github.com/duckdb/pg_duckdb) | 1.1.1 | ❌ |
-
-> [!NOTE]
-> The versions listed above are the defaults baked into the image. They are defined as build arguments in the [Dockerfile](./Dockerfile) and can be overridden at build time.
-
-### Included tools
-
-This image includes the following additional tools:
-  - [pgBackRest](https://pgbackrest.org/) - PostgreSQL backup and restore solution
-
 ### PostgreSQL features support
 
 This image contains a custom PostgreSQL build that differs from the official Docker Hub image since it's not based on upstream packages. Therefore, some features may not be available:
@@ -56,7 +33,33 @@ This image contains a custom PostgreSQL build that differs from the official Doc
 > `io_uring` related syscalls are disabled in the default `seccomp` policy of container runtimes such as [Docker](https://github.com/moby/profiles/commit/0e2acd4ddea76ecd4090b04ebe6c53bacad74c50) or [Podman](https://github.com/containers/podman/issues/16796) for security reasons.
 > Therefore, this feature is unavailable in containerized PostgreSQL deployments even if the kernel supports it (and disabling container `seccomp` confinement is not a valid solution 😉).
 
-## 🛠️ PostgreSQL configuration
+### Included extensions and tools
+
+This image includes the following PostgreSQL extensions and additional tools:
+
+#### Extensions
+
+| Name | Version | Description |
+|------|---------|-------------|
+| [pg_stat_statements](https://www.postgresql.org/docs/current/pgstatstatements.html) | (bundled with PostgreSQL) | SQL statement execution statistics |
+| [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) | (bundled with PostgreSQL) | Preload relation data into the PostgreSQL buffer cache |
+| [pg_cron](https://github.com/citusdata/pg_cron) | 1.6.7 | Run periodic jobs in PostgreSQL |
+| [pg_repack](https://github.com/reorg/pg_repack) | 1.5.3 | Reorganize tables in PostgreSQL databases with minimal locks |
+| [pg_partman](https://github.com/pgpartman/pg_partman) | 5.4.3 | Partition management extension for PostgreSQL |
+| [pgvector](https://github.com/pgvector/pgvector) | 0.8.2 | Open-source vector similarity search for Postgres |
+| [pg_stat_monitor](https://github.com/percona/pg_stat_monitor) | 2.3.2 | Query Performance Monitoring Tool for PostgreSQL |
+| [pg_duckdb](https://github.com/duckdb/pg_duckdb) | 1.1.1 | DuckDB-powered Postgres for high performance apps & analytics |
+
+#### Additional tools
+
+| Name | Version | Description |
+|------|---------|-------------|
+| [pgBackRest](https://pgbackrest.org/) | 2.58.0 | PostgreSQL backup and restore solution
+
+> [!NOTE]
+> The versions listed above are the defaults baked into the image. They are defined as build arguments in the [Dockerfile](./Dockerfile) and can be overridden at build time.
+
+## 🐘PostgreSQL configuration
 
 This image uses the same entrypoint script as the official Docker Hub image, so it inherits the available configuration parameters (such as environment variables and initialization scripts).
 
@@ -88,6 +91,8 @@ $ su - postgres -c "psql -c 'SHOW shared_buffers'"
  2GB
 ```
 
+More information about PostgreSQL configuration [here](https://www.postgresql.org/docs/current/runtime-config.html).
+
 ### Loading extensions
 
 Some of the included extensions require libraries to be loaded at server start. This can be done by editing the `shared_preload_libraries` entry in a configuration override as described [above](#configuration-overrides):
@@ -118,5 +123,3 @@ CREATE EXTENSION pgvector;
 
 > [!NOTE]
 > Some extensions are enabled globally and affect the entire PostgreSQL cluster (e.g. `pg_cron` or `pg_duckdb`), while others must be enabled in each database where you intend to use them (e.g. `pg_stat_statements`). Check each extension's documentation for more information.
-
-More information about PostgreSQL configuration [here](https://www.postgresql.org/docs/current/runtime-config.html).
