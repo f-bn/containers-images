@@ -54,7 +54,7 @@ RUN set -ex ; \
 # --- Build stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest AS base-dev
 
-COPY --from=build-server /build/dist/usr/bin/               /usr/bin/
+COPY --from=build-server /build/dist/usr/bin/pg_config      /usr/bin/pg_config
 COPY --from=build-server /build/dist/usr/lib/postgresql     /usr/lib/postgresql
 COPY --from=build-server /build/dist/usr/include/postgresql /usr/include/postgresql
 
