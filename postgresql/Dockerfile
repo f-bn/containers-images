@@ -97,6 +97,18 @@ RUN set -ex ; \
   make DESTDIR="${PWD}/dist" install
 
 # --- Build stage ---
+FROM base-dev AS build-pgsqueeze
+
+ARG PG_SQUEEZE_VERSION="1.9.3"
+
+ADD https://github.com/cybertec-postgresql/pg_squeeze.git#REL${PG_SQUEEZE_VERSION//./_} /build
+
+WORKDIR /build
+RUN set -ex ; \
+  make -j"$(nproc)" ; \
+  make DESTDIR="${PWD}/dist" install
+
+# --- Build stage ---
 FROM base-dev AS build-pgpartman
 
 ARG PG_PARTMAN_VERSION="5.4.3"
@@ -182,6 +194,7 @@ COPY --from=build-server /build/dist/ /
 # Extensions
 COPY --from=build-pgcron    /build/dist/ /
 COPY --from=build-pgrepack  /build/dist/ /
+COPY --from=build-pgsqueeze /build/dist/ /
 COPY --from=build-pgpartman /build/dist/ /
 COPY --from=build-pgvector  /build/dist/ /
 COPY --from=build-pgstatmonitor /build/dist/ /
