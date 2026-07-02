@@ -44,6 +44,7 @@ RUN set -ex ; \
     --prefix=/usr \
     --bindir=/usr/bin \
     --libdir=/usr/lib/postgresql \
+    --sysconfdir=/etc \
     --includedir=/usr/include/postgresql \
     --datarootdir=/usr/share/postgresql ; \
   make -j"$(nproc)" ; \
