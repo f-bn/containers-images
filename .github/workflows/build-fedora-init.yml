@@ -20,7 +20,7 @@ jobs:
       security-events: write
     strategy:
       matrix:
-        version: ['44-toolbox']
+        version: ['44-init']
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4.2.2
@@ -28,7 +28,7 @@ jobs:
       - name: Extract Fedora release version
         id: version
         shell: bash
-        run: echo "release=${VERSION%-toolbox}" >> $GITHUB_OUTPUT
+        run: echo "release=${VERSION%-init}" >> $GITHUB_OUTPUT
         env:
           VERSION: ${{ matrix.version }}
 
