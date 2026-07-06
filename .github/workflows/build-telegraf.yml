@@ -1,0 +1,29 @@
+name: Build Telegraf image
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'telegraf/**'
+      - '!telegraf/README.md'
+      - '.github/workflows/build-telegraf.yml'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Build and push image
+        uses: ./.github/actions/build-image
+        with:
+          name: telegraf
+          version: 1.39.1
+          description: Custom Telegraf image with restricted set of plugins embedded
+          license: MIT
+          token: ${{ secrets.GITHUB_TOKEN }}
