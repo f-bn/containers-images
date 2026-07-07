@@ -12,6 +12,7 @@ RUN --mount=type=cache,target=/etc/apk/cache \
     cmake \
     execline-dev \
     flex \
+    gc-dev \
     icu-dev \
     libedit-dev \
     libuuid \
@@ -173,6 +174,16 @@ RUN set -ex ; \
   meson setup "${PWD}/dist" "${PWD}" ; \
   ninja -C "${PWD}/dist"
 
+# --- Build stage ---
+FROM base-extensions AS build-pgcopydb
+
+ARG PGCOPYDB_VERSION="0.18"
+
+ADD https://github.com/dimitri/pgcopydb.git#v${PGCOPYDB_VERSION} /build
+
+WORKDIR /build
+RUN make DESTDIR="${PWD}/dist" -j"$(nproc)" install
+
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
 
@@ -196,6 +207,7 @@ COPY --from=build-timescaledb /build/dist/ /
 
 # Additional tools
 COPY --from=build-pgbackrest /build/dist/src/pgbackrest /usr/bin/pgbackrest
+COPY --from=build-pgcopydb /build/dist/usr/bin/pgcopydb /usr/bin/pgcopydb
 
 RUN set -ex ; \
   addgroup -S -g 999 postgres ; \
@@ -210,6 +222,7 @@ COPY --chown=postgres:postgres \
 
 RUN --mount=type=cache,target=/etc/apk/cache \
   apk add \
+    gc \
     glibc-locale-en \
     gosu \
     icu \
