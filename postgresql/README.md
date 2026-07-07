@@ -13,9 +13,9 @@ A custom PostgreSQL image built from sources with additional extensions and tool
 This image contains a custom PostgreSQL build that differs from the official Docker Hub image since it's not based on upstream packages. Therefore, some features may not be available:
 
 🟢 **Supported**
-  - ✅ `lz4` and `zstd` support for **WAL compression**
-  - ✅ **OpenSSL** library
+  - ✅ **OpenSSL** SSL library
   - ✅ **LLVM JIT** compilation
+  - ✅ `lz4` and `zstd` support for native utilities like `pg_dump` or `pg_basebackup` and WAL compression
   - ✅ **systemd `sd_notify`** support ([supported](https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html#notify-defaults-to-false) with Podman Quadlets)
   - ✅ **Data checksums** enabled by default
 
@@ -24,6 +24,7 @@ This image contains a custom PostgreSQL build that differs from the official Doc
   - ❌ **LDAP** authentication
   - ❌ **PAM** authentication
   - ❌ **OAuth 2.0** authentication (from PostgreSQL ≥18)
+  - ❌ **SELinux extension** via `segsql`
   - ❌ **SQL/XML** support
   - ❌ **XSL** transformations
   - ❌ **Non-native PL extensions** (PL/Tcl, PL/Python, PL/Perl)
