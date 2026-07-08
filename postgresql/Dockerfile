@@ -4,8 +4,6 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS base-common
 RUN --mount=type=cache,target=/etc/apk/cache \
   apk add \
     bash \
-    autoconf \
-    automake \
     bison \
     build-base \
     clang-21 \
@@ -19,7 +17,10 @@ RUN --mount=type=cache,target=/etc/apk/cache \
     lld-21-dev \
     llvm-21-dev \
     lz4-dev \
+    meson \
+    ninja \
     openssl-dev \
+    perl \
     systemd-dev \
     util-linux-dev \
     zlib-dev \
@@ -39,23 +40,12 @@ RUN set -ex ; \
   cat postgresql-${VERSION}.tar.gz.sha256 | sha256sum -c ; \
   tar -xvzf postgresql-${VERSION}.tar.gz --strip-components=1
 
+COPY meson-config.ini /build/meson-config.ini
+
 RUN set -ex ; \
-  ./configure \
-    --with-llvm \
-    --with-lz4 \
-    --with-zstd \
-    --with-ssl=openssl \
-    --with-uuid=e2fs \
-    --with-systemd \
-    --prefix=/usr \
-    --bindir=/usr/bin \
-    --libdir=/usr/lib/postgresql \
-    --sysconfdir=/etc \
-    --includedir=/usr/include/postgresql \
-    --datarootdir=/usr/share/postgresql ; \
-  make -j"$(nproc)" ; \
-  make DESTDIR="$PWD/dist" install ; \
-  make DESTDIR="$PWD/dist" -C contrib install
+  meson setup --native-file "${PWD}/meson-config.ini" builddir ; \
+  ninja -C builddir ; \
+  meson install -C builddir --destdir "${PWD}/dist"
 
 # --- Build stage ---
 FROM base-common AS base-extensions
@@ -117,7 +107,7 @@ RUN set -ex ; \
 # --- Build stage ---
 FROM base-extensions AS build-pgvector
 
-ARG PG_VECTOR_VERSION="0.8.2"
+ARG PG_VECTOR_VERSION="0.8.4"
 
 ADD https://github.com/pgvector/pgvector.git#v${PG_VECTOR_VERSION} /build
 
@@ -133,10 +123,12 @@ ARG PG_STAT_MONITOR_VERSION="2.3.2"
 
 ADD https://github.com/percona/pg_stat_monitor.git#${PG_STAT_MONITOR_VERSION} /build
 
+ENV USE_PGXS=1
+
 WORKDIR /build
 RUN set -ex ; \
-  make USE_PGXS=1 -j"$(nproc)" ; \
-  make USE_PGXS=1 DESTDIR="${PWD}/dist" install
+  make -j"$(nproc)" ; \
+  make DESTDIR="${PWD}/dist" install
 
 # --- Build stage ---
 FROM base-extensions AS build-timescaledb
@@ -165,8 +157,6 @@ RUN --mount=type=cache,target=/etc/apk/cache \
     bzip2-dev \
     libssh2-dev \
     libxml2-dev \
-    ninja \
-    meson \
     yaml-dev
 
 WORKDIR /build

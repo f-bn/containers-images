@@ -13,9 +13,9 @@ A custom PostgreSQL image built from sources with additional extensions and tool
 This image contains a custom PostgreSQL build that differs from the official Docker Hub image since it's not based on upstream packages. Therefore, some features may not be available:
 
 🟢 **Supported**
-  - ✅ `lz4` and `zstd` support for **WAL compression**
-  - ✅ **OpenSSL** library
+  - ✅ **OpenSSL** SSL library
   - ✅ **LLVM JIT** compilation
+  - ✅ `lz4` and `zstd` support for native utilities like `pg_dump` or `pg_basebackup` and WAL compression
   - ✅ **systemd `sd_notify`** support ([supported](https://docs.podman.io/en/latest/markdown/podman-systemd.unit.5.html#notify-defaults-to-false) with Podman Quadlets)
   - ✅ **Data checksums** enabled by default
 
@@ -24,6 +24,7 @@ This image contains a custom PostgreSQL build that differs from the official Doc
   - ❌ **LDAP** authentication
   - ❌ **PAM** authentication
   - ❌ **OAuth 2.0** authentication (from PostgreSQL ≥18)
+  - ❌ **SELinux extension** via `segsql`
   - ❌ **SQL/XML** support
   - ❌ **XSL** transformations
   - ❌ **Non-native PL extensions** (PL/Tcl, PL/Python, PL/Perl)
@@ -47,7 +48,7 @@ This image includes the following PostgreSQL extensions and additional tools:
 | [pg_repack](https://github.com/reorg/pg_repack) | 1.5.3 | Reorganize tables in PostgreSQL databases with minimal locks |
 | [pg_squeeze](https://github.com/cybertec-postgresql/pg_squeeze) | 1.9.3 | A PostgreSQL extension for automatic bloat cleanup |
 | [pg_partman](https://github.com/pgpartman/pg_partman) | 5.4.3 | Partition management extension for PostgreSQL |
-| [pgvector](https://github.com/pgvector/pgvector) | 0.8.2 | Open-source vector similarity search for Postgres |
+| [pgvector](https://github.com/pgvector/pgvector) | 0.8.4 | Open-source vector similarity search for Postgres |
 | [pg_stat_monitor](https://github.com/percona/pg_stat_monitor) | 2.3.2 | Query Performance Monitoring Tool for PostgreSQL |
 | [timescaledb](https://github.com/timescale/timescaledb) | 2.28.1 | Enables scalable inserts and complex queries for time-series data |
 
