@@ -40,6 +40,13 @@ RUN set -ex ; \
   cat postgresql-${VERSION}.tar.gz.sha256 | sha256sum -c ; \
   tar -xvzf postgresql-${VERSION}.tar.gz --strip-components=1
 
+# Some PostgreSQL tarballs ship with files from an in-tree ./configure
+# build, which meson rejects. Only 16.x releases are affected until now.
+RUN set -ex ; \
+  if [ "${VERSION%%.*}" = "16" ]; then \
+    ./configure --quiet && make maintainer-clean ; \
+  fi
+
 COPY meson-config.ini /build/meson-config.ini
 
 RUN set -ex ; \
