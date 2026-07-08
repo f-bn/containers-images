@@ -123,10 +123,12 @@ ARG PG_STAT_MONITOR_VERSION="2.3.2"
 
 ADD https://github.com/percona/pg_stat_monitor.git#${PG_STAT_MONITOR_VERSION} /build
 
+ENV USE_PGXS=1
+
 WORKDIR /build
 RUN set -ex ; \
-  make USE_PGXS=1 -j"$(nproc)" ; \
-  make USE_PGXS=1 DESTDIR="${PWD}/dist" install
+  make -j"$(nproc)" ; \
+  make DESTDIR="${PWD}/dist" install
 
 # --- Build stage ---
 FROM base-extensions AS build-timescaledb
