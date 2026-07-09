@@ -140,7 +140,7 @@ RUN set -ex ; \
 # --- Build stage ---
 FROM base-extensions AS build-timescaledb
 
-ARG TIMESCALEDB_VERSION="2.28.1"
+ARG TIMESCALEDB_VERSION="2.28.2"
 
 ADD https://github.com/timescale/timescaledb.git#${TIMESCALEDB_VERSION} /build
 
