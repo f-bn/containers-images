@@ -114,7 +114,7 @@ RUN set -ex ; \
 # --- Build stage ---
 FROM base-extensions AS build-pgvector
 
-ARG PG_VECTOR_VERSION="0.8.4"
+ARG PG_VECTOR_VERSION="0.8.5"
 
 ADD https://github.com/pgvector/pgvector.git#v${PG_VECTOR_VERSION} /build
 
