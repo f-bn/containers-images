@@ -10,6 +10,10 @@ RUN --mount=type=bind,source=extra-packages,target=/extra-packages \
     dnf clean all ; \
     rm -f /etc/ssh/ssh_host_*
 
+RUN set -ex ; \
+  systemctl disable sshd.service ; \
+  systemctl enable sshd.socket
+
 COPY --chown=0:0 \
   systemd/10-disable-sandboxing.conf /etc/systemd/system/service.d/10-disable-sandboxing.conf
 
