@@ -1,5 +1,5 @@
 # --- Build stage ---
-FROM docker.io/node:24.16.0 AS build-webui
+FROM docker.io/node:24.18.0 AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
