@@ -16,11 +16,11 @@ RUN set -ex ; \
   yarn build
 
 # --- Build stage ---
-FROM docker.io/golang:1.25.11 AS build-binary
+FROM docker.io/golang:1.25.12 AS build-binary
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="3.7.4"
+ARG VERSION="3.7.7"
 ARG CODENAME="langres"
 
 ENV GOOS=${TARGETOS}
