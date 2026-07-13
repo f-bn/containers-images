@@ -1,5 +1,5 @@
 # --- Build stage ---
-FROM docker.io/node:24.16.0 AS build-webui
+FROM docker.io/node:24.18.0 AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
@@ -16,7 +16,7 @@ RUN set -ex ; \
   yarn build
 
 # --- Build stage ---
-FROM docker.io/golang:1.25.12 AS build-binary
+FROM docker.io/golang:1.26.5 AS build-binary
 
 ARG TARGETOS
 ARG TARGETARCH
