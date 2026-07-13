@@ -1,5 +1,5 @@
 # --- Build stage ---
-FROM docker.io/node:24.16.0 AS build-webui
+FROM docker.io/node:24.18.0 AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
@@ -10,7 +10,9 @@ ADD --keep-git-dir \
 
 WORKDIR /build
 
-RUN make assets
+RUN set -ex ; \
+  corepack enable ; \
+  make assets
 
 # --- Build stage ---
 FROM docker.io/golang:1.26.5 AS build-binary
