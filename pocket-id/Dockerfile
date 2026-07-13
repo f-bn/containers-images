@@ -15,11 +15,11 @@ RUN set -ex ; \
   pnpm --filter pocket-id-frontend run build
 
 # --- Build stage ---
-FROM docker.io/golang:1.26.4 AS build-binary
+FROM docker.io/golang:1.26.5 AS build-binary
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="2.8.0"
+ARG VERSION="2.11.0"
 
 ENV GOOS=${TARGETOS}
 ENV GOARCH=${TARGETARCH}
