@@ -1,0 +1,30 @@
+---
+name: Build Caddy image
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'caddy/**'
+      - '!caddy/README.md'
+      - '.github/workflows/build-caddy.yml'
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Build and push image
+        uses: ./.github/actions/build-image
+        with:
+          name: caddy
+          version: 2.11.4
+          description: Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS
+          license: Apache-2.0
+          token: ${{ secrets.GITHUB_TOKEN }}

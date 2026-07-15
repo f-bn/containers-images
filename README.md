@@ -23,6 +23,7 @@ This repository contains custom-built OCI container images for various popular o
 |-------|-------------|-------|
 | **[alertmanager](./alertmanager/)** | Prometheus Alertmanager | [GitHub](https://github.com/prometheus/alertmanager) |
 | **[coredns](./coredns/)** | CoreDNS is a DNS server that chains plugins | [Website](https://coredns.io/) |
+| **[caddy](./caddy/)** | Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS | [Website](https://caddyserver.com/) |
 | **[coreos-toolbox](./coreos-toolbox/)** | Custom Fedora image including utilities and tools for debugging on Fedora CoreOS | - |
 | **[fedora](./fedora/)** | Custom Fedora containers images | [Website](https://fedoraproject.org/) |
 | **[fusion](./fusion/)** | A lightweight, self-hosted friendly RSS reader | [GitHub](https://github.com/0x2E/fusion) |
