@@ -1,5 +1,5 @@
 # --- Build stage ---
-FROM docker.io/golang:1.26.4 AS build
+FROM docker.io/golang:1.26.5 AS build
 
 ARG TARGETOS
 ARG TARGETARCH
@@ -38,10 +38,15 @@ RUN set -ex ; \
 
 RUN install -d -o root -g telegraf -m 0755 /etc/telegraf
 
-RUN apk add --no-cache lm-sensors
-
 COPY --chown=root:telegraf \
   telegraf.default.conf /etc/telegraf/telegraf.conf
+
+RUN apk add --no-cache lm-sensors
+
+ENV HOST_MOUNT_PREFIX=/host
+ENV HOST_PROC=/host/proc
+ENV HOST_SYS=/host/sys
+ENV HOST_RUN=/host/run
 
 USER telegraf
 

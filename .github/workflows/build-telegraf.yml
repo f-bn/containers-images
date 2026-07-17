@@ -24,6 +24,7 @@ jobs:
         with:
           name: telegraf
           version: 1.39.1
+          revision: 1
           description: Custom Telegraf image with restricted set of plugins embedded
           license: MIT
           token: ${{ secrets.GITHUB_TOKEN }}
