@@ -12,6 +12,7 @@ gvfs-client
 hostname
 iproute
 iputils
+jq
 keyutils
 krb5-libs
 less
