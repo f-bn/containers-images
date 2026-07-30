@@ -1,5 +1,5 @@
 ## General informations
 
-Custom Fedora image including various utilities and tools for debugging on Fedora CoreOS.
+Custom Fedora image including various utilities and tools for troubleshooting on Fedora CoreOS hosts.
 
-Currently based on Fedora 42.
+Currently based on Fedora 44.

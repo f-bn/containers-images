@@ -12,8 +12,9 @@ jq
 less
 lm_sensors
 lsof
+nano-default-editor
+netcat
 nmap
-nmap-ncat
 nvme-cli
 openssh-clients
 openssl
@@ -23,11 +24,11 @@ smartmontools
 socat
 strace
 sudo
+sysstat
 tcpdump
 traceroute
 unzip
 util-linux
-vim-enhanced
 wget2-wget
 whois
 zip
