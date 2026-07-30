@@ -20,6 +20,7 @@ rsync
 socat
 strace
 systemd
+systemd-pam
 unzip
 util-linux
 wget2-wget
