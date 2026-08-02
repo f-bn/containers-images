@@ -1,0 +1,42 @@
+---
+name: Build CentOS Stream system images
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'centos/*-init/**'
+      - '!centos/**/README.md'
+      - '.github/workflows/build-centos-init.yml'
+  workflow_dispatch:
+  schedule:
+    - cron: '35 4 * * 6' # Every Saturday at 04:35am
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+      security-events: write
+    strategy:
+      matrix:
+        version: ['stream9-init', 'stream10-init']
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4.2.2
+
+      - name: Extract CentOS Stream release version
+        id: version
+        shell: bash
+        run: echo "$VERSION" | sed -E 's/^stream([0-9]+)-init$/release=\1/' >> $GITHUB_OUTPUT
+        env:
+          VERSION: ${{ matrix.version }}
+
+      - name: Build and push image
+        uses: ./.github/actions/build-image
+        with:
+          name: centos
+          version: ${{ matrix.version }}
+          description: Custom CentOS Stream ${{ steps.version.outputs.release }} system container image
+          build-context: ./centos/${{ matrix.version }}
+          token: ${{ secrets.GITHUB_TOKEN }}
