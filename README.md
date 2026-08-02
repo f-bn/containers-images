@@ -14,7 +14,7 @@
 This repository contains custom-built OCI container images for various popular open-source projects I use for personal projects and home production.
 
 - 🔨 **Built from source** - Built from source whenever possible  
-- ⚡ **Optimized builds** - Built with custom build options to remove uneeded features whenever possible to reduce attack surface  
+- ⚡ **Optimized builds** - Built with custom build options to remove uneeded features and reduce attack surface  
 - 🛡️ **Secure base** - Uses [Wolfi](https://github.com/wolfi-dev) as minimal base image
 
 ## 📦 Available Images
@@ -29,18 +29,14 @@ This repository contains custom-built OCI container images for various popular o
 | **[fusion](./fusion/)** | A lightweight, self-hosted friendly RSS reader | [GitHub](https://github.com/0x2E/fusion) |
 | **[grafana](./grafana/)** | The open and composable observability and data visualization platform | [Website](https://grafana.com/) |
 | **[navidrome](./navidrome/)** | Modern Music Server and Streamer compatible with Subsonic/Airsonic | [Website](https://www.navidrome.org/) |
-| **[node-exporter](./node-exporter/)** | Exporter for machine metrics | [GitHub](https://github.com/prometheus/node_exporter) |
 | **[oauth2-proxy](./oauth2-proxy/)** | A reverse proxy that provides authentication with Google, Azure, OpenID Connect and many more identity providers | [GitHub](https://github.com/oauth2-proxy/oauth2-proxy) |
 | **[pgbouncer](./pgbouncer/)** | Lightweight connection pooler for PostgreSQL | [Website](https://www.pgbouncer.org/) |
 | **[plik](./plik/)** | Plik is a temporary file upload system (Wetransfer like) in Go | [GitHub](https://github.com/root-gg/plik) |
 | **[pocket-id](./pocket-id/)** | A simple and easy-to-use OIDC provider that allows users to authenticate with their passkeys to your services | [GitHub](https://github.com/pocket-id/pocket-id) |
-| **[podman-exporter](./podman-exporter/)** | Prometheus exporter for Podman environments exposing containers, pods, images, volumes and networks information | [GitHub](https://github.com/containers/prometheus-podman-exporter) |
 | **[postgresql](./postgresql/)** | Custom PostgreSQL image built from source with additional extensions and tools | [Website](https://www.postgresql.org/) |
 | **[prometheus](./prometheus/)** | The Prometheus monitoring system and time series database | [Website](https://prometheus.io/) |
-| **[registry](./registry/)** | Distribution implementation for storing and distributing of container images and artifacts | [GitHub](https://github.com/distribution/distribution) |
 | **[telegraf](./telegraf/)** | Agent for collecting, processing, aggregating, and writing metrics, logs, and other arbitrary data | [GitHub](https://github.com/influxdata/telegraf) |
 | **[traefik](./traefik/)** | The Cloud Native Application Proxy | [Website](https://traefik.io/) |
-| **[ubuntu](./ubuntu/)** | Custom Ubuntu containers images | [Website](https://ubuntu.com/) |
 | **[valkey](./valkey/)** | An open source, in-memory data store | [Website](https://valkey.io/) |
 
 ## 🚀 Quick Start

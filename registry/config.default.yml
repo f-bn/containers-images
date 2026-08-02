@@ -1,9 +1,0 @@
-# Default configuration
-version: 0.1
-log:
-  level: info
-storage:
-  filesystem:
-    rootdirectory: /var/lib/registry
-http:
-  addr: :5000
