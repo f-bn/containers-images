@@ -90,7 +90,7 @@ RUN set -ex ; \
 # --- Build stage ---
 FROM base-extensions AS build-pgsqueeze
 
-ARG PG_SQUEEZE_VERSION="1.9.3"
+ARG PG_SQUEEZE_VERSION="1.9.4"
 
 ADD https://github.com/cybertec-postgresql/pg_squeeze.git#REL${PG_SQUEEZE_VERSION//./_} /build
 
@@ -102,7 +102,7 @@ RUN set -ex ; \
 # --- Build stage ---
 FROM base-extensions AS build-pgpartman
 
-ARG PG_PARTMAN_VERSION="5.4.3"
+ARG PG_PARTMAN_VERSION="5.5.0"
 
 ADD https://github.com/pgpartman/pg_partman.git#v${PG_PARTMAN_VERSION} /build
 
@@ -114,7 +114,7 @@ RUN set -ex ; \
 # --- Build stage ---
 FROM base-extensions AS build-pgvector
 
-ARG PG_VECTOR_VERSION="0.8.5"
+ARG PG_VECTOR_VERSION="0.8.6"
 
 ADD https://github.com/pgvector/pgvector.git#v${PG_VECTOR_VERSION} /build
 
@@ -140,7 +140,7 @@ RUN set -ex ; \
 # --- Build stage ---
 FROM base-extensions AS build-timescaledb
 
-ARG TIMESCALEDB_VERSION="2.28.2"
+ARG TIMESCALEDB_VERSION="2.29.0"
 
 ADD https://github.com/timescale/timescaledb.git#${TIMESCALEDB_VERSION} /build
 

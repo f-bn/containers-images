@@ -46,17 +46,17 @@ This image includes the following PostgreSQL extensions and additional tools:
 | [pg_prewarm](https://www.postgresql.org/docs/current/pgprewarm.html) | (bundled with PostgreSQL) | Preload relation data into the PostgreSQL buffer cache |
 | [pg_cron](https://github.com/citusdata/pg_cron) | 1.6.7 | Run periodic jobs in PostgreSQL |
 | [pg_repack](https://github.com/reorg/pg_repack) | 1.5.3 | Reorganize tables in PostgreSQL databases with minimal locks |
-| [pg_squeeze](https://github.com/cybertec-postgresql/pg_squeeze) | 1.9.3 | A PostgreSQL extension for automatic bloat cleanup |
-| [pg_partman](https://github.com/pgpartman/pg_partman) | 5.4.3 | Partition management extension for PostgreSQL |
-| [pgvector](https://github.com/pgvector/pgvector) | 0.8.5 | Open-source vector similarity search for Postgres |
+| [pg_squeeze](https://github.com/cybertec-postgresql/pg_squeeze) | 1.9.4 | A PostgreSQL extension for automatic bloat cleanup |
+| [pg_partman](https://github.com/pgpartman/pg_partman) | 5.5.0 | Partition management extension for PostgreSQL |
+| [pgvector](https://github.com/pgvector/pgvector) | 0.8.6 | Open-source vector similarity search for Postgres |
 | [pg_stat_monitor](https://github.com/percona/pg_stat_monitor) | 2.3.2 | Query Performance Monitoring Tool for PostgreSQL |
-| [timescaledb](https://github.com/timescale/timescaledb) | 2.28.2 | Enables scalable inserts and complex queries for time-series data |
+| [timescaledb](https://github.com/timescale/timescaledb) | 2.29.0 | Enables scalable inserts and complex queries for time-series data |
 
 #### Additional tools
 
 | Name | Version | Description |
 |------|---------|-------------|
-| [pgBackRest](https://pgbackrest.org/) | 2.58.0 | PostgreSQL backup and restore solution
+| [pgBackRest](https://pgbackrest.org/) | 2.59.0 | PostgreSQL backup and restore solution
 | [pgcopydb](https://github.com/dimitri/pgcopydb) | 0.18 | Copy a Postgres database to a target Postgres server (pg_dump \| pg_restore on steroids)
 
 > [!NOTE]
