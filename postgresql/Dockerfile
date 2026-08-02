@@ -155,9 +155,19 @@ RUN set -ex ; \
 # --- Build stage ---
 FROM base-extensions AS build-pgbackrest
 
-ARG PGBACKREST_VERSION="2.58.0"
+ARG PGBACKREST_VERSION="2.59.0"
 
-ADD https://github.com/pgbackrest/pgbackrest.git#release/${PGBACKREST_VERSION} /build
+ADD https://github.com/pgbackrest/pgbackrest/releases/download/release/${PGBACKREST_VERSION}/pgbackrest-${PGBACKREST_VERSION}.tar.gz \
+  /build/pgbackrest-${PGBACKREST_VERSION}.tar.gz
+ADD https://github.com/pgbackrest/pgbackrest/releases/download/release/${PGBACKREST_VERSION}/pgbackrest-${PGBACKREST_VERSION}.tar.gz.sha256sum \
+  /build/pgbackrest-${PGBACKREST_VERSION}.tar.gz.sha256sum
+
+WORKDIR /build
+
+RUN set -ex ; \
+  cat pgbackrest-${PGBACKREST_VERSION}.tar.gz.sha256sum | sha256sum -c ; \
+  tar -xvzf pgbackrest-${PGBACKREST_VERSION}.tar.gz \
+    --strip-components=1 --exclude="pgbackrest-${PGBACKREST_VERSION}/dist"
 
 RUN --mount=type=cache,target=/etc/apk/cache \
   apk add \
@@ -166,7 +176,6 @@ RUN --mount=type=cache,target=/etc/apk/cache \
     libxml2-dev \
     yaml-dev
 
-WORKDIR /build
 RUN set -ex ; \
   meson setup "${PWD}/dist" "${PWD}" ; \
   ninja -C "${PWD}/dist"
