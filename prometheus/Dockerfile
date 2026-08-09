@@ -1,9 +1,9 @@
 # --- Build stage ---
-FROM docker.io/node:24.18.0 AS build-webui
+FROM docker.io/node:24.19.0 AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="3.13.1"
+ARG VERSION="3.13.2"
 
 ADD --keep-git-dir \
   https://github.com/prometheus/prometheus.git#v${VERSION} /build
