@@ -19,6 +19,7 @@ psmisc
 rsync
 socat
 strace
+sudo
 systemd
 systemd-pam
 unzip
