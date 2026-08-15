@@ -72,7 +72,7 @@ COPY --chown=clickhouse:clickhouse --chmod=0644 \
 COPY --chown=clickhouse:clickhouse --chmod=0644 \
   client.docker.xml /etc/clickhouse-client/config.d/00-docker.xml
 
-RUN apk --no-cache add glibc-locale-en posix-libc-utils-bin
+RUN apk --no-cache add glibc-locale-en
 
 ENV LANG="en_US.utf8"
 
