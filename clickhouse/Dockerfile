@@ -52,7 +52,7 @@ RUN set -ex ; \
     /etc/clickhouse-keeper/config.d \
     /etc/clickhouse-client \
     /etc/clickhouse-client/config.d ; \
-  install -d -o clickhouse -g clickhouse -m 0700 /var/lib/clickhouse ; \
+  install -d -o clickhouse -g clickhouse -m 0755 /var/lib/clickhouse ; \
   install -d -o clickhouse -g clickhouse -m 0755 /var/log/clickhouse-server ; \
   install -d -o root -g root -m 0755 /docker-entrypoint-initdb.d
 
