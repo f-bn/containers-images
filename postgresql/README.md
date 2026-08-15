@@ -50,7 +50,7 @@ This image includes the following PostgreSQL extensions and additional tools:
 | [pg_partman](https://github.com/pgpartman/pg_partman) | 5.5.0 | Partition management extension for PostgreSQL |
 | [pgvector](https://github.com/pgvector/pgvector) | 0.8.6 | Open-source vector similarity search for Postgres |
 | [pg_stat_monitor](https://github.com/percona/pg_stat_monitor) | 2.3.2 | Query Performance Monitoring Tool for PostgreSQL |
-| [timescaledb](https://github.com/timescale/timescaledb) | 2.29.0 | Enables scalable inserts and complex queries for time-series data |
+| [timescaledb](https://github.com/timescale/timescaledb) | 2.29.1 | Enables scalable inserts and complex queries for time-series data |
 
 #### Additional tools
 
