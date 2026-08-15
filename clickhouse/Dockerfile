@@ -56,6 +56,7 @@ RUN set -ex ; \
   install -d -o clickhouse -g clickhouse -m 0755 /var/log/clickhouse-server ; \
   install -d -o root -g root -m 0755 /docker-entrypoint-initdb.d
 
+# Default configurations
 COPY --from=build --chown=clickhouse:clickhouse --chmod=0644 \
   /build/etc/clickhouse-server/config.xml /etc/clickhouse-server/config.xml
 COPY --from=build --chown=clickhouse:clickhouse --chmod=0644 \
@@ -65,8 +66,11 @@ COPY --from=build --chown=clickhouse:clickhouse --chmod=0644 \
 COPY --from=build --chown=clickhouse:clickhouse --chmod=0644 \
   /build/etc/clickhouse-client/config.xml /etc/clickhouse-client/config.xml
 
+# Configuration overrides
 COPY --chown=clickhouse:clickhouse --chmod=0644 \
   config.docker.xml /etc/clickhouse-server/config.d/00-docker.xml
+COPY --chown=clickhouse:clickhouse --chmod=0644 \
+  client.docker.xml /etc/clickhouse-client/config.d/00-docker.xml
 
 RUN apk --no-cache add glibc-locale-en posix-libc-utils-bin
 
