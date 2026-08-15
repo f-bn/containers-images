@@ -193,7 +193,7 @@ RUN make DESTDIR="${PWD}/dist" -j"$(nproc)" install
 # --- Final stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest
 
-ARG VERSION="18.4"
+ARG VERSION="18.6"
 
 # Compatibility environment variables
 ENV PG_MAJOR="${VERSION%%.*}"
