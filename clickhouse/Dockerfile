@@ -79,8 +79,6 @@ ENV LANG="en_US.utf8"
 ENV CLICKHOUSE_CONFIG=/etc/clickhouse-server/config.xml
 ENV CLICKHOUSE_WATCHDOG_ENABLE=0
 
-USER clickhouse
-
 EXPOSE 8123/tcp 9000/tcp 9004/tcp 9005/tcp 9009/tcp
 
 VOLUME [ "/var/lib/clickhouse" ]
