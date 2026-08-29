@@ -1,9 +1,9 @@
 # --- Build stage ---
-FROM docker.io/node:24.18.0 AS build-webui
+FROM docker.io/node:24.20.0 AS build-webui
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="2.8.0"
+ARG VERSION="2.14.0"
 
 ADD https://github.com/pocket-id/pocket-id.git#v${VERSION} /build
 
@@ -15,11 +15,11 @@ RUN set -ex ; \
   pnpm --filter pocket-id-frontend run build
 
 # --- Build stage ---
-FROM docker.io/golang:1.26.5 AS build-binary
+FROM docker.io/golang:1.26.7 AS build-binary
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="2.11.0"
+ARG VERSION="2.14.0"
 
 ENV GOOS=${TARGETOS}
 ENV GOARCH=${TARGETARCH}
