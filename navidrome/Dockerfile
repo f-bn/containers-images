@@ -1,7 +1,7 @@
 # --- Build stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest AS ffmpeg-build
 
-ARG FFMPEG_VERSION=8.1
+ARG FFMPEG_VERSION=9.0.1
 
 RUN set -ex ; \
   apk add --no-cache \
@@ -44,7 +44,7 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION=0.63.0
+ARG VERSION=0.64.0
 
 WORKDIR /build
 
