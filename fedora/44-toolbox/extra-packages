@@ -4,6 +4,7 @@ bind-utils
 bzip2
 cracklib-dicts
 diffutils
+fzf
 gawk
 git-core
 gnupg2
@@ -42,3 +43,4 @@ which
 whois
 words
 zip
+zoxide
