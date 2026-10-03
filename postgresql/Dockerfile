@@ -66,7 +66,7 @@ ENV PKG_CONFIG_PATH="/usr/lib/postgresql/pkgconfig"
 # --- Build stage ---
 FROM base-extensions AS build-pgcron
 
-ARG PG_CRON_VERSION="1.6.7"
+ARG PG_CRON_VERSION="1.6.8"
 
 ADD https://github.com/citusdata/pg_cron.git#v${PG_CRON_VERSION} /build
 
@@ -114,7 +114,7 @@ RUN set -ex ; \
 # --- Build stage ---
 FROM base-extensions AS build-pgvector
 
-ARG PG_VECTOR_VERSION="0.8.6"
+ARG PG_VECTOR_VERSION="0.8.7"
 
 ADD https://github.com/pgvector/pgvector.git#v${PG_VECTOR_VERSION} /build
 
@@ -126,7 +126,7 @@ RUN set -ex ; \
 # --- Build stage ---
 FROM base-extensions AS build-pgstatmonitor
 
-ARG PG_STAT_MONITOR_VERSION="2.3.2"
+ARG PG_STAT_MONITOR_VERSION="2.4.0"
 
 ADD https://github.com/percona/pg_stat_monitor.git#${PG_STAT_MONITOR_VERSION} /build
 
@@ -140,7 +140,7 @@ RUN set -ex ; \
 # --- Build stage ---
 FROM base-extensions AS build-timescaledb
 
-ARG TIMESCALEDB_VERSION="2.29.2"
+ARG TIMESCALEDB_VERSION="2.30.2"
 
 ADD https://github.com/timescale/timescaledb.git#${TIMESCALEDB_VERSION} /build
 
@@ -155,7 +155,7 @@ RUN set -ex ; \
 # --- Build stage ---
 FROM base-extensions AS build-pgbackrest
 
-ARG PGBACKREST_VERSION="2.59.1"
+ARG PGBACKREST_VERSION="2.59.2"
 
 ADD https://github.com/pgbackrest/pgbackrest/releases/download/release/${PGBACKREST_VERSION}/pgbackrest-${PGBACKREST_VERSION}.tar.gz \
   /build/pgbackrest-${PGBACKREST_VERSION}.tar.gz
