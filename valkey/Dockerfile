@@ -3,7 +3,7 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="9.1.1"
+ARG VERSION="9.1.2"
 
 RUN apk add --no-cache automake autoconf build-base openssl-dev systemd-dev
 
