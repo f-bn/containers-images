@@ -3,7 +3,7 @@ FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
 ARG TARGETOS
 ARG TARGETARCH
-ARG VERSION="1.25.2"
+ARG VERSION="1.26.0"
 
 RUN set -ex ; \
   apk add --no-cache \
@@ -32,19 +32,19 @@ RUN set -ex ; \
 FROM cgr.dev/chainguard/wolfi-base:latest
 
 COPY --from=build --chmod=755 /build/pgbouncer /usr/bin/pgbouncer
-COPY --chown=root:pgbouncer --chmod=640 pgbouncer.default.ini /etc/pgbouncer/pgbouncer.ini
 
 RUN set -ex ; \
   addgroup -S -g 999 pgbouncer ; \
   adduser -S -D -H -s /bin/false -u 999 -G pgbouncer pgbouncer
 
 RUN set -ex ; \
-  mkdir -p /etc/pgbouncer ; \
-  chown -R root:pgbouncer /etc/pgbouncer ; \
-  chmod 750 /etc/pgbouncer ; \
-  touch /etc/pgbouncer/userlist.txt
+  install -d -o pgbouncer -g pgbouncer -m 0750 /etc/pgbouncer ; \
+  install -o pgbouncer -g pgbouncer -m 0640 /dev/null /etc/pgbouncer/userlist.txt
 
-RUN apk add --no-cache c-ares libevent
+COPY --chown=pgbouncer:pgbouncer --chmod=640 \
+  pgbouncer.default.ini /etc/pgbouncer/pgbouncer.ini
+
+RUN apk add --no-cache c-ares libevent openssl
 
 USER pgbouncer
 
