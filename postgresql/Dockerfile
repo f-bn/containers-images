@@ -19,7 +19,7 @@ RUN --mount=type=cache,target=/etc/apk/cache \
     lz4-dev \
     meson \
     ninja \
-    openssl-dev \
+    openssl-4.0-dev \
     perl \
     systemd-dev \
     util-linux-dev \
@@ -29,7 +29,7 @@ RUN --mount=type=cache,target=/etc/apk/cache \
 # --- Build stage ---
 FROM base-common AS build-server
 
-ARG VERSION="18.4"
+ARG VERSION="18.6"
 
 ADD https://ftp.postgresql.org/pub/source/v${VERSION}/postgresql-${VERSION}.tar.gz /build/postgresql-${VERSION}.tar.gz
 ADD https://ftp.postgresql.org/pub/source/v${VERSION}/postgresql-${VERSION}.tar.gz.sha256 /build/postgresql-${VERSION}.tar.gz.sha256
