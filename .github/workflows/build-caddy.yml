@@ -24,7 +24,7 @@ jobs:
         uses: ./.github/actions/build-image
         with:
           name: caddy
-          version: 2.11.4
+          version: 2.11.7
           description: Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS
           license: Apache-2.0
           token: ${{ secrets.GITHUB_TOKEN }}
