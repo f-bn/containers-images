@@ -8,9 +8,6 @@
 
 ## 📋 Overview
 
-[![License](https://img.shields.io/github/license/f-bn/containers-images)](./LICENSE)
-[![GitHub Actions](https://img.shields.io/badge/CI-GitHub%20Actions-2088FF?logo=github-actions&logoColor=white)](https://github.com/f-bn/containers-images/actions)
-
 This repository contains custom-built OCI container images for various popular open-source projects I use for personal projects and home production.
 
 - 🔨 **Built from source** - Built from source whenever possible  
