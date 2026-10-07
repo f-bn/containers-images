@@ -21,7 +21,6 @@ This repository contains custom-built OCI container images for various popular o
 
 | Image | Description | Links |
 |-------|-------------|-------|
-| **[alertmanager](./alertmanager/)** | Prometheus Alertmanager | [GitHub](https://github.com/prometheus/alertmanager) |
 | **[caddy](./caddy/)** | Fast and extensible multi-platform HTTP/1-2-3 web server with automatic HTTPS | [Website](https://caddyserver.com/) |
 | **[centos](./centos/)** | Custom CentOS Stream container images | [Website](https://www.centos.org/) |
 | **[clickhouse](./clickhouse/)** | ClickHouse® is a real-time analytics database management system | [Website](https://clickhouse.com/) |
@@ -38,8 +37,6 @@ This repository contains custom-built OCI container images for various popular o
 | **[postgresql](./postgresql/)** | Custom PostgreSQL image built from source with additional extensions and tools | [Website](https://www.postgresql.org/) |
 | **[prometheus](./prometheus/)** | The Prometheus monitoring system and time series database | [Website](https://prometheus.io/) |
 | **[telegraf](./telegraf/)** | Agent for collecting, processing, aggregating, and writing metrics, logs, and other arbitrary data | [GitHub](https://github.com/influxdata/telegraf) |
-| **[traefik](./traefik/)** | The Cloud Native Application Proxy | [Website](https://traefik.io/) |
-| **[valkey](./valkey/)** | An open source, in-memory data store | [Website](https://valkey.io/) |
 
 ## 🚀 Quick Start
 
