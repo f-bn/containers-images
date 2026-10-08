@@ -1,7 +1,7 @@
 # --- Build stage ---
 FROM cgr.dev/chainguard/wolfi-base:latest AS build
 
-ARG VERSION="26.9.8.3"
+ARG VERSION="26.9.13.15"
 ARG CHANNEL="stable"
 
 WORKDIR /build
